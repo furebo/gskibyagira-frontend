@@ -1,0 +1,106 @@
+.books_table_wrapper {
+    width:100%;
+    margin-top: 65px;
+}
+.books_table{
+    display: block;
+    overflow: hidden;
+    table-layout: auto;
+    border-collapse: collapse;
+    box-shadow: 0px 10px 10px #ccc;
+    white-space: nowrap;
+    width: 100em;
+    max-width: 100%;
+    margin:auto;
+    overflow-x: auto;
+    border: 1px solid blue;
+}
+.books_table thead{
+    background-color: blue;
+    color: #fff;
+    border-bottom: 1px solid blue; 
+}
+
+.books_table th, .books_table td{
+    padding: 0.7rem;
+}
+.books_table td{
+    border-top: 0.8px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.books_table tbody tr:hover{
+    background-color: #eee;
+}
+.expand{
+    width: 100%;
+}
+.books_actions{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid blue;
+    padding: 3px 6px;
+}
+.books_actions svg{
+    cursor:pointer
+}
+.delete-btn{
+    color:#e10d05
+}
+.edit-btn{
+    color:#1d4ed8
+}
+.searchbar{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+}
+.searchbar input{
+    height: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid blue;
+    width: 25%;
+    padding-left: 10px;
+    font-size: 15px;
+}
+.searchbar h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.mainContainer{
+    border: 1px solid blue;
+    margin: auto;
+    padding: 10px;
+    width: 85%;
+}
+.accademic{
+    background-color: #a5a4a4;
+    padding: 5px;
+    display: flex;
+    justify-content:space-around
+}
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 20%;
+    border: 1px solid blue;
+    margin-top: 3px;
+    padding: 4px;
+}
+.pagination li{
+    color: blue;
+    font-size: 15px;
+    font-weight: bold;
+}
+.studentspagination{
+    display: flex;
+    justify-content: end;
+}
+.page-item :hover{
+    cursor: pointer;
+}
+

@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.welcome{
+    font-family: 'Verdana, sans-serif';
+    width: 100%;
+    
+}
+.container{
+    background-color: rgb(8, 8, 59);
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh;
+    margin-top: 60px;
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+} 
+.container div{
+    margin-left: 1px;   
+}
+
+.left-panel{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width:60%
+}
+.btnContainer{
+    width: 100%;
+}
+.right-panel{
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    padding-top: 20px;
+    align-items: center;
+    padding: 5px;
+    width: 40%;
+    
+}
+.input{
+    width:70%;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.heading2{
+    color: white;
+    top: 0;
+}
+.bookInfo{
+    color: white;
+    font-family: 'Verdana, sans-serif';
+    margin-top: 10px;
+}
+.storedBooks{
+    color: white;
+    font-family:'verdana sans-serif'
+}
+.bk-button{
+    width: 60%;
+    padding: 12px;
+    margin-top: 5px;
+    cursor: pointer;
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    
+    border: 1px solid white;
+    
+}
+.bk-button:hover{
+    width: 61%;
+}
+.classlink1{
+    background-color: white;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    width: 60%;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    list-style: none;
+    
+}
+.classlink1:hover{
+    background-color: rgb(156, 111, 28);
+}
+.classlink1.active{
+    background-color: rgb(156, 111, 28);
+}
+.classlink{
+    background-color: white;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+   
+}
+.divLink{
+    display: none;
+    width: 60%;
+    
+}
+.shown1{
+    display: block;
+}
+.classlink{
+    height: 40px;;
+    background-color: blue;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.subBtn{
+    width: 70%;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
