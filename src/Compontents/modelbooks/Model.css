@@ -42,6 +42,17 @@
 .books_form_group label{
     margin-bottom: 0.2rem;
 }
+.books_form_group select{
+    border: 1px solid black;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    width: 100%;
+}
+.opt{
+    font-size: 1rem;
+    width: 20%;
+}
 .hide_books_model{
     display: none;
 }
@@ -51,4 +62,7 @@
     padding: 0.5rem;
     border-radius: 0.3rem;
     margin-bottom: 1rem;
+}
+.book_borrowing{
+    color: blue;
 }

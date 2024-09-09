@@ -1,9 +1,7 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "./style.css"
 
-
 export default function Header() {
- 
     return (
       <nav className="nav">
         <Link to="/" className="site-title">
@@ -16,11 +14,8 @@ export default function Header() {
           <CustomLink to="/books">Books</CustomLink>
         </ul>
       </nav>
-    )
-  
-
+   )
 }
-
 
 function CustomLink({ to, children, ...props }) {
   const resolvedPath = useResolvedPath(to)

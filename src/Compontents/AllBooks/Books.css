@@ -1,6 +1,18 @@
+*{
+    margin:0;
+    padding: 0;
+}
 .books_table_wrapper {
     width:100%;
     margin-top: 65px;
+}
+.welcomee{
+    height: 40px;
+    background-color: blue;
+    width:100%;
+    position: fixed;
+    color: white;
+    
 }
 .books_table{
     display: block;
@@ -13,12 +25,12 @@
     max-width: 100%;
     margin:auto;
     overflow-x: auto;
-    border: 1px solid blue;
+    border: 1px solid rgb(86, 86, 250);
 }
 .books_table thead{
     background-color: blue;
     color: #fff;
-    border-bottom: 1px solid blue; 
+    border-bottom: 1px solid rgb(86, 86, 250); 
 }
 
 .books_table th, .books_table td{
@@ -62,7 +74,7 @@
     height: 25px;
     margin-bottom: 10px;
     margin-top: 10px;
-    border: 1px solid blue;
+    border: 1px solid rgb(86, 86, 250);
     width: 25%;
     padding-left: 10px;
     font-size: 15px;
@@ -71,10 +83,10 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .mainContainer{
-    border: 1px solid blue;
+    border: 1px solid rgb(86, 86, 250);
     margin: auto;
     padding: 10px;
-    width: 85%;
+    width: 80%;
 }
 .accademic{
     background-color: #a5a4a4;
@@ -82,25 +94,8 @@
     display: flex;
     justify-content:space-around
 }
-.pagination{
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    width: 20%;
-    border: 1px solid blue;
-    margin-top: 3px;
-    padding: 4px;
-}
-.pagination li{
-    color: blue;
-    font-size: 15px;
-    font-weight: bold;
-}
-.studentspagination{
-    display: flex;
-    justify-content: end;
-}
-.page-item :hover{
-    cursor: pointer;
+.tablepagination{
+    border: 1px solid rgb(86, 86, 250);
+    margin-top: 10px;
 }
 

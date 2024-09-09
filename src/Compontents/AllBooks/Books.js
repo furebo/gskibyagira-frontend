@@ -1,14 +1,16 @@
+import React from 'react'
 import {FaTrash, FaPencilAlt} from 'react-icons/fa';
 import Navbar from '../Navbar/index';
 import Model from '../modelbooks/Model';
 import './Books.css';
 import {useEffect, useState} from 'react';
 import { Checkbox } from '@mui/material';
+import TablePagination from "@material-ui/core/TablePagination";
 function Books(){
     const [modelOpen, setModelOpen] = useState(false);
     const [editRow,setEditRow] = useState(null);
     const [searchState, setSearchState] = useState("");
-    const [page,setPage] = useState(1);
+   // const [page,setPage] = useState(1);
     const [limit,setLimit] = useState(8);
     const [paginatedBooks, setPaginatedBooks] = useState([
         {
@@ -107,19 +109,19 @@ function Books(){
         //The undersco here means we are ignoring the actual data and teke only the index.
     }
     
-    function getStudents(){
-       let allStudentsArr=[];
-       for(let i = (page-1)*limit; i < (page*limit); i++){
-        allStudentsArr.push(books[i]);
-       }
-       //console.log(allStudentsArr)
-       setPaginatedBooks(allStudentsArr); 
-       setPage(page+1)    
-    }
+    // function getStudents(){
+    //    let allStudentsArr=[];
+    //    for(let i = (page-1)*limit; i < (page*limit); i++){
+    //     allStudentsArr.push(books[i]);
+    //    }
+    //    //console.log(allStudentsArr)
+    //    setPaginatedBooks(allStudentsArr); 
+    //    setPage(page+1)    
+    // }
 
     function gonext(){
-        getStudents()
-        setPage(page+1)
+       // getStudents()
+       // setPage(page+1)
          
          
     }
@@ -132,7 +134,7 @@ function Books(){
         {
             Id:1,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -141,7 +143,7 @@ function Books(){
         {
             Id:2,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -150,7 +152,7 @@ function Books(){
         {
             Id:3,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -159,7 +161,7 @@ function Books(){
         {
             Id:4,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -168,7 +170,7 @@ function Books(){
         {
             Id:5,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -177,7 +179,7 @@ function Books(){
         {
             Id:6,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -186,7 +188,7 @@ function Books(){
         {
             Id:7,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -195,7 +197,7 @@ function Books(){
         {
             Id:8,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -204,7 +206,7 @@ function Books(){
         {
             Id:9,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -213,7 +215,7 @@ function Books(){
         {
             Id:10,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -222,7 +224,7 @@ function Books(){
         {
             Id:11,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -231,7 +233,7 @@ function Books(){
         {
             Id:12,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -240,7 +242,7 @@ function Books(){
         {
             Id:13,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -249,7 +251,7 @@ function Books(){
         {
             Id:14,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -258,7 +260,7 @@ function Books(){
         {
             Id:15,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -267,7 +269,7 @@ function Books(){
         {
             Id:16,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -276,7 +278,7 @@ function Books(){
         {
             Id:17,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -285,7 +287,7 @@ function Books(){
         {
             Id:18,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -294,7 +296,7 @@ function Books(){
         {
             Id:19,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -303,7 +305,7 @@ function Books(){
         {
             Id:20,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -312,7 +314,7 @@ function Books(){
         {
             Id:21,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -321,7 +323,7 @@ function Books(){
         {
             Id:22,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -330,7 +332,7 @@ function Books(){
         {
             Id:23,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -339,7 +341,7 @@ function Books(){
         {
             Id:24,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -348,7 +350,7 @@ function Books(){
         {
             Id:25,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -357,7 +359,7 @@ function Books(){
         {
             Id:26,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -366,7 +368,7 @@ function Books(){
         {
             Id:27,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -375,7 +377,7 @@ function Books(){
         {
             Id:28,
             Book_Type:'History',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -384,7 +386,7 @@ function Books(){
         {
             Id:29,
             Book_Type:'History',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -393,7 +395,7 @@ function Books(){
         {
             Id:30,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -402,7 +404,7 @@ function Books(){
         {
             Id:31,
             Book_Type:'History',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -411,7 +413,7 @@ function Books(){
         {
             Id:32,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -420,7 +422,7 @@ function Books(){
         {
             Id:33,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
@@ -429,13 +431,13 @@ function Books(){
         {
             Id:34,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Book_status:'Borrowed',
             Book_author:'REB',
             delivery_date:'1/6/2023'
         },
-
+        
     ])
     const [filteredRows, setFilteredRows] = useState(books);
 
@@ -446,9 +448,22 @@ function Books(){
              return newRow    
         }))  
      }
+     const [page, setPage] = React.useState(0);
+     const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+      };
+      const [rowsPerPage, setRowsPerPage] = React.useState(5);
+      const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+      };
+     
     return (
         <>
          <Navbar />
+         <div className='welcomee'>
+           <marquee><h2>Welcome To GS KIBYAGIRA-BURUHUKIRO Library Management Information System</h2></marquee>
+        </div>
         <div className='books_table_wrapper'>
             
         <div className='mainContainer'>
@@ -466,7 +481,7 @@ function Books(){
                     <th>Book Number</th>
                     <th>Book Status</th>
                     <th>Book Author</th>
-                    <th>Borrowing Date</th>
+                    <th>Delivery Date</th>
                     <th>Actions</th>
                     </tr>
                 </thead>
@@ -478,7 +493,7 @@ function Books(){
                                 <td>{book.Book_Type}</td>
                                 <td>{book.Book_level}</td>
                                 <td>{book.Book_Number}</td>
-                                <td><span><Checkbox></Checkbox></span>{book.Book_status}</td>
+                                <td><Checkbox />{book.Book_status}</td>
                                 <td>{book.Book_author}</td>
                                 <td className='expand'>{book.delivery_date}</td>
                                 <td >
@@ -493,15 +508,17 @@ function Books(){
                     
                 </tbody>
             </table>
-            <div className='studentspagination'>
-                <ul className="pagination pagination-md justify-content-end" >
-                    <li className="page-item"><span className="page-link">&laquo;</span></li>
-                    <li className="page-item"><span className="page-link-prev" onClick={()=>goprevious()}>&lsaquo;</span></li>
-                    <li className="page-item"><span className="page-link-page">{page}</span></li>
-                    <li className="page-item"><span className="page-link-next"  onClick={()=>getStudents()}>&rsaquo;</span></li>
-                    <li className="page-item"><span className="page-link">&raquo;</span></li>
-               </ul>
-           </div>
+  
+           <TablePagination className='tablepagination'
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={books.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          data-testid="pagination"
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
             </div>
         </div>
         {modelOpen && <Model onSubmit={handleSubmit} closeModel = {()=>setModelOpen(false)} defaultValue={editRow !== null && books[editRow]} />}

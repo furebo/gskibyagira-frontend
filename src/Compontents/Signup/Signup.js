@@ -22,7 +22,7 @@ function Signup (){
     return (
         <>
         <div className='welcome'>
-            <h2>Welcome to GS KIBYAGIRA-BURUHUKIRO Library Management Information System</h2>
+            <marquee><h2>Welcome To GS KIBYAGIRA-BURUHUKIRO Library Management Information System</h2></marquee>
         </div>
         <div className='model-container' ref = {modelRef}>
             <div className='model'>
@@ -54,8 +54,7 @@ function Signup (){
                             <option value="error">Guest</option>
                         </select>
                     </div>
-                    <button type='submit' className='btn'>Submit</button>
-                    
+                    <button type='submit' className='btn'>Submit</button>   
                 </form>
             </div>
         </div>

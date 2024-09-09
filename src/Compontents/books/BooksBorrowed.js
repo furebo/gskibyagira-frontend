@@ -1,20 +1,34 @@
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {FaTrash, FaPencilAlt} from 'react-icons/fa'
 import './BooksBorrowed.css';
 import Model from '../modelbooks/Model';
 import {useEffect, useState} from 'react';
-//import StudentsPagination from '../pagination/StudentsPagination';
+import TablePagination from "@material-ui/core/TablePagination";
 import Navbar from '../Navbar/index'
 function Books(){
     const [modelOpen, setModelOpen] = useState(false);
      //let create a state to edit the row
     const [editRow,setEditRow] = useState(null);
     const [searchState, setSearchState] = useState("");
-    const [page,setPage] = useState(1);
+    //const [page,setPage] = useState(0);
     const [limit,setLimit] = useState(8);
+    const [studentIndex, setStudentIndex] = useState("")
     
-    
+    const notify = () => toast.success(`The Records of Student ${paginatedStudents[studentIndex].Student_Name} of ${paginatedStudents[studentIndex].Student_Class} Class are Updated successfully.`,
+    {
+        style: { 
+            background: 'green',
+            color:'white',
+            width:'600px',
+            marginRight:50,
+            zIndex: '-1'
+         }
+    })
 
     function handleSubmit(newRow){
+       notify()
        editRow === null ? setRows([...rows,newRow]) : setRows(rows.map((currentRow,index)=>{
         if(index !== editRow )
             return currentRow
@@ -26,14 +40,27 @@ function Books(){
     //and also open the model
     const handleEdit = (index) => {
         setEditRow(index);
-        setModelOpen(true)
+        setModelOpen(true);
+        setStudentIndex(index);
      }
+
+     const [page, setPage] = React.useState(0);
+     const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+      };
+      const [rowsPerPage, setRowsPerPage] = React.useState(5);
+      const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+      };
+
+     
   
     const [rows,setRows] = useState([
         {
             Id:1,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -42,7 +69,7 @@ function Books(){
         {
             Id:2,
             Book_Type:'Mathematics',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'002/2023',
             Student_Name:'Magayane',
             Student_Class:'S1A',
@@ -51,7 +78,7 @@ function Books(){
         {
             Id:3,
             Book_Type:'History',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'001/2024',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -60,7 +87,7 @@ function Books(){
         {
             Id:4,
             Book_Type:'Geograph',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'00003',
             Student_Name:'Barnabe',
             Student_Class:'S1A',
@@ -69,7 +96,7 @@ function Books(){
         {
             Id:5,
             Book_Type:'French',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0002',
             Student_Name:'Abel',
             Student_Class:'S1A',
@@ -78,7 +105,7 @@ function Books(){
         {
             Id:6,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Brigitte',
             Student_Class:'S1A',
@@ -87,7 +114,7 @@ function Books(){
         {
             Id:7,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -96,7 +123,7 @@ function Books(){
         {
             Id:8,
             Book_Type:'Mathematics',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'002/2023',
             Student_Name:'Magayane',
             Student_Class:'S1A',
@@ -105,7 +132,7 @@ function Books(){
         {
             Id:9,
             Book_Type:'History',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'001/2024',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -114,7 +141,7 @@ function Books(){
         {
             Id:10,
             Book_Type:'Geograph',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'00003',
             Student_Name:'Barnabe',
             Student_Class:'S1A',
@@ -123,7 +150,7 @@ function Books(){
         {
             Id:11,
             Book_Type:'French',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0002',
             Student_Name:'Abel',
             Student_Class:'S1A',
@@ -132,7 +159,7 @@ function Books(){
         {
             Id:12,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Brigitte',
             Student_Class:'S1A',
@@ -141,7 +168,7 @@ function Books(){
         {
             Id:13,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Kabalisa',
             Student_Class:'S1A',
@@ -150,7 +177,7 @@ function Books(){
         {
             Id:14,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Kabarebe',
             Student_Class:'S1A',
@@ -159,7 +186,7 @@ function Books(){
         {
             Id:15,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Kabashengure',
             Student_Class:'S1A',
@@ -168,7 +195,7 @@ function Books(){
         {
             Id:16,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -177,7 +204,7 @@ function Books(){
         {
             Id:17,
             Book_Type:'Mathematics',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'002/2023',
             Student_Name:'Magayane',
             Student_Class:'S1A',
@@ -186,7 +213,7 @@ function Books(){
         {
             Id:18,
             Book_Type:'History',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'001/2024',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -195,7 +222,7 @@ function Books(){
         {
             Id:19,
             Book_Type:'Geograph',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'00003',
             Student_Name:'Barnabe',
             Student_Class:'S1A',
@@ -204,7 +231,7 @@ function Books(){
         {
             Id:20,
             Book_Type:'French',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0002',
             Student_Name:'Abel',
             Student_Class:'S1A',
@@ -213,7 +240,7 @@ function Books(){
         {
             Id:21,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Brigitte',
             Student_Class:'S1A',
@@ -222,7 +249,7 @@ function Books(){
         {
             Id:22,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Kabalisa',
             Student_Class:'S1A',
@@ -231,7 +258,7 @@ function Books(){
         {
             Id:23,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Kabarebe',
             Student_Class:'S1A',
@@ -240,7 +267,7 @@ function Books(){
         {
             Id:24,
             Book_Type:'kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'0001',
             Student_Name:'Kabashengure',
             Student_Class:'S1A',
@@ -249,7 +276,7 @@ function Books(){
         {
             Id:25,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -258,7 +285,7 @@ function Books(){
         {
             Id:26,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'ITANGIRI',
             Student_Class:'S1A',
@@ -267,7 +294,7 @@ function Books(){
         {
             Id:27,
             Book_Type:'Francais',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'MUNGANYIMANA',
             Student_Class:'S1A',
@@ -276,7 +303,7 @@ function Books(){
         {
             Id:28,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'MUKAKADAGE',
             Student_Class:'S1A',
@@ -285,7 +312,7 @@ function Books(){
         {
             Id:29,
             Book_Type:'Kiswahili',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'MUKAGASISI',
             Student_Class:'S1A',
@@ -294,7 +321,7 @@ function Books(){
         {
             Id:30,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -303,7 +330,7 @@ function Books(){
         {
             Id:31,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -312,7 +339,7 @@ function Books(){
         {
             Id:32,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -321,7 +348,7 @@ function Books(){
         {
             Id:33,
             Book_Type:'kinyarwanda',
-            Book_level:'S1',
+            Book_Level:'S1',
             Book_Number:'007',
             Student_Name:'Kalisa',
             Student_Class:'S1A',
@@ -408,8 +435,7 @@ function Books(){
         function handleFilter(e){
             setSearchState(() => e.target.value)
             let newStudents = rows.filter((row)=>{
-                return row.Student_Name.toLowerCase().includes(e.target.value.toLowerCase())
-                
+                return row.Student_Name.toLowerCase().includes(e.target.value.toLowerCase())    
             })
             setPaginatedStudents(newStudents);    
             //console.log(e.target.value)
@@ -422,30 +448,14 @@ function Books(){
         //The undersco here means we are ignoring the actual data and teke only the index.
     }
     
-    function getStudents(){
-       let allStudentsArr=[];
-       for(let i = (page-1)*limit; i < (page*limit); i++){
-        allStudentsArr.push(rows[i]);
-       }
-       //console.log(allStudentsArr)
-       setPaginatedStudents(allStudentsArr); 
-       setPage(page+1)    
-    }
-
-    function gonext(){
-        getStudents()
-        setPage(page+1)
-         
-         
-    }
-    function goprevious(){
-        setPage(page -1 );
-        //getStudents();
-    }
+  
        
     return (
         <>
-        <Navbar />
+        <Navbar className="height"/>
+        <div className='welcomee'>
+           <marquee><h2>Welcome To GS KIBYAGIRA-BURUHUKIRO Library Management Information System</h2></marquee>
+        </div>
         <div className='books_table_wrapper'>
             
         <div className='mainContainer'>
@@ -490,21 +500,22 @@ function Books(){
                     
                 </tbody>
             </table>
-            <div className='studentspagination'>
-                <ul className="pagination pagination-md justify-content-end" >
-                    <li className="page-item"><span className="page-link">&laquo;</span></li>
-                    <li className="page-item"><span className="page-link-prev" onClick={()=>goprevious()}>&lsaquo;</span></li>
-                    <li className="page-item"><span className="page-link-page">{page}</span></li>
-                    <li className="page-item"><span className="page-link-next"  onClick={()=>getStudents()}>&rsaquo;</span></li>
-                    <li className="page-item"><span className="page-link">&raquo;</span></li>
-               </ul>
-           </div>
+            <TablePagination className='tablepagination'
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          data-testid="pagination"
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
             </div>
+  
         </div>
-        
-        
+    
         {modelOpen && <Model onSubmit={handleSubmit} closeModel = {()=>setModelOpen(false)} defaultValue={editRow !== null && rows[editRow]} />}
-        
+        < ToastContainer position='top-center' />
         </>
     )
 }

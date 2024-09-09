@@ -2,26 +2,25 @@
  /* background-color: var(--white);*/
   background-color: white;
   width: 100%;
+  display: flex;
 }
 
 @media screen and (min-width: 799px) {
   .contact-section1 {
-    --offset-height: -100px;
-    display: grid;
-    grid-template-columns: 3fr 1.5fr;
+     /* --offset-height: -100px;  */
+    display: flex;
+    /*grid-template-rows: 3fr 1.5fr;*/
     width: 80%;
-    height: 475px;
+    height: 550px;
     margin: 0 auto;
     top: var(--offset-height);
     top: offset-height;
-    left: 50%;
+    left: 20%;
     margin-top:20px;
     margin-bottom: var(--offset-height);
-    margin-bottom: --offset-height;
-    /*position: relative; */
+    margin-bottom: --offset-height; 
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15);
-   
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15); 
   }
 }

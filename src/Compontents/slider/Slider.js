@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { sliderData } from "../../slider-data";
+import { useSliderData } from "../../slider-data";
 import "./Slider.css";
 
 const Slider = () => {
+   // Call the custom hook to get the sliderData array
+   const sliderData = useSliderData();
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideLength = sliderData.length;
 
@@ -37,6 +40,8 @@ const Slider = () => {
   }, [currentSlide]);
 
   return (
+    <>
+  
     <div className="slider">
       <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
       <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
@@ -48,13 +53,14 @@ const Slider = () => {
           >
             {index === currentSlide && (
               <div>
-                <img src={slide.image} alt="slide" className="image" />
+                <img src={slide.image_url} alt="slide" className="image" />
                 <div className="content">
+                  <div>
                   <h2>{slide.heading}</h2>
-                  
-                  <p>{slide.desc}</p>
+                  <p>{slide.description}</p>
                   <hr />
                   <button className="--btn --btn-primary">Ku birambuye kanda hano</button>
+                  </div>
                 </div>
               </div>
             )}
@@ -62,6 +68,7 @@ const Slider = () => {
         );
       })}
     </div>
+    </>
   );
 };
 

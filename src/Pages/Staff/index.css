@@ -1,0 +1,33 @@
+.tablest {
+    display: grid;
+    width: 100%;
+    border-collapse: collapse; /* Remove space between cells */
+    grid-template-columns: repeat(6, 1fr); /* Adjust the number of columns */
+  }
+  
+   .tablest tbody {
+    display: contents; /* Allow grid children to become part of the parent grid */
+    color: white;
+  }
+.tablest thead{
+    display: contents;
+}
+  
+  .tablest tr {
+    display: contents; /* Each row will fill the grid's columns */
+  }
+  
+  .tablest th, .tablest td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .tablest th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+  
