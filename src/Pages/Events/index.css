@@ -1,0 +1,33 @@
+.tablee {
+    display: grid;
+    width: 100%;
+    border-collapse: collapse; /* Remove space between cells */
+    grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns */
+  }
+  
+   .tablee tbody {
+    display: contents; /* Allow grid children to become part of the parent grid */
+    color: white;
+  }
+.tablee thead{
+    display: contents;
+}
+  
+  .tablee tr {
+    display: contents; /* Each row will fill the grid's columns */
+  }
+  
+  .tablee th, .tablee td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .tablee th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+  

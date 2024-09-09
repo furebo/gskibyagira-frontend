@@ -2,6 +2,17 @@
     width:100%;
     margin-top: 65px;
 }
+
+.welcomee{
+    height: 40px;
+    background-color: blue;
+    width:100%;
+    position: fixed;
+    color: white;
+    display: none;
+    
+}
+
 .books_table{
     display: block;
     overflow: hidden;
@@ -11,7 +22,7 @@
     white-space: nowrap;
     width: 100em;
     max-width: 100%;
-    margin:auto;
+    margin: auto;
     overflow-x: auto;
     border: 1px solid blue;
 }
@@ -82,25 +93,7 @@
     display: flex;
     justify-content:space-around
 }
-.pagination{
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    width: 20%;
-    border: 1px solid blue;
-    margin-top: 3px;
-    padding: 4px;
-}
-.pagination li{
-    color: blue;
-    font-size: 15px;
-    font-weight: bold;
-}
-.studentspagination{
-    display: flex;
-    justify-content: end;
-}
-.page-item :hover{
-    cursor: pointer;
+.height{
+    position: fixed;
 }
 

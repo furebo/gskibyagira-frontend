@@ -1,109 +1,51 @@
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
-import { useState,useRef } from "react";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import Model from "../ModelLogin";
+import SignupModel from "../ModelSignup";
+import  "./styles/index.css";
+import { useState } from "react";
+import DehazeIcon from '@mui/icons-material/Dehaze';
 import CloseIcon from '@mui/icons-material/Close';
-import "./style.css"
-
+import { ToastContainer } from "react-toastify";
 
 export default function Navbar() {
-  const modelRef = useRef(null)
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  function closeModel(){
-    const isHidden = () => modelRef.current.classList.contains("box--hidden");
-    if (!isHidden()) {
-        modelRef.current.classList.add("box--hidden");
-        setTimeout(() =>{
-            modelRef.current.style.visibility = 'hidden' 
-            //history.push('/')
-        }, 2000);
-    } else {
-        modelRef.current.classList.remove("box--hidden")
-    }
-  }
-
-  if(modal) {
-    //modelRef.current.classList.add('active-modal')
-  
-    return(
-      <>
-      <div className='model-container' ref = {modelRef}>
-            <div className='model'>
-            <div className='close'><CloseIcon className='closeIcon' onClick= {closeModel} /></div>
-                <form>
-                    <div className='form-group'>
-                        <label htmlFor='page'>Username</label>
-                        <input name='page'/>
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='page'>Email</label>
-                        <input name='page'/>
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='page'>Password</label>
-                        <input name='page' type='password'/>
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='status'>Role</label>
-                        <select>
-                            <option value="live">Teacher</option>
-                            <option value="draft">Student</option>
-                            <option value="error">Staff Member</option>
-                            <option value="error">Guest</option>
-                        </select>
-                    </div>
-                    <button type='submit' className='btn'>Submit</button>
-                </form>
-            </div>
-        </div>
-
-<nav className="navv">
-<div className="welcome">Welcome to GS KIBYAGIRA</div>
-<Link to="/" className="site-title">
-  LOGO - GS KIBYAGIRA
-</Link>
-<ul>
-  <CustomLink onClick={toggleModal}>Login</CustomLink>
-  <CustomLink to="/login">LMIS</CustomLink>
-  <CustomLink to="/admin">Admin</CustomLink>
-  <CustomLink to="/books">Books</CustomLink>
-</ul>
-</nav>
-</>
-    )
-  
-  } 
-
-  
-    //document.body.classList.remove('active-modal')
-    return (
-      <nav className="nav">
-        <Link to="/" className="site-title">
-          LOGO - GS KIBYAGIRA
-        </Link>
-        <ul>
-          <CustomLink to="/login">LMIF</CustomLink>
-          <CustomLink to="/admin">Admin</CustomLink>
-          <CustomLink to="/books">Books</CustomLink>
-        </ul>
-      </nav>
-    )
-  
-
+  const[isMobile,setIsmobile] = useState(false);
+  const[modelOpen, setModelOpen] = useState(false);
+  const[signupModelOpen, setSignupModelOpen] = useState(false)
+  const handleLoginModel = () => {
+    setModelOpen(true);
+ }
+ const handleSignupModel = () => {
+  setSignupModelOpen(true);
 }
-
+    return (
+      <>
+      <nav className="nav">
+        <Link to="/" className="sitetitle">
+          GS KIBYAGIRA
+        </Link>
+        <ul  className="links">
+          <CustomLink className="alink" to="/books">About Us</CustomLink>
+          <CustomLink className="alink" to="/login">Mission & Vision</CustomLink>
+          <CustomLink className="alink" to="/login">Contact Us</CustomLink>
+          <li className="alink" onClick={handleLoginModel}>LAMIS</li>
+          <li className="alink" onClick={handleSignupModel}>Signup</li>
+          
+        </ul>
+        <button onClick={()=>setIsmobile(!isMobile)} className="mobile">{isMobile? <DehazeIcon className="dehazeicon"/>:<CloseIcon />}</button>
+      </nav>
+      <ToastContainer position="top-center" />
+      {modelOpen && <Model closeModel = {()=>setModelOpen(false)} />}
+      {signupModelOpen && <SignupModel closeModel = {()=>setSignupModelOpen(false)} />}
+      </>
+    )
+}
 
 function CustomLink({ to, children, ...props }) {
   const resolvedPath = useResolvedPath(to)
   const isActive = useMatch({ path: resolvedPath.pathname, end: true })
-
   return (
     <>
-    
-    <li className={isActive ? "active" : ""}>
+    <li className={isActive ? 'active' : ""}>
       <Link to={to} {...props}>
         {children}
       </Link>

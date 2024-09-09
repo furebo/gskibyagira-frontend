@@ -1,0 +1,39 @@
+/* Default table font size */
+.table {
+    font-size: 0.8rem; /* 16px by default */
+    width: 75.3vw;
+    height: auto;
+  }
+
+   .books_actions{
+    width: 50px;
+    margin: auto;
+  } 
+  .Space{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Media query for small screens */
+  @media (max-width: 768px) {
+    .table {
+      font-size: 0.875rem; /* 14px for small screens */
+    }
+  
+    /* Additional adjustments for even smaller screens */
+    @media (max-width: 750px) {
+      .table {
+        font-size: 0.45rem; /* 12px for extra small screens */
+      }
+    }
+  }
+  @media (max-width:1185){
+    .table {
+        font-size: 0.875rem; /* 14px for small screens */
+      }
+  }
+ 
+  .active{
+    background-color: white;
+  }

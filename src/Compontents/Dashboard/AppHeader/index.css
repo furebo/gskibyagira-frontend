@@ -1,0 +1,32 @@
+.AppHeader{
+    background-color:rgb(4, 29, 68);
+    padding-right: 40px;
+    
+    
+}
+@media (max-width:780px) {
+    .typographeader{
+        display: none;
+    }
+    .AppHeader{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-height: 600px) {
+  .AppHeader{
+    height: 20px;
+    margin-bottom: 10px;
+  }
+  .typographeader{
+    display: none;
+  }
+  }
+
+  @media (max-width:820px) and (max-height:1180px){
+    .typographeader{
+        display: none;
+    }
+  }

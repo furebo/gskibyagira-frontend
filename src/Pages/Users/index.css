@@ -1,0 +1,36 @@
+.table-container {
+    width: 80%;
+    margin: 0 auto; /* This will center the table */
+    padding-top: 20px; /* Optional: add some padding from the top */
+  }
+
+  .custom-table .ant-table-thead > tr > th {
+    background-color: rgb(77, 77, 190); /* Your desired blue color */
+    color: white; /* Optional: Change text color to white for contrast */
+    font-size: 20px;
+  }
+  
+  .table-container .ant-table {
+    background-color: white; /* Optional: table background color */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Optional: box-shadow for better appearance */
+  }
+  
+  .user_actions {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .delete-btn, .edit-btn {
+    cursor: pointer;
+    color: #1890ff; /* Optional: color for the icons */
+  }
+  
+  .delete-btn:hover {
+    color: red; /* Optional: hover color for delete icon */
+  }
+  
+  .edit-btn:hover {
+    color: green; /* Optional: hover color for edit icon */
+  }
+  

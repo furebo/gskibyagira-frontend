@@ -1,0 +1,88 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  max-width: 100%;
+  padding: 20px;
+}
+.formContainerDiv{
+  width: 100%;
+}
+.division{
+  display: flex;
+}
+.form-h2 {
+  margin: 0;
+  text-transform: uppercase;
+}
+.formlabel {
+  margin: 10px 0;
+  text-align: left;
+  width: 100%;
+}
+.form-input,
+.form-textarea {
+  display: block;
+  margin-top: 5px;
+  font-size: 1rem;
+  width: calc(100% - 20px);
+ /* border: 1px solid var(--main-blue);*/
+  border: 1px solid blue;
+  border-radius: 2px;
+  padding: 10px;
+}
+.form-textarea {
+  height: 250px;
+}
+.form-textarea::placeholder {
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+}
+.formsubmit {
+  justify-self: center;
+  font-size: 3rem;
+ /* color: var(--main-green);*/
+  color:rgb(4, 4, 254);
+}
+.formsubmit:hover{
+   cursor: pointer;
+}
+.sendIcon{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.formh2{
+  color:blue
+}
+
+@media screen and (min-width: 799px) {
+  .form {
+    width: 100%;
+  }
+  .formContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .formContainerDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    font-size: 20px;
+    padding: 5px;
+  }
+.firstname{
+  width: 60%;
+  padding: 5px;
+}
+.textarea{
+  width:60%;
+  height: 200px;
+  padding: 5px;
+}
+}
+
+
