@@ -31,25 +31,24 @@ function App() {
                 <Route exact path="/" element = {<Homepage />} />
                 <Route exact path="/signup" element = {<Signup />} />
                 <Route exact path="*" element = {<NoPage />} />
-                <Route exact path="/login" element = {<Login />} />
+                 <Route exact path="/login" element = {<Login />} /> 
                 <Route exact path='primary1' element = {<Primaryone />} />
                 <Route exact path='/borrowbook' element = {<Borrowbook />} />
                 <Route exact path='/message' element = {<MessageBox/>} />
                 <Route exact path='/mapmap' element = {<MapComponent/>} />
                 <Route exact path='/userole' element = {<UserRole />}/>
                 <Route exact path='/levels' element = {<Levels />}/>
+                  {/* Protected Routes */}
                 <Route element={<ProtectedRoutes />}>
-                    <Route exact path="/books" element={<BooksBorrowed/>} />
-                    <Route exact path="/allbooks" element = {<Books />} />
+                      <Route exact path="/books" element={<BooksBorrowed />} />
+                      <Route exact path="/allbooks" element={<Books />} />
                 </Route>
                 <Route exact path='/posts' element = {<Posts/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/inventory" element={<Inventory/>}/>  
                 <Route path="/table" element={<Table />}/> 
                 <Route path="/nested" element={<NestedSelect />}/>
-               
-                   
-
+                 
           </Routes>
       
       </AuthContextProvider>

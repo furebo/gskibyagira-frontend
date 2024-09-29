@@ -34,13 +34,13 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 699px) {
+@media screen and (min-width: 768px) {
   .info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 40px;
-    width: 40%;
+    width: 100%;
   }
 
   .info-detail {

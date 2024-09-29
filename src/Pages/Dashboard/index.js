@@ -1,7 +1,7 @@
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import {BookOutlined,MessageOutlined,UserOutlined,CalendarOutlined} from '@ant-design/icons'
 import { useEffect, useState } from "react";
-import { getOrder, getRevenues } from "../../API";
+import { getOrder, getBorrowedBooksData } from "../../API";
 
 import {
     Chart as ChartJS,
@@ -25,6 +25,55 @@ ChartJS.register(
 )
 
 function AdminDashboard(){
+    const [loading,setLoading] = useState(false);
+    //lets create the states to hold the number of users,books,events and staffs
+    const [users,setUsers] = useState(0);
+    const [books,setBooks] = useState(0);
+    const [events,setEvents] = useState(0);
+    const [staffs,setStaffs] = useState(0);
+
+    //function to fetch the books and update the state
+    const getBorrowedBooks = async () =>{
+        let allBooksResponse = await fetch('http://localhost:5000/api/books/books',{
+                 method:'GET'
+               })
+               let json = await allBooksResponse.json();
+               setBooks(json.data.length);
+              }
+    //function to fetch the users and update the state
+    const getAllUsers = async () =>{
+        let allUsersResponse = await fetch('http://localhost:5000/api/users/users',{
+                 method:'GET'
+               })
+               let json = await allUsersResponse.json();
+               setUsers(json.data.length);
+              }
+
+    //function to fetch the Events and update the state
+    const getAllEvents = async () =>{
+        let allEventsResponse = await fetch('http://localhost:5000/api/events/events',{
+                 method:'GET'
+               })
+               let json = await allEventsResponse.json();
+               setEvents(json.data.length);
+              }
+    //function to fetch the Staffs and update the state
+    const getAllStaffs = async () =>{
+        let allStaffResponse = await fetch('http://localhost:5000/api/staffs/staffs',{
+                 method:'GET'
+               })
+               let json = await allStaffResponse.json();
+               setStaffs(json.data.length);
+              }
+
+    useEffect(()=>{
+        setLoading(true);
+        getBorrowedBooks();
+        getAllUsers();
+        getAllEvents();
+        getAllStaffs();
+        setLoading(false)
+       },[])
     return(
         <Space size={20} direction="vertical">
         <Typography.Title level={4}>Dashboard</Typography.Title>
@@ -36,7 +85,7 @@ function AdminDashboard(){
             borderRadius:12,
             fontSize:24,
             padding:8                
-            }} />} title={"Users"} value={12546}/>
+            }} />} title={"Users"} value={users}/>
             <AdminDashboardCard icon={<BookOutlined style={
             {
             color:"green",
@@ -44,7 +93,7 @@ function AdminDashboard(){
             borderRadius:12,
             fontSize:24,
             padding:8                
-            }} />} title={"Books"} value={10546}/>
+            }} />} title={"Books"} value={books}/>
             <AdminDashboardCard icon={<MessageOutlined style={
             {
             color:"blue",
@@ -52,7 +101,7 @@ function AdminDashboard(){
             borderRadius:12,
             fontSize:24,
             padding:8                
-            }} />} title={"Messages"} value={17546}/>
+            }} />} title={"Events"} value={events}/>
             <AdminDashboardCard icon={<CalendarOutlined style={
             {
             color:"red",
@@ -60,10 +109,10 @@ function AdminDashboard(){
             borderRadius:12,
             fontSize:24,
             padding:8                
-            }} />} title={"Events"} value={19546}/>
+            }} />} title={"Staffs"} value={staffs}/>
         </Space>
         <Space>
-            <RecentOrders />
+            <RecentBooks />
             <DashboardChart/>
         </Space>
         </Space>
@@ -82,68 +131,91 @@ function AdminDashboardCard({title,value,icon}){
     )
 }
 
-function RecentOrders(){
-    const [dataSource,setDataSource] = useState([]);
-    const [loading,setlLoading] = useState(false)
-    
-    useEffect(()=>{
-     setlLoading(true)
-     getOrder().then((res)=>{
-        setDataSource(res.products.splice(0,3))
-        setlLoading(false)
-     })
-    },[])
+
+function RecentBooks() {
+    const [loading, setLoading] = useState(false);
+    const [dataSource, setDataSource] = useState([]);
+
+    // Fetch recent borrowed books data from the API
+    const fetchRecentBooks = async () => {
+        setLoading(true); // Start loading
+        try {
+            let response = await fetch('http://localhost:5000/api/books/books', {
+                method: 'GET',
+            });
+            let json = await response.json();
+
+            // Assuming the API returns an array of books
+            const booksData = json.data.map((book) => ({
+                bookType: book.bookType,
+                bookLevel: book.bookLevel,
+                bookCode: book.bookCode,
+            }));
+
+            setDataSource(booksData); // Set the data for the table
+        } catch (error) {
+            console.error("Error fetching recent books:", error);
+        } finally {
+            setLoading(false); // Stop loading
+        }
+    };
+
+    useEffect(() => {
+        fetchRecentBooks(); // Fetch books when component is mounted
+    }, []);
+
     return (
-    <>
-    <Typography.Text>Recent Orders</Typography.Text>
-    <Table columns={[
-        {
-        title:'Title',
-        dataIndex:'title'
-       },
-       {
-        title:'Quantity',
-        dataIndex:'quantity'
-       },
-       {
-        title:'Price',
-        dataIndex:'discountedPrice'
-       },
-]} 
-dataSource={dataSource}
-loading={loading}
-pagination={false}
->
-</Table>
-</>
-)
+        <>
+            <Typography.Text>Recent Borrowed Books</Typography.Text>
+            <Table
+                columns={[
+                    {
+                        title: 'Book-Type',
+                        dataIndex: 'bookType',
+                    },
+                    {
+                        title: 'Book_Level',
+                        dataIndex: 'bookLevel',
+                    },
+                    {
+                        title: 'Book_Id',
+                        dataIndex: 'bookCode',
+                    },
+                ]}
+                dataSource={dataSource}
+                loading={loading}
+                pagination={false}
+            />
+        </>
+    );
 }
 
+
 function DashboardChart(){
-    const[revenueData,setRevenueData] = useState({
+    const[borrowedBooksData,setBorrowedBooksData] = useState({
         labels:[],
         datasets:[]
     })
     useEffect(
         ()=>{
-            getRevenues().then((res)=>{
-                const labels = res.products.map((product)=>{
-                return `Product-${product.id}`
+            getBorrowedBooksData().then((res)=>{
+                const labels = res.data.map((book)=>{
+                return `Book-${book.Book_Type}`
                });
-               const data = res.products.map((product)=>{
-                return product.price
+               const data = res.data.map((book)=>{
+                return book.count;
                });
                const dataSource = {
                 labels,
                 datasets:[
                     {
-                        label:'Revenue',
+                        label:'Book',
                         data:data,
                         backgroundColor:"rgba(255,0,0,0.5)"
                     }
                 ]
             }
-            setRevenueData(dataSource);
+            setBorrowedBooksData(dataSource);
             })
         }
     )
@@ -155,12 +227,12 @@ function DashboardChart(){
             },
             title:{
                display:true,
-               text:"Chart for Order Revenue"
+               text:"Chart For Borrowed Book Type Quantity"
             }
         }
     }
 
     return <Card style={{width:500,height:250}}>
-               <Bar options={options} data={revenueData} />
+               <Bar options={options} data={borrowedBooksData} />
            </Card>
 }

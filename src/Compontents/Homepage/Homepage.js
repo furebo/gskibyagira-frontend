@@ -31,6 +31,7 @@ function Homepage (){
               <DisclaimerSection/>
               <FooterSection />
              </div>
+             
       </div>       
       </>
     )

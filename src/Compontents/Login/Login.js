@@ -6,7 +6,7 @@ import {useNavigate,Link} from 'react-router-dom';
 import './Login.css';
 import {AuthContext} from '../../Contexts/AuthContext';
 import { SET_AUTHENTICATION, SET_ERROR } from '../../Actions/types';
-
+import Model from '../ModelLogin';
 const {BACKEND_URL} = process.env
 function Login (){ 
     const modelRef = useRef(null);
@@ -79,8 +79,9 @@ function Login (){
             }
         }
     }
-
+    
     return (
+    
         <>
         <div className='welcome'>
            <h2>Welcome To LAMIS GS KIBYAGIRA </h2>
