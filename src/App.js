@@ -24,7 +24,6 @@ import ConfirmEmail from './Pages/confirmEmail';
 import ResetPasswordModel from './Compontents/ModelResetPassword';
 import ForgotPasswordModel from './Compontents/ModelForgetPassword';
 
-
 function App() {
   return (
     <div className="App">
