@@ -5,7 +5,6 @@ export default function DeleteItemModel({closeModel, itemId, onDelete, studentNa
   const handleDelete = () => {
     // Call the onDelete function passed as a prop
     onDelete(itemId);
-
   };
   
   return (

@@ -1,7 +1,8 @@
 import Navbar from '../Navbar';
 import IntroSection from '../intro/Intro'
 import ContactSection from '../contact-section/ContactSection'
-import DisclaimerSection from '../disclaimer/Disclaimer'
+import DisclaimerSection from '../disclaimer/Disclaimer';
+import Values from '../schoolValues/schoolvalues';
 import FooterSection from '../footer/Footer'
 import SliderSt from '../staff/SliderStaff';
 import Slider from '../slider/Slider';
@@ -18,14 +19,23 @@ function Homepage (){
         <Navbar />
         <hr></hr>
         <div>
+              <div id='kibyagira'>
               <Slider />
+              </div>
               <div style={backgcl}>
+              <div id='aboutus'>
               <GsKibyagira/>
+              </div>
               <GirlsRoom /> 
               <Infrastr/>
-              <IntroSection className="intro-section"/>
+              <div id='mission'>
+              <IntroSection className="intro-section" />
+              </div>
               <SliderSt />
-              <div className='contactsect'>
+              <div id="values">
+              <Values className="intro-section" />
+              </div>
+              <div className='contactsect' id="contact-section">
               <ContactSection className="contact-section"/>
               </div>
               <DisclaimerSection/>

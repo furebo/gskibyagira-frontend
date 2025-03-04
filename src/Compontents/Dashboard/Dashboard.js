@@ -44,7 +44,7 @@ function Dashboard(){
     function RenderContent(){ 
       switch (current) {
         case 'dashboard':
-          return <AdminDashboard />;
+          return <AdminDashboard className="admin_dashboard"/>;
         case 'user':
           return <Users />;
         case 'message':
@@ -64,7 +64,7 @@ function Dashboard(){
       }
     
     };
-  
+
     return(
     <div className='dashboard'>
         <AppHeader humbMenu={<Button className="hamburger-icon" icon={<MenuOutlined />} onClick={toggleMenu} />} />
@@ -98,7 +98,7 @@ function Dashboard(){
                     </>
                    )}
                     {/* If a user is an other user*/}
-                    {(userRole === 'Teacher' || userRole === 'Other') && (
+                    {(userRole === 'Teacher' || userRole === 'Other' || " ") && (
                       <>
                       <Menu.Item icon={<HomeOutlined/>} key="dashboard">Dashboard</Menu.Item>
                       <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>

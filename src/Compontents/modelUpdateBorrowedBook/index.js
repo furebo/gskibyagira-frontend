@@ -54,7 +54,7 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
         }
         //let send data to the database
         try {
-            const response = await fetch(`http://localhost:5000/api/books/borrowbook/${itemId}`, {
+            const response = await fetch(`https://gskibyagira-backend.onrender.com/api/books/borrowbook/${itemId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
             });
 
             if (response.ok) {
-                let updatedResponse = await fetch('http://localhost:5000/api/books/borrowbook',{
+                let updatedResponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook',{
                     method:'GET'
                   })
                   let json = await updatedResponse.json();

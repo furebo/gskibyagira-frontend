@@ -1,11 +1,11 @@
 import './index.css'
 import {useState,useRef} from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import { ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { notify } from '../../Helpers/notify';
-function Model({ closeModel, onSubmit, defaultValue }) {
-    const modelRef = useRef(null);
+import SignupModel from "../ModelSignup";
+function Model({closeModel,onSubmit, defaultValue }) {
+    const [signupModelOpen, setSignupModelOpen] = useState(false);
     const navigate = useNavigate();
     const [LoginFormState, setLoginFormState] = useState(defaultValue || {
         Email: '',
@@ -14,6 +14,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
     });
 
     const [errors, setErrors] = useState("");
+    
 
     function handleChange(e) {
         setLoginFormState({
@@ -21,22 +22,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
             [e.target.name]: e.target.value,
         });
     }
-   //function to close the model
-    function CloseModel(){
-        
-        const isHidden = () => modelRef.current.classList.contains("box--hidden");
-        if (!isHidden()) {
-            modelRef.current.classList.add("box--hidden");
-            setTimeout(() =>{
-                modelRef.current.style.visibility = 'hidden';  
-                navigate('/')
-            }, 1000);
-            
-        } else {
-            modelRef.current.classList.remove("box--hidden")
-        }
-    }
-
+ 
     const validateForm = () => {
         if (LoginFormState.Email && LoginFormState.Password && LoginFormState.Role) {
             setErrors("");
@@ -60,7 +46,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         }
 
         // Send login details to the backend
-        fetch('http://localhost:5000/api/login', {
+        fetch('https://gskibyagira-backend.onrender.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,6 +69,8 @@ function Model({ closeModel, onSubmit, defaultValue }) {
             if (data.token) {
                 // Save the token in localStorage
                 localStorage.setItem('token', data.token);
+
+                
                 console.log('Token stored in localStorage:', data.token);
                 const message = "You are logged in successfuly!"
                 notify(message);
@@ -98,16 +86,19 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                 console.error('Error:', error);
             });
     }
-
+    const handleSignupModel = () => {
+        setSignupModelOpen(true);
+       // setIsMobile(false); // Close menu on click
+      };
     return (
-        <div className='login_model_container' ref = {modelRef} onClick={(e) => {
-            if (e.target.className === 'login_model_container') {
-                CloseModel();
-            }
-        }}>
+        <>
+        <div className='login_model_container'>
             <div className='login_model'>
                 <div className='close'>
-                    <CloseIcon className='closeIconlogin' onClick={CloseModel} />
+                    <CloseIcon className='closeIconlogin' onClick={()=>{
+                        closeModel();
+                        
+                        }} />
                 </div>
                 <form>
                     <h2>Login</h2>
@@ -135,12 +126,14 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                         Login with Google
                     </button>
                     <div className="login-links">
-                        <a href="/reset-password">Reset Password</a>
-                        <a href="/signup">Signup</a>
+                        <a href={'/request-password-reset'} onClick={closeModel}>Forgot Password?</a>
+                        <h2 onClick={handleSignupModel}>Signup</h2>
                     </div>
                 </form>
             </div>
         </div>
+         {signupModelOpen && <SignupModel closeModel={() => setSignupModelOpen(false)} />}
+         </>
     );
 }
 

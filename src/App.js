@@ -20,6 +20,9 @@ import Dashboard from './Compontents/Dashboard/Dashboard';
 import Inventory from './Pages/Books';
 import Table from './Compontents/bootstrapTable';
 import NestedSelect from './Compontents/nestedSelect';
+import ConfirmEmail from './Pages/confirmEmail';
+import ResetPasswordModel from './Compontents/ModelResetPassword';
+import ForgotPasswordModel from './Compontents/ModelForgetPassword';
 
 
 function App() {
@@ -38,6 +41,9 @@ function App() {
                 <Route exact path='/mapmap' element = {<MapComponent/>} />
                 <Route exact path='/userole' element = {<UserRole />}/>
                 <Route exact path='/levels' element = {<Levels />}/>
+                <Route exact path='/confirmemail' element = {<ConfirmEmail />}/>
+                <Route exact path='/reset-password/:token' element = {<ResetPasswordModel />}/>
+                <Route exact path='/request-password-reset' element = {<ForgotPasswordModel />}/>
                   {/* Protected Routes */}
                 <Route element={<ProtectedRoutes />}>
                       <Route exact path="/books" element={<BooksBorrowed />} />
@@ -47,10 +53,8 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/inventory" element={<Inventory/>}/>  
                 <Route path="/table" element={<Table />}/> 
-                <Route path="/nested" element={<NestedSelect />}/>
-                 
+                <Route path="/nested" element={<NestedSelect />}/>    
           </Routes>
-      
       </AuthContextProvider>
     </div>
   );

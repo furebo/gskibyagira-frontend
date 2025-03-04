@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import { ToastContainer } from 'react-toastify';
-import './index.css';
+import './event.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FaTrash, FaPencilAlt} from 'react-icons/fa'
 import AddIcon from '@mui/icons-material/Add';
@@ -55,7 +55,7 @@ const handlePreviousPage = () => {
 
 //the function to fetch all events and update the allEvents state
 const getAllEvents = async () =>{
-  let allEventsResponse = await fetch('http://localhost:5000/api/events/events',{
+  let allEventsResponse = await fetch('https://gskibyagira-backend.onrender.com/api/events/events',{
            method:'GET'
          })
          let json = await allEventsResponse.json();
@@ -94,11 +94,11 @@ const[eventToEditId,setEventToEditId] = useState("");
 
 //the function to delete an event
 async function EventToBeDeleted(eventToDeleteId){
-  const response = await fetch('http://localhost:5000/api/events/events/'+ eventToDeleteId, {
+  const response = await fetch('https://gskibyagira-backend.onrender.com/api/events/events/'+ eventToDeleteId, {
     method: 'DELETE',
   });
   if(response.ok){
-    const Updatedresponse = await fetch('http://localhost:5000/api/events/events', {
+    const Updatedresponse = await fetch('https://gskibyagira-backend.onrender.com/api/events/events', {
       method: 'GET',
     });
      const message = "The event is deleted successfully"
@@ -112,7 +112,7 @@ async function EventToBeDeleted(eventToDeleteId){
 
 //function to update the state of response when the model is closed
 const eventEditedSubmission = async () =>{
-  let updatedResponse = await fetch('http://localhost:5000/api/events/events',{
+  let updatedResponse = await fetch('https://gskibyagira-backend.onrender.com/api/events/events',{
            method:'GET'
          })
          let json = await updatedResponse.json();
@@ -164,7 +164,7 @@ const eventEditedSubmission = async () =>{
           {[...Array(totalPages)].map((_, index) => (
             <li
               key={index}
-              className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
+              className={`page-item ${currentPage === index + 1 ? 'isactive' : ''}`}
               onClick={() => handleClick(index + 1)}
             >
               <button className="page-link">

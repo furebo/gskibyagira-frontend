@@ -7,7 +7,7 @@ export const getOrder = () =>{
 
 export const getBorrowedBooksData = () =>{
     return (
-        fetch('http://localhost:5000/api/books/allborrowedbytype')
+        fetch('https://gskibyagira-backend.onrender.com/api/books/allborrowedbytype')
         .then(res => res.json())
     )
 }

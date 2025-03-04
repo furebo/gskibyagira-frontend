@@ -12,7 +12,7 @@ function SliderSt() {
     // Function to fetch all staff members
     const getAllStaff = async () => {
         try {
-            let allStaffResponse = await fetch('http://localhost:5000/api/staffs/staffs', {
+            let allStaffResponse = await fetch('https://gskibyagira-backend.onrender.com/api/staffs/staffs', {
                 method: 'GET'
             });
 
@@ -50,9 +50,12 @@ function SliderSt() {
     const sliderRef = useRef(null);   
 
     return (
+        <>
+          
         <div data-aos="zoom-in" className="staffslider">
+       
             <div className='admin'>
-                <Typography.Title className='typography'>Administration staff of the school.</Typography.Title>
+                <Typography.Title className='typography1'>Administration staff of the school.</Typography.Title>
             </div>
             <Splide ref={sliderRef} aria-label="My Favorite Images" className='slider-container' options={sliderOptions}>
                 {allStaffMembers.map((staff, index) => (
@@ -66,6 +69,7 @@ function SliderSt() {
                 ))}
             </Splide>
         </div>
+        </>
     );
 }
 

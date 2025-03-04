@@ -28,12 +28,10 @@
 }
 .PageContent{
     padding-left: 12px;
-    width: 100%;
+    width: 100vh;
 }
 .SideMenu {
-    width: 200px;
-    
-      
+    width: 200px;    
   }
 
   .hamburger-icon{
@@ -42,6 +40,11 @@
 
 /* Hide the side menu and show the hamburger icon on small screens */
 @media (max-width: 1185px) {
+  .nav{width: auto;}
+  .dashboard{
+    width: 100vw;
+    overflow-x: hidden;
+}
     .hamburger-icon{
         display: block;
       }
@@ -52,14 +55,16 @@
     }
     .SideMenuopen {
         width: 200px;
+        display: block;
       }
       .SideMenu Menu.item{
-        display: block;
+        display: none;
       }
 
     .PageContent {
         padding: 20px;
       }
+   
       .overlay {
         display: block;
         position: fixed;

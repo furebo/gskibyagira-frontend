@@ -20,7 +20,7 @@ function Table() {
 
   //the function to fetch all events and update the allEvents state
 const getAllStaff = async () =>{
-    let allStaffResponse = await fetch('http://localhost:5000/api/staffs/staffs',{
+    let allStaffResponse = await fetch('https://gskibyagira-backend.onrender.com/api/staffs/staffs',{
              method:'GET'
            })
            let json = await allStaffResponse.json();
@@ -107,13 +107,13 @@ const[staffToEditId,setStaffToEditId] = useState("");
 
 //the function to delete a staff
 async function StaffToBeDeleted(staffToDeleteId){
-  const response = await fetch('http://localhost:5000/api/staffs/staffs/'+ staffToDeleteId, {
+  const response = await fetch('https://gskibyagira-backend.onrender.com/api/staffs/staffs/'+ staffToDeleteId, {
     method: 'DELETE',
   });
   if(response.ok){
     const message = "The staff is deleted successfully"
     notify(message)
-    const Updatedresponse = await fetch('http://localhost:5000/api/staffs/staffs', {
+    const Updatedresponse = await fetch('https://gskibyagira-backend.onrender.com/api/staffs/staffs', {
       method: 'GET',
     });
        // Update the state to remove the deleted item
@@ -125,7 +125,7 @@ async function StaffToBeDeleted(staffToDeleteId){
 
 //function to update the state of response when the model is closed
 const staffEditedSubmission = async () =>{
-    let updatedResponse = await fetch('http://localhost:5000/api/staffs/staffs',{
+    let updatedResponse = await fetch('https://gskibyagira-backend.onrender.com/api/staffs/staffs',{
              method:'GET'
            })
            let json = await updatedResponse.json();
@@ -179,7 +179,7 @@ const staffEditedSubmission = async () =>{
           {[...Array(totalPages)].map((_, index) => (
             <li
               key={index}
-              className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
+              className={`page-item ${currentPage === index + 1 ? 'isactive' : ''}`}
               onClick={() => handleClick(index + 1)}
             >
               <button className="page-link">
@@ -219,3 +219,4 @@ const staffEditedSubmission = async () =>{
 
 
 export default Table;
+

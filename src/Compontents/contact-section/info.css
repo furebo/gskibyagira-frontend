@@ -1,9 +1,7 @@
-.info {
+/* .info {
   text-align: left;
   padding: 10px;
- /* background-color: var(--main-green); */
  background-color:rgb(49, 49, 165);
-  /*color: var(--white);*/
   color: white;
   width: 100%;
 }
@@ -45,5 +43,92 @@
 
   .info-detail {
     line-height: 2;
+  }
+} */
+/* Overall section styling */
+.info {
+  background-color: #fff; /* White background for contrast */
+  padding: 40px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for elevation */
+  max-width: 800px; /* Restrict max-width for better readability */
+  margin: 0 auto; /* Center the section */
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+/* Heading styling */
+.info-h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* Dark color for heading */
+  margin-bottom: 30px; /* Space below the heading */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Contact details container styling */
+.info-details-container {
+  margin-bottom: 30px;
+}
+
+/* Individual contact detail styling */
+.info-detail {
+  font-size: 1.1rem;
+  color: #555; /* Light grey text for better contrast */
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between icon and text */
+}
+
+/* Icon size and styling */
+.info-detail .iconify {
+  font-size: 1.5rem;
+  color: #4CAF50; /* Green color for icons */
+}
+
+/* Container for social media icons */
+.info-icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Styling for individual social media icons */
+.info-icon {
+  font-size: 2rem;
+  color: #4CAF50; /* Green color */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer;
+}
+
+/* Hover effect for icons */
+.info-icon:hover {
+  color: #45a049; /* Darker green on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  .info {
+    padding: 20px;
+  }
+
+  .info-h2 {
+    font-size: 1.6rem; /* Smaller font size for title */
+  }
+
+  .info-detail {
+    font-size: 1rem;
+    margin-bottom: 12px; /* Reduce spacing for smaller screens */
+  }
+
+  .info-icons-container {
+    gap: 15px; /* Reduce gap between icons */
+  }
+
+  .info-icon {
+    font-size: 1.7rem; /* Smaller icons on mobile */
   }
 }

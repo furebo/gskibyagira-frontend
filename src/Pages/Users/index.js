@@ -14,7 +14,7 @@ function Users() {
 
   // Fetch users data
   const getUsers = async () => {
-    const response = await fetch('http://localhost:5000/api/users/users', {
+    const response = await fetch('https://gskibyagira-backend.onrender.com/api/users/users', {
       method: 'GET',
     });
     const json = await response.json();
@@ -59,7 +59,7 @@ function Users() {
       const updatedUser = await form.validateFields(); // Validate and get form values
 
       // Send updated data to server
-      const response = await fetch(`http://localhost:5000/api/users/users/${editingUser.key}`, {
+      const response = await fetch(`https://gskibyagira-backend.onrender.com/api/users/users/${editingUser.key}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const handleDelete = (key) => {
       onOk: async () => {
         try {
           // Send delete request to the server
-          const response = await fetch(`http://localhost:5000/api/users/users/${key}`, {
+          const response = await fetch(`https://gskibyagira-backend.onrender.com/api/users/users/${key}`, {
             method: 'DELETE',
           });
   

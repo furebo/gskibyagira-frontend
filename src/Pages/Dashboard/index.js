@@ -2,6 +2,7 @@ import { Card, Space, Statistic, Table, Typography } from "antd";
 import {BookOutlined,MessageOutlined,UserOutlined,CalendarOutlined} from '@ant-design/icons'
 import { useEffect, useState } from "react";
 import { getOrder, getBorrowedBooksData } from "../../API";
+import './index.css';
 
 import {
     Chart as ChartJS,
@@ -34,7 +35,7 @@ function AdminDashboard(){
 
     //function to fetch the books and update the state
     const getBorrowedBooks = async () =>{
-        let allBooksResponse = await fetch('http://localhost:5000/api/books/books',{
+        let allBooksResponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/books',{
                  method:'GET'
                })
                let json = await allBooksResponse.json();
@@ -42,7 +43,7 @@ function AdminDashboard(){
               }
     //function to fetch the users and update the state
     const getAllUsers = async () =>{
-        let allUsersResponse = await fetch('http://localhost:5000/api/users/users',{
+        let allUsersResponse = await fetch('https://gskibyagira-backend.onrender.com/api/users/users',{
                  method:'GET'
                })
                let json = await allUsersResponse.json();
@@ -51,7 +52,7 @@ function AdminDashboard(){
 
     //function to fetch the Events and update the state
     const getAllEvents = async () =>{
-        let allEventsResponse = await fetch('http://localhost:5000/api/events/events',{
+        let allEventsResponse = await fetch('https://gskibyagira-backend.onrender.com/api/events/events',{
                  method:'GET'
                })
                let json = await allEventsResponse.json();
@@ -59,7 +60,7 @@ function AdminDashboard(){
               }
     //function to fetch the Staffs and update the state
     const getAllStaffs = async () =>{
-        let allStaffResponse = await fetch('http://localhost:5000/api/staffs/staffs',{
+        let allStaffResponse = await fetch('https://gskibyagira-backend.onrender.com/api/staffs/staffs',{
                  method:'GET'
                })
                let json = await allStaffResponse.json();
@@ -78,13 +79,15 @@ function AdminDashboard(){
         <Space size={20} direction="vertical">
         <Typography.Title level={4}>Dashboard</Typography.Title>
         <Space direction="horizontal">
-            <AdminDashboardCard icon={<UserOutlined style={
+        <div className="dashboardCard">
+            <div className="dashboardCard_innerdiv">
+            <AdminDashboardCard className="AdminDashboardCard"  icon={<UserOutlined style={
             {
             color:"purple",
             backgroundColor:"rgba(0,255,255,0.5)",
             borderRadius:12,
             fontSize:24,
-            padding:8                
+            padding:8,                
             }} />} title={"Users"} value={users}/>
             <AdminDashboardCard icon={<BookOutlined style={
             {
@@ -94,6 +97,8 @@ function AdminDashboard(){
             fontSize:24,
             padding:8                
             }} />} title={"Books"} value={books}/>
+            </div>
+            <div className="dashboardCard_innerdiv">
             <AdminDashboardCard icon={<MessageOutlined style={
             {
             color:"blue",
@@ -102,6 +107,7 @@ function AdminDashboard(){
             fontSize:24,
             padding:8                
             }} />} title={"Events"} value={events}/>
+            
             <AdminDashboardCard icon={<CalendarOutlined style={
             {
             color:"red",
@@ -110,8 +116,10 @@ function AdminDashboard(){
             fontSize:24,
             padding:8                
             }} />} title={"Staffs"} value={staffs}/>
+            </div>
+            </div>
         </Space>
-        <Space>
+        <Space className="dashboardCard">
             <RecentBooks />
             <DashboardChart/>
         </Space>
@@ -140,7 +148,7 @@ function RecentBooks() {
     const fetchRecentBooks = async () => {
         setLoading(true); // Start loading
         try {
-            let response = await fetch('http://localhost:5000/api/books/books', {
+            let response = await fetch('https://gskibyagira-backend.onrender.com/api/books/books', {
                 method: 'GET',
             });
             let json = await response.json();

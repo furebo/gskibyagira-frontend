@@ -54,7 +54,7 @@ function UpdateEventModel({closeModel,eventId,defaultValue,modelName}){
         formData.append('image_url', eventFormState.image_url);
         //let send data to the database
         try {
-            const response = await fetch(`http://localhost:5000/api/events/events/${eventId}`, {
+            const response = await fetch(`https://gskibyagira-backend.onrender.com/api/events/events/${eventId}`, {
                 method: 'PUT',
                 body: formData
             });
@@ -91,7 +91,7 @@ function UpdateEventModel({closeModel,eventId,defaultValue,modelName}){
                 </div>
                 <div className='event-form-group'>
                     <label htmlFor='description'>Event Description</label>
-                    <textarea name='description' type="text" value={eventFormState.description} onChange={handleChange}/>
+                    <input className = "eventUpdateTextarea" name='description' type="text" value={eventFormState.description} onChange={handleChange}/>
                 </div>
                 <div className='event-form-group'>
                     <label htmlFor='image_url'>Upload the image</label>
