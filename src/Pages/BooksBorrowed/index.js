@@ -23,11 +23,12 @@ function Table() {
   const itemsPerPage = 8;
 
   async function getBorrowedBooks() {
-    const response = await fetch('http://localhost:5000/api/books/borrowbook', {
+    const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
       method: 'GET',
     });
     const json = await response.json(); // Extract the JSON data
     setResponseData(json.data); // Set the actual data
+    console.log(responseData)
   }
 
   useEffect(() => {
@@ -38,7 +39,8 @@ function Table() {
     row.Student_Name.toLowerCase().includes(searchState.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredData.length || 0 / itemsPerPage);
+  //const totalPages = Math.ceil(responseData.length / itemsPerPage);
 
   const currentData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
@@ -60,7 +62,6 @@ function Table() {
       setCurrentPage(currentPage + 1);
     }
   };
-
   function handleFilter(e) {
     setSearchState(e.target.value);
     setCurrentPage(1); // Reset to the first page when searching
@@ -79,12 +80,12 @@ function Table() {
     
   };
   async function bookToSubmit(itemToBeDeletedId){
-    const response = await fetch(`http://localhost:5000/api/books/borrowbook/${itemToBeDeletedId}`, {
+    const response = await fetch(`https://gskibyagira-backend.onrender.com/api/books/borrowbook/${itemToBeDeletedId}`, {
       method: 'DELETE',
     });
     if(response.ok){
       const message = "The book is returned back successfully by " + studentNameState;
-      const Updatedresponse = await fetch('http://localhost:5000/api/books/borrowbook', {
+      const Updatedresponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
         method: 'GET',
       });
       notify(message)
@@ -92,14 +93,13 @@ function Table() {
            const json = await Updatedresponse.json(); // Extract the JSON data
            setResponseData(json.data); // Set the actual data
     
-      setModelBookDeletionOpen(false);
-      
+      setModelBookDeletionOpen(false);  
    
     }
   }
 //function to update the state of response when the model is closed
   const bookEditedSubmission = async () =>{
-    let updatedResponse = await fetch('http://localhost:5000/api/books/borrowbook',{
+    let updatedResponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook',{
              method:'GET'
            })
            let json = await updatedResponse.json();
@@ -163,7 +163,7 @@ function Table() {
                 <li
                   key={index}
                   className={`page-item ${
-                    currentPage === index + 1 ? 'active' : ''
+                    currentPage === index + 1 ? 'isactive' : ''
                   }`}
                   onClick={() => handleClick(index + 1)}
                 >

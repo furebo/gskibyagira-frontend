@@ -10,8 +10,7 @@
     top: 0px;
     bottom: 10px;
     z-index: -1;
-  }
-  
+  } 
   .slide {
     position: absolute;
     top: 0;
@@ -39,6 +38,7 @@
   .current {
     opacity: 1;
     transform: translateX(0);
+    background-color: rgb(136, 136, 248);
   }
   
   .content {
@@ -155,4 +155,8 @@
     background: white;
     width: 50%;
   }
- 
+  @media only screen and (min-width:1024px){
+    .slider{
+      height: 600px;
+    }
+}

@@ -72,3 +72,28 @@
         padding: 20px 0px 0px 30px;
     }
 }
+
+@media only screen and (min-width:1024px){
+    .wrapper{
+        width: 1024px;
+        margin: 0 auto;
+        position: relative;
+        top: 5px;
+    }
+    .img-info{
+        width: 50%;
+        float: right;
+    }
+    .img-me{
+        padding-top: 0px;
+        width: 50%;
+        float: left;
+        margin-top: 30px;
+    }
+    .img-info p{
+        padding: 20px 0px 0px 30px;
+    }
+    .img-info h2{
+        padding: 20px 0px 0px 30px;
+    }
+}

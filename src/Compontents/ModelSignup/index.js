@@ -49,7 +49,7 @@ function SignupModel({closeModel,onSubmit,defaultValue}){
         //closeModel()
         setLoading(true); // Start loading
         try {
-            const response = await fetch('http://localhost:5000/api/users/users', {
+            const response = await fetch('https://gskibyagira-backend.onrender.com/api/users/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

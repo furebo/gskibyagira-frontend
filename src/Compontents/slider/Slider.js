@@ -43,8 +43,8 @@ const Slider = () => {
     <>
   
     <div className="slider">
-      <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
-      <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
+      {/* <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
+      <AiOutlineArrowRight className="arrow next" onClick={nextSlide} /> */}
       {sliderData.map((slide, index) => {
         return (
           <div
@@ -59,7 +59,7 @@ const Slider = () => {
                   <h2>{slide.heading}</h2>
                   <p>{slide.description}</p>
                   <hr />
-                  <button className="--btn --btn-primary">Ku birambuye kanda hano</button>
+                  {/* <button className="--btn --btn-primary">Ku birambuye kanda hano</button> */}
                   </div>
                 </div>
               </div>

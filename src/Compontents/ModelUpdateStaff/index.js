@@ -56,7 +56,7 @@ function UpdateStaffModel({closeModel,staffId,defaultValue,modelName}){
         formData.append('image_url', staffFormState.image_url);
 
         try {
-            const response = await fetch(`http://localhost:5000/api/staffs/staffs/${staffId}`, {
+            const response = await fetch(`https://gskibyagira-backend.onrender.com/api/staffs/staffs/${staffId}`, {
                 method: 'PUT',
                 body: formData
             });

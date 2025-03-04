@@ -25,8 +25,5 @@ function GsKibyagira(){
     </div>
     )
 }
-//icyumba cyumukobwa image
-//https://lh3.googleusercontent.com/p/AF1QipPEAquf9QiYLSpxs3ZUofG0WXaj4Jr6mxRbTVo0=s680-w680-h510
-//ikigo ubwacyo image
-//https://lh3.googleusercontent.com/p/AF1QipO09bn0bg7w4bJxxe4XMf4bcW2ltlpVYfivtdZj=s680-w680-h510
+
 export default GsKibyagira;

@@ -5,9 +5,9 @@ export const getOrder = () =>{
 )
 }
 
-export const getRevenues = () =>{
+export const getBorrowedBooksData = () =>{
     return (
-        fetch('//dummyjson.com/products')
+        fetch('https://gskibyagira-backend.onrender.com/api/books/allborrowedbytype')
         .then(res => res.json())
     )
 }

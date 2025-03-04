@@ -1,26 +1,117 @@
-.contact-section1 {
- /* background-color: var(--white);*/
+/* .contact-section1 {
   background-color: white;
   width: 100%;
   display: flex;
 }
 
-@media screen and (min-width: 799px) {
+@media screen and (min-width: 768px) {
   .contact-section1 {
-     /* --offset-height: -100px;  */
     display: flex;
-    /*grid-template-rows: 3fr 1.5fr;*/
-    width: 80%;
-    height: 550px;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
     margin: 0 auto;
     top: var(--offset-height);
     top: offset-height;
-    left: 20%;
-    margin-top:20px;
+    margin-top:10px;
     margin-bottom: var(--offset-height);
     margin-bottom: --offset-height; 
-    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15); 
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .contact-section1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+   
+    margin-top:10px;
+    margin-bottom: var(--offset-height);
+    margin-bottom: --offset-height; 
+    overflow: hidden;
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15); 
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .contact-section1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+   
+    margin-top:10px;
+    margin-bottom: var(--offset-height);
+    margin-bottom: --offset-height; 
+    overflow: hidden;
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15); 
+  }
+}
+
+@media screen and (min-width: 344px) {
+  .contact-section1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+   
+    margin-top:10px;
+    margin-bottom: var(--offset-height);
+    margin-bottom: --offset-height; 
+    overflow: hidden;
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15); 
+  }
+} */
+/* Overall contact section styling */
+
+
+.contact-section1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px; /* Space between the form and info */
+  padding: 60px 20px;
+  background-color: #f9f9f9; /* Light background color */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive design: Stack form and info on smaller screens */
+@media (min-width: 768px) {
+  .contact-section1 {
+    flex-direction: row; /* Display them side by side */
+    justify-content: space-between;
+  }
+
+  /* Adjust the width of each component */
+  .contact-section1 > .form, .contact-section1 > .info {
+    width: 48%; /* Ensure there is space between form and info */
+  }
+}
+
+/* Add smooth animation for when the section loads */
+.contact-section1[data-aos="zoom-in"] {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.3s ease-in-out;
+}
+
+/* AOS animation style to bring the section into view */
+.contact-section1[data-aos="zoom-in"].aos-animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Adjust for smaller screens: Full width for form and info */
+@media (max-width: 767px) {
+  .contact-section1 > .form, .contact-section1 > .info {
+    width: 100%;
   }
 }
