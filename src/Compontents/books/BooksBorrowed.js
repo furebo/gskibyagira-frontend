@@ -5,7 +5,7 @@ import {FaTrash, FaPencilAlt} from 'react-icons/fa'
 import './BooksBorrowed.css';
 import Model from '../modelbooks/Model';
 import {useEffect, useState} from 'react';
-import TablePagination from "@material-ui/core/TablePagination";
+import {TablePagination} from "@mui/material";
 import Navbar from '../Navbar/index'
 function Books(){
     const [modelOpen, setModelOpen] = useState(false);

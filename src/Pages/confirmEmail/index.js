@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../Compontents/Navbar';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 //import axios from 'axios';
 //import toaster from '../../helpers/toasts';

@@ -12,10 +12,9 @@ import MessageBox from './Compontents/Messagebox/Messagebox';
 import AuthContextProvider from './Contexts/AuthContext';
 //import AppMap from './Compontents/MapAndState';
 import ProtectedRoutes from './Helpers/ProtectedRoutes';
-import {UserRole} from './Compontents/UserRole/UserRole';
+
 import Levels from './Compontents/Levels/Levels';
 import MapComponent from './Compontents/MapComponent/Map';
-import Posts from './Compontents/Posts/post';
 import Dashboard from './Compontents/Dashboard/Dashboard';
 import Inventory from './Pages/Books';
 import Table from './Compontents/bootstrapTable';
@@ -38,7 +37,6 @@ function App() {
                 <Route exact path='/borrowbook' element = {<Borrowbook />} />
                 <Route exact path='/message' element = {<MessageBox/>} />
                 <Route exact path='/mapmap' element = {<MapComponent/>} />
-                <Route exact path='/userole' element = {<UserRole />}/>
                 <Route exact path='/levels' element = {<Levels />}/>
                 <Route exact path='/confirmemail' element = {<ConfirmEmail />}/>
                 <Route exact path='/reset-password/:token' element = {<ResetPasswordModel />}/>
@@ -48,7 +46,6 @@ function App() {
                       <Route exact path="/books" element={<BooksBorrowed />} />
                       <Route exact path="/allbooks" element={<Books />} />
                 </Route>
-                <Route exact path='/posts' element = {<Posts/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/inventory" element={<Inventory/>}/>  
                 <Route path="/table" element={<Table />}/> 
