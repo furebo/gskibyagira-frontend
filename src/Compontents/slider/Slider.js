@@ -43,9 +43,7 @@ const Slider = () => {
     <>
   
     <div className="slider">
-      {/* <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
-      <AiOutlineArrowRight className="arrow next" onClick={nextSlide} /> */}
-      {sliderData.map((slide, index) => {
+      {slideLength > 0 ? sliderData.map((slide, index) => {
         return (
           <div
             className={index === currentSlide ? "slide current" : "slide"}
@@ -66,7 +64,7 @@ const Slider = () => {
             )}
           </div>
         );
-      })}
+      }) : -1}
     </div>
     </>
   );
