@@ -5,8 +5,9 @@ import Model from '../modelbooks/Model';
 import './Books.css';
 import {useEffect, useState} from 'react';
 import { Checkbox } from '@mui/material';
-import TablePagination from "@material-ui/core/TablePagination";
+import {TablePagination} from "@mui/material";
 function Books(){
+
     const [modelOpen, setModelOpen] = useState(false);
     const [editRow,setEditRow] = useState(null);
     const [searchState, setSearchState] = useState("");
