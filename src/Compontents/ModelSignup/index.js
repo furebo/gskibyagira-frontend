@@ -2,8 +2,9 @@ import './index.css';
 import { useState } from "react";
 import { notify } from '../../Helpers/notify';
 import CloseIcon from '@mui/icons-material/Close';
+import {ToastContainer,toast} from 'react-toastify';
 
-function SignupModel({ closeModel, onSubmit, defaultValue }) {
+function SignupModel({ closeModel, defaultValue }) {
     const [loading, setLoading] = useState(false);
     const [signupFormState, setSignupFormState] = useState(defaultValue || {
         firstName: '',
@@ -49,8 +50,11 @@ function SignupModel({ closeModel, onSubmit, defaultValue }) {
             if (response.ok) {
                 const message = "The user is registered successfully.";
                 console.log("Triggering notify:", message);
-                notify(message);
-                if (typeof closeModel === "function") closeModel(); // Prevent crashes
+                //notify(message);
+                toast.success("User registered successfully!"); // Call this after successful signup
+                setTimeout(() => {
+                    closeModel(); // Close modal after 2 seconds
+                }, 8000);
             } else {
                 throw new Error('Failed to register user');
             }
@@ -62,6 +66,8 @@ function SignupModel({ closeModel, onSubmit, defaultValue }) {
     }
 
     return (
+        <>
+        <ToastContainer/>
         <div 
             className='signup-model-container' 
             onClick={(e) => {
@@ -99,6 +105,7 @@ function SignupModel({ closeModel, onSubmit, defaultValue }) {
                 </form>
             </div>
         </div>
+        </>
     );
 }
 
