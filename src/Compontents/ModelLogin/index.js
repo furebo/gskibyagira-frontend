@@ -4,8 +4,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
 import { notify } from '../../Helpers/notify';
 import SignupModel from "../ModelSignup";
+import ForgotPasswordModel from '../ModelForgetPassword';
 function Model({closeModel,onSubmit, defaultValue }) {
     const [signupModelOpen, setSignupModelOpen] = useState(false);
+    const [forgotPasswordModelOpen, setForgotPasswordModelOpen] = useState(false);
     const navigate = useNavigate();
     const [LoginFormState, setLoginFormState] = useState(defaultValue || {
         Email: '',
@@ -126,13 +128,16 @@ function Model({closeModel,onSubmit, defaultValue }) {
                         Login with Google
                     </button>
                     <div className="login-links">
-                        <a href={'/request-password-reset'} onClick={closeModel}>Forgot Password?</a>
+                        <h4 onClick={()=>{
+                            setForgotPasswordModelOpen(true);
+                            }}>Forgot Password?</h4>
                         <h2 onClick={handleSignupModel}>Signup</h2>
                     </div>
                 </form>
             </div>
         </div>
          {signupModelOpen && <SignupModel closeModel={() => setSignupModelOpen(false)} />}
+         {forgotPasswordModelOpen && <ForgotPasswordModel forgetPasswordcloseModel={() => setForgotPasswordModelOpen(false)}/>}
          </>
     );
 }
