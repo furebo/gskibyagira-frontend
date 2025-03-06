@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { notify } from '../../Helpers/notify';
 import { useNavigate } from 'react-router-dom';
 
-function ForgotPasswordModel({ closeModel }) {
+function ForgotPasswordModel({ forgetPasswordcloseModel }) {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
 
@@ -30,22 +30,20 @@ function ForgotPasswordModel({ closeModel }) {
             setTimeout(() => {
                 navigate('/'); // Redirect after 5 seconds
             }, 5000);
-            closeModel()
+            forgetPasswordcloseModel();
         } catch (error) {
             setError('Error sending reset email');
             console.error('Error:', error);
         }
     }
-    function closemodel(){
-        navigate('/login');
-    }
+  
     return (
         <>
         <div className="kibyagiraDashboard">GS Kibyagira Buruhukiro</div>
         <div className='login_model_container'>
             <div className='login_model'>
                 <div className='close'>
-                    <CloseIcon className='closeIconlogin' onClick={()=>navigate('/')} />
+                    <CloseIcon className='closeIconlogin' onClick={forgetPasswordcloseModel} />
                 </div>
                 <form>
                     <h2>Forgot Password</h2>
