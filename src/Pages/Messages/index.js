@@ -9,17 +9,18 @@ function Messages(){
      // Fetch books data
   const getMessages = async () => {
     try {
-      const response = await fetch('https://gskibyagira-backend.onrender.com/api/messages/messages', {
+      //https://gskibyagira-backend.onrender.com
+      const response = await fetch('http://localhost:5000/api/messages/messages', {
         method: 'GET',
       });
       const json = await response.json();
 
       if (json && json.data) {
-        const booksWithKey = json.data.map((message) => ({
+        const messagesWithKey = json.data.map((message) => ({
           ...message,
           key: message.id,
         }));
-        setDataSource(booksWithKey);
+        setDataSource(messagesWithKey);
       } else {
         console.error('No data found in the response');
       }

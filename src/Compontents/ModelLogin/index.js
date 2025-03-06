@@ -48,7 +48,8 @@ function Model({closeModel,onSubmit, defaultValue }) {
         }
 
         // Send login details to the backend
-        fetch('https://gskibyagira-backend.onrender.com/api/login', {
+        //https://gskibyagira-backend.onrender.com
+        fetch('http://localhost:5000/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

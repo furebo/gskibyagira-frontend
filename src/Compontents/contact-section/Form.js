@@ -5,10 +5,11 @@ import styles from './form.module.css';
 import { notify } from '../../Helpers/notify';
 import { ToastContainer } from 'react-toastify';
 
+
 function Form() {
   const [inputText, setInputText] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     telephone: "",
     email: "",
     message: ""
@@ -27,7 +28,7 @@ function Form() {
       });
       const result = await response.json();
       if (response.ok) {
-        setInputText({ firstname: "", lastname: "", telephone: "", email: "", message: "" }); // Reset form fields to empty
+        setInputText({ firstName: "", lastName: "", telephone: "", email: "", message: "" }); // Reset form fields to empty
         const notification ='Message sent successfully!';
         notify(notification);
       } else {
@@ -57,7 +58,7 @@ function Form() {
           <input
             type='text'
             name='firstname'
-            value={inputText.firstname} // Add value to bind with state
+            value={inputText.firstName} // Add value to bind with state
             onChange={handleChange}
             className={styles.firstname} 
           />
@@ -67,7 +68,7 @@ function Form() {
           <input
             type='text'
             name='lastname'
-            value={inputText.lastname} // Add value to bind with state
+            value={inputText.lastName} // Add value to bind with state
             onChange={handleChange}
             className={styles.firstname}
             
