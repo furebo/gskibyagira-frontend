@@ -10,7 +10,7 @@ function MessagesList({ refresh }) {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/messages/messages");
+        const response = await fetch("https://gskibyagira-backend.onrender.com/api/messages/messages");
         const result = await response.json();
 
         if (response.ok) {
@@ -42,10 +42,10 @@ function MessagesList({ refresh }) {
             {currentMessages.map((msg, index) => (
               <li key={index} className={styles.messageItem}>
                 <div className={styles.avatar}>
-                  {msg.firstname.charAt(0)}{msg.lastname.charAt(0)}
+                  {msg.firstName.charAt(0)}{msg.lastName.charAt(0)}
                 </div>
                 <div className={styles.messageContent}>
-                  <strong>{msg.firstname} {msg.lastname}:</strong> {msg.message}
+                  <strong>{msg.firstName} {msg.lastName}:</strong> {msg.message}
                   <span className={styles.timestamp}>{new Date(msg.createdAt).toLocaleString()}</span>
                 </div>
               </li>
