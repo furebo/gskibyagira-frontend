@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import sendCircle from "@iconify/icons-mdi/send-circle";
 import styles from "./form.module.css";
-import { notify } from "../../Helpers/notify";
-import { ToastContainer } from "react-toastify";
+//import { notify } from "../../Helpers/notify";
+import { ToastContainer,toast } from "react-toastify";
 
 function Form({ setRefresh }) {
   const [inputText, setInputText] = useState({
@@ -35,7 +35,8 @@ function Form({ setRefresh }) {
       const result = await response.json();
 
       if (response.ok) {
-        notify("Message sent successfully!");
+        //notify("Message sent successfully!");
+        toast.success("Message is created successfully !");
         setInputText({ firstName: "", lastName: "", telephone: "", email: "", message: "" }); // Reset form
         setRefresh(prev => !prev); // 🔄 Toggle refresh state
       } else {
