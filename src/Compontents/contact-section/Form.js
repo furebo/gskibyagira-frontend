@@ -1,41 +1,49 @@
-import React, { useState } from 'react';
-import { Icon } from '@iconify/react';
-import sendCircle from '@iconify/icons-mdi/send-circle';
-import styles from './form.module.css';
-import { notify } from '../../Helpers/notify';
-import { ToastContainer } from 'react-toastify';
+import React, { useState } from "react";
+import { Icon } from "@iconify/react";
+import sendCircle from "@iconify/icons-mdi/send-circle";
+import styles from "./form.module.css";
+import { notify } from "../../Helpers/notify";
+import { ToastContainer } from "react-toastify";
 
 function Form() {
   const [inputText, setInputText] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     telephone: "",
     email: "",
-    message: ""
+    message: "",
   });
 
-  // Function to handle form submission
+  const [isSubmitting, setIsSubmitting] = useState(false); // ✅ Track form submission
+
   const handleClick = async (e) => {
-    e.preventDefault(); // Prevent page refresh on form submission
+    e.preventDefault(); // Prevent page refresh
+
+    if (isSubmitting) return; // Prevent multiple submissions
+
+    setIsSubmitting(true); // Disable button while processing
+
     try {
-      const response = await fetch('http://localhost:5000/api/messages/messages', {
-        method: 'POST',
+      const response = await fetch("https://gskibyagira-backend.onrender.com/api/messages/messages", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(inputText), // Send form data
+        body: JSON.stringify(inputText),
       });
+
       const result = await response.json();
+
       if (response.ok) {
-        setInputText({ firstname: "", lastname: "", telephone: "", email: "", message: "" }); // Reset form fields to empty
-        const notification ='Message sent successfully!';
-        notify(notification);
+        notify("Message sent successfully!");
+        setInputText({ firstName: "", lastName: "", telephone: "", email: "", message: "" }); // Reset form
       } else {
-        console.log(`Failed to send message: ${result.error}`);
+        console.log(`Failed to send message: ${result}`);
       }
     } catch (error) {
-      console.error('Error sending data:', error);
-      // Handle error here
+      console.error("Error sending data:", error);
+    } finally {
+      setIsSubmitting(false); // ✅ Re-enable button after request completes
     }
   };
 
@@ -49,73 +57,73 @@ function Form() {
 
   return (
     <>
-    <form className={styles.form}>
-      <h2 className={styles.formh2}>Send us a message</h2> 
-      <div className={styles.formContainer}>
-        <div className={styles.formContainerDiv}>
-          <label>First Name</label>
-          <input
-            type='text'
-            name='firstname'
-            value={inputText.firstname} // Add value to bind with state
-            onChange={handleChange}
-            className={styles.firstname} 
-          />
+      <form className={styles.form}>
+        <h2 className={styles.formh2}>Send us a message</h2>
+        <div className={styles.formContainer}>
+          <div className={styles.formContainerDiv}>
+            <label>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={inputText.firstName}
+              onChange={handleChange}
+              className={styles.firstname}
+            />
+          </div>
+          <div className={styles.formContainerDiv}>
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={inputText.lastName}
+              onChange={handleChange}
+              className={styles.firstname}
+            />
+          </div>
+          <div className={styles.formContainerDiv}>
+            <label>Telephone</label>
+            <input
+              type="text"
+              name="telephone"
+              value={inputText.telephone}
+              onChange={handleChange}
+              className={styles.firstname}
+            />
+          </div>
+          <div className={styles.formContainerDiv}>
+            <label>Your Email</label>
+            <input
+              type="text"
+              name="email"
+              value={inputText.email}
+              className={styles.firstname}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.formContainerDiv}>
+            <label>Your Message</label>
+            <textarea
+              cols={35}
+              name="message"
+              value={inputText.message}
+              className={styles.textarea}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.sendIcon}>
+            <button
+              className={styles.formsubmit}
+              onClick={handleClick}
+              disabled={isSubmitting} // ✅ Disable button while submitting
+            >
+              <Icon icon={sendCircle} />
+            </button>
+          </div>
         </div>
-        <div className={styles.formContainerDiv}>
-          <label>Last Name</label>
-          <input
-            type='text'
-            name='lastname'
-            value={inputText.lastname} // Add value to bind with state
-            onChange={handleChange}
-            className={styles.firstname}
-            
-          />
-        </div>
-        <div className={styles.formContainerDiv}>
-          <label>Telephone</label>
-          <input
-            type='text'
-            name='telephone'
-            value={inputText.telephone} // Add value to bind with state
-            onChange={handleChange}
-            className={styles.firstname}
-            
-          />
-        </div>
-        <div className={styles.formContainerDiv}>
-          <label>Your Email</label>
-          <input
-            type='text'
-            name='email'
-            value={inputText.email} // Add value to bind with state
-            className={styles.firstname}
-            onChange={handleChange}
-            
-          />
-        </div>
-        <div className={styles.formContainerDiv}>
-          <label>Your Message</label>
-          <textarea
-            cols={35}
-            name='message'
-            value={inputText.message} // Add value to bind with state
-            className={styles.textarea}
-            onChange={handleChange}
-            
-          />
-        </div>
-        <div className={styles.sendIcon}>
-          <Icon className={styles.formsubmit} icon={sendCircle} onClick={handleClick} />
-        </div>
-      </div>
-    </form>                 
-    <ToastContainer position='top-center'/>
+      </form>
+      <ToastContainer position="top-center" />
     </>
   );
 }
 
 export default Form;
-
-   

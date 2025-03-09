@@ -27,7 +27,7 @@ function Admin(){
       e.preventDefault();  // Prevent the default form submission behavior
       
       try {
-         const response = await fetch('http://localhost:5000/api/books/books', {
+         const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/books', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',

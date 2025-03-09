@@ -7,18 +7,17 @@ function GsKibyagira(){
         <img className="img-me" src="https://lh3.googleusercontent.com/p/AF1QipO09bn0bg7w4bJxxe4XMf4bcW2ltlpVYfivtdZj=s680-w680-h510" />    
         <article className="img-info">
             <h2>GS Kibyagira</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type 
-            specimen book. It has survived not only five centuries, but also the leap into
-             electronic typesetting, remaining essentially unchanged.</p>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                 when an unknown printer took a galley of type and scrambled it to make a type 
-                 specimen book. It has survived not only five centuries, 
-                but also the leap into electronic typesetting, remaining essentially unchanged.
+                GS Kibyagira ni ishuri ribanza riri mu Murenge wa Buruhukiro, 
+                Akarere ka Nyamagabe, mu Ntara y'Amajyepfo y'u Rwanda. 
+                Umurenge wa Buruhukiro uhana imbibi n'Imirenge ya Gatare, Musebeya, na Uwinkingi. 
+                Ubukungu bw'uyu Murenge bushingiye cyane ku buhinzi bw'ibihingwa nk'icyayi, ibirayi,
+                amashaza, ibishyimbo, n'ingano, ndetse n'ubworozi bw'inka, ihene, n'ingurube. 
+                Nubwo amakuru arambuye ku ishingwa rya GS Kibyagira atabonetse mu nkomoko zizewe, 
+                birasanzwe ko amashuri nk'aya ashingwa mu rwego rwo guteza imbere uburezi bw'ibanze
+                mu bice by'icyaro mu Rwanda, hagamijwe kongerera ubumenyi abana bo mu bice nk'ibi..
             </p>
+            
         </article>
        
     </div>
