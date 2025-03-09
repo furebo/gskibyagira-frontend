@@ -10,7 +10,7 @@ function Messages(){
   const getMessages = async () => {
     try {
       //https://gskibyagira-backend.onrender.com
-      const response = await fetch('http://localhost:5000/api/messages/messages', {
+      const response = await fetch('https://gskibyagira-backend.onrender.com/api/messages/messages', {
         method: 'GET',
       });
       const json = await response.json();
