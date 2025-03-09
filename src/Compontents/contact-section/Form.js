@@ -5,7 +5,7 @@ import styles from "./form.module.css";
 import { notify } from "../../Helpers/notify";
 import { ToastContainer } from "react-toastify";
 
-function Form() {
+function Form({ setRefresh }) {
   const [inputText, setInputText] = useState({
     firstName: "",
     lastName: "",
@@ -37,6 +37,7 @@ function Form() {
       if (response.ok) {
         notify("Message sent successfully!");
         setInputText({ firstName: "", lastName: "", telephone: "", email: "", message: "" }); // Reset form
+        setRefresh(prev => !prev); // 🔄 Toggle refresh state
       } else {
         console.log(`Failed to send message: ${result}`);
       }

@@ -10,14 +10,16 @@ function ContactSection(){
   useEffect(()=>{
     AOS.init({duration:2000})
   })
+
+  const [refresh, setRefresh] = useState(false); // 🔄 Refresh state
   return(
   <>
     <div className="contact-section1" data-aos="zoom-in">
-      <Form />
+      <Form setRefresh={setRefresh} />
       <Info />
     </div>
     <div>
-    <MessagesList />
+    <MessagesList refresh={refresh} />
     </div>
   </>
 )}
