@@ -41,9 +41,13 @@ function Messages(){
             <Table  columns={
                 [
                     {
-                        title:"User Name",
-                        dataIndex:"Name"
+                        title:"User firstName",
+                        dataIndex:"firtsName"
                     },
+                    {
+                      title:"User lastName",
+                      dataIndex:"lastsName"
+                  },
                     {
                         title:"User Email",
                         dataIndex:"Email"
