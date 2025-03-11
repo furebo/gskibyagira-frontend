@@ -14,7 +14,7 @@ function Books() {
   // Fetch books data
   const getBooks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/books/books', {
+      const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/books', {
         method: 'GET',
       });
       const json = await response.json();

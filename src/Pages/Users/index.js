@@ -124,26 +124,28 @@ const handleDelete = (key) => {
       <Space direction="vertical" size={20} style={{ width: '100%', padding: '10px', borderRadius: '5px' }}>
         <Typography.Title level={4} style={{ textAlign: 'center' }}>Users</Typography.Title>
         <Table
-          className="custom-table"
-          loading={loading}
-          columns={[
-            { title: "First Name", dataIndex: "firstName" },
-            { title: "Last Name", dataIndex: "lastName" },
-            { title: "Role", dataIndex: "role" },
-            { title: "Email", dataIndex: "email" },
-            {
-              title: "Actions",
-              render: (text, record) => (
-                <span className='user_actions'>
-                  <FaTrash className='delete-btn' onClick={() => handleDelete(record.key)} />
-                  <FaPencilAlt className='edit-btn' onClick={() => handleEdit(record.key)} />
-                </span>
-              )
-            }
-          ]}
-          dataSource={dataSource}
-          pagination={{ pageSize: 7 }}
-        />
+  className="custom-table"
+  loading={loading}
+  columns={[
+    { title: "First Name", dataIndex: "firstName" },
+    { title: "Last Name", dataIndex: "lastName" },
+    { title: "Role", dataIndex: "role" },
+    { title: "Email", dataIndex: "email" },
+    {
+      title: "Actions",
+      render: (text, record) => (
+        <span className='user_actions'>
+          <FaTrash className='delete-btn' onClick={() => handleDelete(record.key)} />
+          <FaPencilAlt className='edit-btn' onClick={() => handleEdit(record.key)} />
+        </span>
+      )
+    }
+  ]}
+  dataSource={dataSource}
+  pagination={{ pageSize: 7 }}
+  scroll={{ x: "max-content" }} // Enables horizontal scrolling
+/>
+
       </Space>
 
       {/* Modal for editing user */}
