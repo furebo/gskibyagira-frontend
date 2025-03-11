@@ -1,39 +1,138 @@
-/* Default table font size */
+/* Search Bar */
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.searchbar input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 250px;
+}
+
+.searchbar h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Table Container */
+.table_container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+/* Table Styling */
 .table {
-    font-size: 0.8rem; /* 16px by default */
-    width: 75.3vw;
-    height: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.table thead {
+  background-color: #f0f2f5;
+  font-weight: bold;
+}
+
+.table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Actions Styling */
+.books_actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.edit-btn {
+  color: blue;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.edit-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination button:hover {
+  background: #0056b3;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.page-item {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-item.isactive {
+  background: #007bff;
+  color: white;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .table_container {
+    padding: 10px;
   }
 
-   .books_actions{
-    width: 50px;
-    margin: auto;
-  } 
-  .Space{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .table {
+    font-size: 12px;
   }
 
-  /* Media query for small screens */
-  @media (max-width: 768px) {
-    .table {
-      font-size: 0.875rem; /* 14px for small screens */
-    }
-  
-    /* Additional adjustments for even smaller screens */
-    @media (max-width: 750px) {
-      .table {
-        font-size: 0.45rem; /* 12px for extra small screens */
-      }
-    }
+  .table th,
+  .table td {
+    padding: 8px;
   }
-  @media (max-width:1185){
-    .table {
-        font-size: 0.875rem; /* 14px for small screens */
-      }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 5px;
   }
- 
-  .active{
-    background-color: white;
-  }
+}

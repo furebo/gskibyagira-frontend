@@ -1,36 +1,73 @@
+/* Container Styles */
 .table-container {
-    width: 80%;
-    margin: 0 auto; /* This will center the table */
-    padding-top: 20px; /* Optional: add some padding from the top */
-  }
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 
-  .custom-table .ant-table-thead > tr > th {
-    background-color: rgb(77, 77, 190); /* Your desired blue color */
-    color: white; /* Optional: Change text color to white for contrast */
-    font-size: 20px;
+/* Custom Table Styles */
+.custom-table {
+  background-color: white;
+  border-radius: 8px;
+  overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+.custom-table .ant-table-thead > tr > th {
+  background-color: #f0f2f5;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Table Responsive Design */
+@media (max-width: 768px) {
+  .custom-table .ant-table {
+    font-size: 12px;
   }
-  
-  .table-container .ant-table {
-    background-color: white; /* Optional: table background color */
-    border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Optional: box-shadow for better appearance */
+  .custom-table .ant-table-thead > tr > th,
+  .custom-table .ant-table-tbody > tr > td {
+    white-space: nowrap;
+    text-align: left;
   }
-  
-  .user_actions {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .delete-btn, .edit-btn {
-    cursor: pointer;
-    color: #1890ff; /* Optional: color for the icons */
-  }
-  
-  .delete-btn:hover {
-    color: red; /* Optional: hover color for delete icon */
-  }
-  
-  .edit-btn:hover {
-    color: green; /* Optional: hover color for edit icon */
-  }
-  
+}
+
+/* User Actions Styling */
+.user_actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.edit-btn {
+  color: blue;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.edit-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Modal Styling */
+.ant-modal {
+  border-radius: 10px;
+}
+
+.ant-modal-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: space-between;
+}

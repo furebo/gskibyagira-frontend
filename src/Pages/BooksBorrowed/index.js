@@ -40,7 +40,6 @@ function Table() {
   );
 
   const totalPages = Math.ceil(filteredData.length || 0 / itemsPerPage);
-  //const totalPages = Math.ceil(responseData.length / itemsPerPage);
 
   const currentData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
