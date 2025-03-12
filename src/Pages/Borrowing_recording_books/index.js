@@ -22,12 +22,13 @@ function Admin(){
          [name]:value
       })
    };
-   // Handle form submission
+   // Handle form submission 
    const handleSubmit = async (e) => {
       e.preventDefault();  // Prevent the default form submission behavior
       
       try {
-         const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/books', {
+
+         const response = await fetch('http://localhost:5000/api/books/books', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
@@ -36,6 +37,7 @@ function Admin(){
          });
 
          const result = await response.json();
+         console.log(result);
 
          if (response.ok) {
             const message = 'Book information saved successfully!';

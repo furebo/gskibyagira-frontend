@@ -11,7 +11,8 @@ function Model({closeModel,defaultValue}){
         Book_Number:'',
         Student_Name:'',
         Student_Class:'',
-        Borrowing_Date:''
+        Borrowing_Date:'',
+        Return_Date:''
     })
 
     function handleChange(e){
@@ -53,21 +54,35 @@ function Model({closeModel,defaultValue}){
             return
         }
         //let send data to the database
+        // https://gskibyagira-backend.onrender.com
         try {
             const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
                 method: 'POST',
+                mode: 'cors', // Ensure cross-origin requests are allowed
+                credentials: 'include', // Include cookies if needed
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify(formState)
+                body: JSON.stringify({
+                    bookType: formState.Book_Type,
+                    bookLevel: formState.Book_Level,
+                    bookCode: formState.Book_Number,
+                    bookAuthor: formState.Student_Name, 
+                    deliveryDate: formState.Borrowing_Date
+                })
             });
+            
+            console.log(response);
 
             if (response.ok) {
                 const message = "The Book borrowed by this Student is recorded successfully."
                 closeModel();
                 notify(message);
+            }else{
+                throw new Error('Failed to save data');
             }
-            throw new Error('Failed to save data');
+            
            
         } catch (error) {
             console.error("Error saving data:", error);
@@ -122,6 +137,10 @@ function Model({closeModel,defaultValue}){
                     <div className="books_form_group">
                         <label htmlFor="borowingdate">Borrowing Date</label>
                         <input name='Borrowing_Date' type="date" value={formState.Borrowing_Date} onChange={handleChange} />
+                    </div>
+                    <div className="books_form_group">
+                        <label htmlFor="returndate">Return Date</label>
+                        <input name='return_Date' type="date" value={formState.Return_Date} onChange={handleChange} />
                     </div>
         
                     {errors && <div className='error'>{`Please include: ${errors}`}</div>}
