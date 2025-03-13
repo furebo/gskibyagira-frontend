@@ -106,3 +106,6 @@
   .login_form_group select{
     width: 100%;
   }
+  .sugnup_button:hover{
+     cursor: pointer;
+  }

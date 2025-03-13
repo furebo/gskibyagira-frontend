@@ -129,10 +129,10 @@ function Model({closeModel,onSubmit, defaultValue }) {
                         Login with Google
                     </button>
                     <div className="login-links">
-                        <h4 onClick={()=>{
+                        <h4 className='sugnup_button' onClick={()=>{
                             setForgotPasswordModelOpen(true);
                             }}>Forgot Password?</h4>
-                        <h2 onClick={handleSignupModel}>Signup</h2>
+                        <h2 className='sugnup_button' onClick={handleSignupModel}>Signup</h2>
                     </div>
                 </form>
             </div>
