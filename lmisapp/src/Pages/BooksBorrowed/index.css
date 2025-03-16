@@ -1,0 +1,167 @@
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 300px; /* Increased width for better visibility */
+  background: white;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  padding: 5px 10px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px 10px 10px 40px; /* Adjusted padding for icon */
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  color: #555;
+  font-size: 16px;
+}
+
+
+ .borrowedbook_container{
+  width: 100%;
+}
+.Space{
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+  background-color: rgb(45, 49, 90); /* Darker shade for a modern look */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.table {
+  width: 100%; 
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #034978;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+  border-bottom: 2px solid #0056b3;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+  transition: 0.3s ease-in-out;
+}
+
+
+.books_actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.edit-btn {
+  color: #007bff;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.edit-btn:hover {
+  transform: scale(1.2);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.page-link:hover {
+  background-color: #0056b3;
+}
+
+.isactive .page-link {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .table {
+    width: 100%;
+    font-size: 12px;
+    margin: 0;
+  
+  }
+
+  .books_actions {
+    gap: 5px;
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+
+  .search-icon {
+    left: 10px;
+  }
+}
+

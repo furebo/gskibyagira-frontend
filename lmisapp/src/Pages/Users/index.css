@@ -1,0 +1,73 @@
+/* Container Styles */
+.table-container {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Custom Table Styles */
+.custom-table {
+  background-color: white;
+  border-radius: 8px;
+  overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+.custom-table .ant-table-thead > tr > th {
+  background-color: #f0f2f5;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Table Responsive Design */
+@media (max-width: 768px) {
+  .custom-table .ant-table {
+    font-size: 12px;
+  }
+  .custom-table .ant-table-thead > tr > th,
+  .custom-table .ant-table-tbody > tr > td {
+    white-space: nowrap;
+    text-align: left;
+  }
+}
+
+/* User Actions Styling */
+.user_actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.edit-btn {
+  color: blue;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.edit-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Modal Styling */
+.ant-modal {
+  border-radius: 10px;
+}
+
+.ant-modal-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: space-between;
+}

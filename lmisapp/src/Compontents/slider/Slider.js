@@ -1,0 +1,73 @@
+import { useState, useEffect } from "react";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { useSliderData } from "../../slider-data";
+import "./Slider.css";
+
+const Slider = () => {
+   // Call the custom hook to get the sliderData array
+   const sliderData = useSliderData();
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideLength = sliderData.length;
+
+  const autoScroll = true;
+  let slideInterval;
+  let intervalTime = 10000;
+
+  const nextSlide = () => {
+    setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
+    //console.log("next");
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
+    //console.log("prev");
+  };
+
+  function auto() {
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, []);
+
+  useEffect(() => {
+    if (autoScroll) {
+      auto();
+    }
+    return () => clearInterval(slideInterval);
+  }, [currentSlide]);
+
+  return (
+    <>
+  
+    <div className="slider">
+      {slideLength > 0 ? sliderData.map((slide, index) => {
+        return (
+          <div
+            className={index === currentSlide ? "slide current" : "slide"}
+            key={index}
+          >
+            {index === currentSlide && (
+              <div>
+                <img src={slide.image_url} alt="slide" className="image" />
+                <div className="content">
+                  <div>
+                  <h2>{slide.heading}</h2>
+                  <p>{slide.description}</p>
+                  <hr />
+                  {/* <button className="--btn --btn-primary">Ku birambuye kanda hano</button> */}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      }):-1}
+    </div>
+    </>
+  );
+};
+
+export default Slider;

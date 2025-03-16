@@ -1,0 +1,21 @@
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 20%;
+    border: 1px solid blue;
+    margin-top: 3px;
+    padding: 4px;
+}
+.pagination li{
+    color: blue;
+    font-size: 15px;
+    font-weight: bold;
+}
+.studentspagination{
+    display: flex;
+    justify-content: end;
+}
+.page-link-prev{}
+.page-link-next{}
+.page-link-page{}

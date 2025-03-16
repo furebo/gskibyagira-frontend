@@ -1,0 +1,48 @@
+.dashboardCard{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow-x: hidden;
+  width: 80vw;
+  
+}
+.dashboardCard_innerdiv{
+  /* background-color: yellowgreen; */
+  width: 50vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.PageContent {
+  padding: 10px;
+}
+@media (max-width: 768px) {
+     .PageContent {
+        padding: 20px;
+      }
+      .dashboardCard{
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+      .dashboardCard_innerdiv{
+        /* background-color: yellowgreen; */
+        width: 60vw;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    
+    }
+
+
+  
