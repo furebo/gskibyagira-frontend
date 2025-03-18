@@ -1,7 +1,6 @@
 import './index.css';
 import {Route, Routes, BrowserRouter as Router} from 'react-router-dom';
 import Homepage from "./Compontents/Homepage/Homepage";
-//import Signup from "./Compontents/Signup/Signup";
 import SignupModel from './Compontents/ModelSignup';
 import NoPage from './Compontents/NoPage/NoPage';
 import Login from './Compontents/Login/Login';
