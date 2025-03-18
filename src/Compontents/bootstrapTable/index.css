@@ -1,0 +1,19 @@
+/* Default table font size */
+.table {
+    font-size: 1rem; /* 16px by default */
+  }
+  
+  /* Media query for small screens */
+  @media (max-width: 768px) {
+    .table {
+      font-size: 0.875rem; /* 14px for small screens */
+    }
+  
+    /* Additional adjustments for even smaller screens */
+    @media (max-width: 750px) {
+      .table {
+        font-size: 0.45rem; /* 12px for extra small screens */
+      }
+    }
+  }
+  

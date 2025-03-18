@@ -1,0 +1,56 @@
+.seniorone{
+    width: auto;
+    margin-top: 70px ;
+    padding: 20px 20px;
+    border: 2px solid blue;
+    
+}
+ /* h2{
+    background-color: rgb(71, 103, 248);
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+} */
+.bookform{
+    width: 80%;
+    border: 1px solid blue;
+    padding: 20px 20px;
+    margin: auto;
+    display: flex;
+}
+
+.formdiv{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    border: 1px solid blue;
+    margin-top: 15px;
+    padding: 15px 15px; 
+    display: flex;  
+}
+.formdiv input{
+    height: 40px;
+    width:30%;
+}
+.labelclass{
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    
+
+}
+.select{
+    height: 40px;
+    width: 250px;
+    
+}
+.button {
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    background-color: rgb(15, 15, 228);
+    color: white;
+   
+}

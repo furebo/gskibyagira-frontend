@@ -1,0 +1,48 @@
+/* Ensure the container adjusts to screen size */
+.tableMessages {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    padding: 10px;
+  }
+  
+  /* Ensure table is fully responsive */
+  .ant-table {
+    width: 100%;
+    min-width: 600px; /* Prevent the table from being too squeezed */
+  }
+  
+  /* Hide long content on small screens */
+  @media (max-width: 768px) {
+    .ant-table {
+      min-width: 100%;
+      font-size: 12px; /* Reduce font size for better fit */
+    }
+  
+    .ant-table th,
+    .ant-table td {
+      white-space: nowrap; /* Prevent text wrapping */
+    }
+  
+    /* Stack actions vertically on small screens */
+    .ant-table .ant-space {
+      flex-direction: column;
+    }
+  }
+  
+  /* Mobile-friendly adjustments */
+  @media (max-width: 480px) {
+    .tableMessages {
+      padding: 5px;
+    }
+  
+    .ant-table {
+      font-size: 10px;
+    }
+  
+    .ant-table th,
+    .ant-table td {
+      padding: 5px;
+    }
+  }
+  
