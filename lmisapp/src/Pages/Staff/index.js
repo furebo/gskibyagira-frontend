@@ -66,18 +66,6 @@ const handlePreviousPage = () => {
     setCurrentPage(1); // Reset to the first page when searching
 }
 
-// //the function to fetch all events and update the allEvents state
-// const getAllEvents = async () =>{
-//   let allEventsResponse = await fetch('http://localhost:5000/api/events/events',{
-//            method:'GET'
-//          })
-//          let json = await allEventsResponse.json();
-//          setAllEvents(json.data);
-//         }
-
-//         useEffect(() => {
-//           getAllEvents();
-//         }, []);
 //the state to manage the opening of the CreateStaffModel state
 const[staffModelOpen, setStaffModelOpen] = useState(false);
 const handleStaffCreation = () =>{
