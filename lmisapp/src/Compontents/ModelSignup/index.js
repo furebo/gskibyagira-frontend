@@ -46,11 +46,11 @@ function SignupModel({ closeModel, defaultValue }) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(signupFormState)
             });
-
+            const message = response.message;
             if (response.ok) {
-                const message = response.message;
-                const alreadyRegisteredMessage = "The user With this email is Already Registered."
-                console.log("Triggering notify:", message);
+                //const message = response.message;
+                //const alreadyRegisteredMessage = "The user With this email is Already Registered."
+                //console.log("Triggering notify:", message);
                 //notify(message);
                 toast.success(message); // Call this after successful signup
                 setTimeout(() => {
