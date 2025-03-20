@@ -1,3 +1,4 @@
+
 .tablest {
     display: grid;
     width: 100%;
@@ -7,8 +8,9 @@
   
    .tablest tbody {
     display: contents; /* Allow grid children to become part of the parent grid */
-    color: white;
+    /* color: white; */
   }
+  
 .tablest thead{
     display: contents;
 }
