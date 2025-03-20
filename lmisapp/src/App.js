@@ -1,4 +1,4 @@
-import { ToastContainer } from "react-toastify";
+//import { ToastContainer } from "react-toastify";
 import './index.css';
 import {Route, Routes, BrowserRouter as Router} from 'react-router-dom';
 import Homepage from "./Compontents/Homepage/Homepage";
@@ -26,7 +26,7 @@ import ForgotPasswordModel from './Compontents/ModelForgetPassword';
 function App() {
   return (
     <div className="App">
-      <ToastContainer position="top-center" autoClose={3000} />
+      
      <AuthContextProvider>
       
           <Routes>
