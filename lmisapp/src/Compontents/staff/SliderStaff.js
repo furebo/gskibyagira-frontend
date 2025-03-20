@@ -66,10 +66,10 @@ function SliderSt() {
                                 <img 
                                     className='img' 
                                     src={staff.image_url || 'default-image.png'} 
-                                    alt={`${staff.firstName || 'Unknown'} ${staff.lastName || ''}`} 
+                                    alt={`${staff.firstname || 'Unknown'} ${staff.lastname || ''}`} 
                                     onError={(e) => e.target.src = 'default-image.png'} // Fallback for broken images
                                 />
-                                <h4>{`${staff.firstName || 'Unknown'} ${staff.lastName || ''}`}</h4>
+                                <h4>{`${staff.firstname || 'Unknown'} ${staff.lastname || ''}`}</h4>
                                 <p>{staff.description || 'No description available.'}</p>
                             </div>
                         </SplideSlide>
