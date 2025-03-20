@@ -4,8 +4,8 @@ import { notify } from '../../Helpers/notify';
 
 function CreateStaffModel({closeModel,defaultValue,modelName}){
     const [staffFormState, setStaffFormState] = useState(defaultValue || {
-        firstName:'',
-        lastName:'',
+        firstname:'',
+        lastname:'',
         role:"",
         description:'',
         image_url:'',        
@@ -23,7 +23,7 @@ function CreateStaffModel({closeModel,defaultValue,modelName}){
     }
 
     const validateForm = () => {
-        if(staffFormState.firstName && staffFormState.lastName && staffFormState.image_url && staffFormState.role && staffFormState.description){
+        if(staffFormState.firstname && staffFormState.lastname && staffFormState.image_url && staffFormState.role && staffFormState.description){
             setErrors("");
             return true;
         } else {
@@ -47,8 +47,8 @@ function CreateStaffModel({closeModel,defaultValue,modelName}){
         setLoading(true); // Start loading
 
         const formData = new FormData();
-        formData.append('firstName', staffFormState.firstName);
-        formData.append('lastName', staffFormState.lastName);
+        formData.append('firstname', staffFormState.firstname);
+        formData.append('lastname', staffFormState.lastname);
         formData.append('role', staffFormState.role);
         formData.append('description', staffFormState.description);
         formData.append('image_url', staffFormState.image_url);
@@ -87,11 +87,11 @@ function CreateStaffModel({closeModel,defaultValue,modelName}){
                     <h2>{modelName}</h2>
                     <div className='event-form-group'>
                         <label htmlFor='firstName'>First Name</label>
-                        <input name='firstName' type="text" value={staffFormState.firstName} onChange={handleChange} />
+                        <input name='firstname' type="text" value={staffFormState.firstname} onChange={handleChange} />
                     </div>
                     <div className='event-form-group'>
                         <label htmlFor='lastName'>Last Name</label>
-                        <input name='lastName' type="text" value={staffFormState.lastName} onChange={handleChange} />
+                        <input name='lastname' type="text" value={staffFormState.lastname} onChange={handleChange} />
                     </div>
                     <div className='event-form-group'>
                         <label htmlFor='role'>Role</label>
