@@ -32,7 +32,7 @@ const getAllStaff = async () =>{
           }, []);
 
  let filteredData = allStaffs.filter((row)=>{
-       return row.lastName.toLowerCase().includes(searchState.toLowerCase())
+       return row.lastname.toLowerCase().includes(searchState.toLowerCase())
         
      })
 
@@ -144,8 +144,8 @@ const staffEditedSubmission = async () =>{
         <tbody>
           {currentData.map((item,index) => (
             <tr key={item.Id}>
-              <td>{item.firstName}</td>
-              <td>{item.lastName}</td>
+              <td>{item.firstname}</td>
+              <td>{item.lastname}</td>
               <td>{item.role}</td>
               <td>{item.description}</td>
               <td className='imageurl'>{item.image_url}</td>
