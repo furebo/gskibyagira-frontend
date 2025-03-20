@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
@@ -62,6 +63,7 @@ function Form({ setRefresh }) {
 
   return (
     <>
+    <ToastContainer position="top-center" autoClose={3000} />
       <form className={styles.form}>
         <h2 className={styles.formh2}>Send us a message</h2>
         <div className={styles.formContainer}>
