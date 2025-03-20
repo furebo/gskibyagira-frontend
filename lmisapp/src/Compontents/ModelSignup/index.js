@@ -20,7 +20,6 @@ function SignupModel({ closeModel, defaultValue }) {
             [e.target.name]: e.target.value
         });
     }
-
     const validateForm = () => {
         if (signupFormState.firstName && signupFormState.lastName && signupFormState.email && signupFormState.password) {
             setErrors("");
@@ -47,20 +46,21 @@ function SignupModel({ closeModel, defaultValue }) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(signupFormState)
             });
-
+            const message = response.message;
             if (response.ok) {
-                const message = "The user is registered successfully.";
-                console.log("Triggering notify:", message);
+                //const message = response.message;
+                //const alreadyRegisteredMessage = "The user With this email is Already Registered."
+                //console.log("Triggering notify:", message);
                 //notify(message);
-                toast.success("User registered successfully!"); // Call this after successful signup
+                toast.success(message); // Call this after successful signup
                 setTimeout(() => {
                     closeModel(); // Close modal after 2 seconds
                 }, 8000);
             } else {
-                throw new Error('Failed to register user');
+                toast.info(message);
             }
         } catch (error) {
-            console.error("Error registering the user:", error);
+            toast.info(error.message);
         } finally {
             setLoading(false);
         }
