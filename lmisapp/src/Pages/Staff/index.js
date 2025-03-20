@@ -144,10 +144,10 @@ const staffEditedSubmission = async () =>{
         <tbody>
           {allStaffs.map((item,index) => (
             <tr key={item.Id}>
-              <td>{item.firstname}</td>
-              <td>{item.lastname}</td>
-              <td>{item.role}</td>
-              <td>{item.description}</td>
+              <td className='staff_item_value'>{item.firstname}</td>
+              <td className='staff_item_value'>{item.lastname}</td>
+              <td className='staff_item_value'>{item.role}</td>
+              <td className='staff_item_value'>{item.description}</td>
               <td className='imageurl'>{item.image_url}</td>
               <td >
                    <span className='books_actions'>
