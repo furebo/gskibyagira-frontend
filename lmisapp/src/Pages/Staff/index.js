@@ -37,10 +37,10 @@ const getAllStaff = async () =>{
      })
 
 // Calculate the number of pages
-const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+const totalPages = Math.ceil(allStaffs.length / itemsPerPage);
 
 // Get the data for the current page
-const currentData = filteredData.slice(
+const currentData = allStaffs.slice(
   (currentPage - 1) * itemsPerPage,
   currentPage * itemsPerPage
 );
