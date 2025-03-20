@@ -31,7 +31,7 @@ function Form({ setRefresh }) {
         },
         body: JSON.stringify(inputText),
       });
-
+      console.log(response);
       const result = await response.json();
 
       if (response.ok) {
