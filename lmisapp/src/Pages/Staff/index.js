@@ -31,19 +31,19 @@ const getAllStaff = async () =>{
             getAllStaff();
           }, []);
 
- let filteredData = allStaffs.filter((row)=>{
-       return row.lastname.toLowerCase().includes(searchState.toLowerCase())
+//  let filteredData = allStaffs.filter((row)=>{
+//        return row.lastname.toLowerCase().includes(searchState.toLowerCase())
         
-     })
+//      })
 
 // Calculate the number of pages
 const totalPages = Math.ceil(allStaffs.length / itemsPerPage);
 
 // Get the data for the current page
-const currentData = allStaffs.slice(
-  (currentPage - 1) * itemsPerPage,
-  currentPage * itemsPerPage
-);
+// const currentData = allStaffs.slice(
+//   (currentPage - 1) * itemsPerPage,
+//   currentPage * itemsPerPage
+// );
 
 const handleClick = (pageNumber) => {
   setCurrentPage(pageNumber);
@@ -142,7 +142,7 @@ const staffEditedSubmission = async () =>{
           </tr>
         </thead>
         <tbody>
-          {currentData.map((item,index) => (
+          {allStaffs.map((item,index) => (
             <tr key={item.Id}>
               <td>{item.firstname}</td>
               <td>{item.lastname}</td>
