@@ -24,7 +24,7 @@ function Form({ setRefresh }) {
     setIsSubmitting(true); // Disable button while processing
 
     try {
-      const response = await fetch("https://gskibyagiraburuhukiro.netlify.app/api/messages/messages", {
+      const response = await fetch("https://gskibyagira-backend.onrender.com/api/messages/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
