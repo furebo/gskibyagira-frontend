@@ -2,8 +2,6 @@ import React from 'react';
 import Navbar from '../../Compontents/Navbar';
 import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-//import axios from 'axios';
-//import toaster from '../../helpers/toasts';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
@@ -26,19 +24,21 @@ const ConfirmEmail = () => {
             }
           })
           .then((result) => {
-              console.log(result)
             if(result.status === 200){
-                //toaster(result.data.message, 'success')
-                console.log("success")
+                toast.success(result.data.message, {
+                  style: { backgroundColor: "green", color: "white" },
+                });
             }
             else{
-              //toaster(result.data.message, 'error')
-              console.log("Error")
+              toast.info(result.data.message, {
+                style: { backgroundColor: "red", color: "white" },
+              });
             }
           })
           .catch((err) => {
-            //toaster(err.response.data.message, 'error')
-            console.log("error there")
+            toast.info("There is an error", {
+              style: { backgroundColor: "red", color: "white" },
+            });
           })
     }
 

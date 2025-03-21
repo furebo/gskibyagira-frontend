@@ -5,11 +5,8 @@ import ModelUpdateBook from '../../Compontents/modelUpdateBorrowedBook';
 import './index.css';
 import { FaTrash, FaPencilAlt, FaSearch} from 'react-icons/fa';
 import { Space } from 'antd';
-import { notify } from '../../Helpers/notify';
 import { ToastContainer } from 'react-toastify';
-import { DivOverlay } from 'leaflet';
 function Table() {
-  const [modelOpen, setModelOpen] = useState(false);
   const [modelBookDeletionOpen, setModelBookDeletionOpen] = useState(false);
   const [studentNameState, setStudentNameState] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,7 +26,6 @@ function Table() {
     });
     const json = await response.json(); // Extract the JSON data
     setResponseData(json.data); // Set the actual data
-    console.log(responseData)
   }
 
   useEffect(() => {
@@ -88,8 +84,10 @@ function Table() {
       const Updatedresponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
         method: 'GET',
       });
-      notify(message)
-           // Update the state to remove the deleted item
+           toast.success(message, {
+            style: { backgroundColor: "green", color: "white" },
+          });
+           
            const json = await Updatedresponse.json(); // Extract the JSON data
            setResponseData(json.data); // Set the actual data
     

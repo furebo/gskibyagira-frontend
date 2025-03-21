@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Typography, Table, Space, Modal, message as AntMessage, Input, Form, Button } from "antd";
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { useState, useEffect } from "react";
@@ -24,10 +26,14 @@ function Messages() {
                 }));
                 setDataSource(messagesWithKey);
             } else {
-                console.error('No data found in the response');
+                toast.info("No Message Found!", {
+                    style: { backgroundColor: "red", color: "white" },
+                  })
             }
         } catch (error) {
-            console.error('Failed to fetch messages:', error);
+            toast.info("Error Occured While fetching!", {
+                style: { backgroundColor: "red", color: "white" },
+              })
         } finally {
             setLoading(false);
         }
@@ -53,14 +59,19 @@ function Messages() {
                     });
 
                     if (response.ok) {
-                        AntMessage.success("Message deleted successfully!");
+                              toast.success("Message deleted successfully!", {
+                                  style: { backgroundColor: "green", color: "white" },
+                                });
                         setDataSource((prevData) => prevData.filter(item => item.id !== id));
                     } else {
-                        AntMessage.error("Failed to delete message.");
+                        toast.info("There is an error While Deleting!", {
+                            style: { backgroundColor: "red", color: "white" },
+                          })
                     }
                 } catch (error) {
-                    console.error('Delete request failed:', error);
-                    AntMessage.error("An error occurred while deleting.");
+                    toast.info("Error Occured While Deleting!", {
+                        style: { backgroundColor: "red", color: "white" },
+                      })
                 }
             },
         });
@@ -84,18 +95,23 @@ function Messages() {
             });
 
             if (response.ok) {
-                AntMessage.success("Message updated successfully!");
+                toast.success("Message updated successfully!", {
+                    style: { backgroundColor: "green", color: "white" },
+                  });
                 setDataSource(prevData =>
                     prevData.map(item => item.id === editingMessage.id ? { ...item, ...values } : item)
                 );
                 setIsEditModalVisible(false);
                 setEditingMessage(null);
             } else {
-                AntMessage.error("Failed to update message.");
+                toast.info("Error occured while updating message!", {
+                    style: { backgroundColor: "red", color: "white" },
+                  });
             }
         } catch (error) {
-            console.error('Update request failed:', error);
-            AntMessage.error("An error occurred while updating.");
+            toast.success("Message deleted successfully!", {
+                style: { backgroundColor: "red", color: "white" },
+              })
         }
     };
 

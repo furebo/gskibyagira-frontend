@@ -1,4 +1,6 @@
 import './index.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Table, Typography, Space, Modal, Form, Input, Button } from "antd";
 import { useEffect, useState } from "react";
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
@@ -42,8 +44,8 @@ function Users() {
     if (user) {
       // Set the form fields with the current user data
       form.setFieldsValue({
-        firstName: user.firstName,
-        lastName: user.lastName,
+        firstname: user.firstname,
+        lastname: user.lastname,
         role: user.role,
         email: user.email,
       });
@@ -69,7 +71,9 @@ function Users() {
 
       if (response.ok) {
         const message = "The user is updated successfully";
-        notify(message);
+          toast.success(message, {
+              style: { backgroundColor: "green", color: "white" },
+            });
         // Update the table data after successful update
         setDataSource((prev) =>
           prev.map(user => (user.key === editingUser.key ? { ...user, ...updatedUser } : user))

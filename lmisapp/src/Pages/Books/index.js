@@ -1,7 +1,8 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Table, Typography, Space, Modal, Form, Input, Button } from "antd";
 import { useEffect, useState } from "react";
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
-import { notify } from "../../Helpers/notify";
 import { ToastContainer } from "react-toastify";
 import './index.css';
 
@@ -27,10 +28,14 @@ function Books() {
         }));
         setDataSource(booksWithKey);
       } else {
-        console.error('No data found in the response');
+        toast.info('No data found in the response', {
+          style: { backgroundColor: "red", color: "white" },
+        });
       }
     } catch (error) {
-      console.error('Failed to fetch books:', error);
+      toast.info('Failed to fetch the book', {
+        style: { backgroundColor: "red", color: "white" },
+      });
     } finally {
       setLoading(false);
     }
@@ -59,16 +64,26 @@ function Books() {
 
           if (response.ok) {
             setDataSource((prevDataSource) => prevDataSource.filter((book) => book.key !== key));
-            notify("Book Deleted Successfully");
+            
+            toast.success("The Book Deleted Successfully", {
+              style: { backgroundColor: "green", color: "white" },
+            });
           } else {
-            notify("Failed to delete the book");
+            
+            toast.info("Failed to delete the book", {
+              style: { backgroundColor: "red", color: "white" },
+            });
           }
         } catch (error) {
-          console.error('Delete failed:', error);
+          toast.info("The Book Deletion Failed", {
+            style: { backgroundColor: "red", color: "white" },
+          });
         }
       },
       onCancel() {
-        console.log('Deletion canceled');
+        toast.info("The Book Deletion Cancelled", {
+          style: { backgroundColor: "red", color: "white" },
+        });
       },
     });
   };
@@ -111,12 +126,18 @@ function Books() {
           prev.map((book) => (book.key === editingBook.key ? { ...book, ...updatedBook } : book))
         );
         setIsModalVisible(false); // Close the modal
-        notify("Book updated successfully");
+        toast.success("The Book Updated Successfully.", {
+          style: { backgroundColor: "green", color: "white" },
+        });
       } else {
-        notify("Failed to update the book");
+        toast.info("There is an error updating the book", {
+          style: { backgroundColor: "red", color: "white" },
+        });
       }
     } catch (error) {
-      console.error('Update failed:', error);
+       toast.info("There is an error updating the book", {
+            style: { backgroundColor: "red", color: "white" },
+          });
     }
   };
 
