@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Typography, Table, Space, Modal, message as AntMessage, Input, Form, Button } from "antd";
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
@@ -117,6 +117,7 @@ function Messages() {
 
     return (
         <Space direction="vertical" className="tableMessages">
+            <ToastContainer position='top-center'/>
             <Typography.Title level={4}>Messages</Typography.Title>
             <Table
                 columns={[
