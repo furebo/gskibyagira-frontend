@@ -1,13 +1,12 @@
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import {BookOutlined,MessageOutlined,UserOutlined,CalendarOutlined} from '@ant-design/icons'
 import { useEffect, useState } from "react";
-import { getOrder, getBorrowedBooksData } from "../../API";
+import { getBorrowedBooksData } from "../../API";
 import './index.css';
 
 import {
     Chart as ChartJS,
     CategoryScale,
-    LinearScale,
     BarElement,
     Title,
     Tooltip,
@@ -162,7 +161,7 @@ function RecentBooks() {
 
             setDataSource(booksData); // Set the data for the table
         } catch (error) {
-            console.error("Error fetching recent books:", error);
+
         } finally {
             setLoading(false); // Stop loading
         }

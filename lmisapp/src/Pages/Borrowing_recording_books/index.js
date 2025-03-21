@@ -37,7 +37,6 @@ function Admin(){
          });
 
          const result = await response.json();
-         console.log(result);
 
          if (response.ok) {
             const message = 'Book information saved successfully!';
@@ -55,7 +54,6 @@ function Admin(){
             notify(message)
          }
       } catch (error) {
-         console.error('Error submitting form:', error);
          const message = 'Failed to save book information.';
          notify(message)
       }

@@ -1,16 +1,14 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, {useState,useEffect} from 'react';
-import { ToastContainer } from 'react-toastify';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FaTrash, FaPencilAlt} from 'react-icons/fa'
 import AddIcon from '@mui/icons-material/Add';
 import { Space } from 'antd';
 import CreateEventModel from '../../Compontents/ModelEvents';
-import DeleteItemModel from '../../Compontents/DeleteModel';
 import UpdateEventModel from '../../Compontents/modelUpdateEvent';
 import EventDeleteModel from '../../Compontents/DeleteModel';
-import { notify } from '../../Helpers/notify';
-
 
 function Table() {
   const[allEvents,setAllEvents] = useState([]);
@@ -82,7 +80,7 @@ const handleEventEdition = (item,index)=>{
 const[modelEventDeletionOpen,setModelEventDeletionOpen] = useState(false);
 const[eventNameState, setEventNameState] = useState("");
 const[eventToDeleteId, setEventToDeleteId] = useState(0);
-const[updatedEventsStateAfterDeletion,setUpdatedEventsStateAfterDeletion] = useState([]);
+//const[updatedEventsStateAfterDeletion,setUpdatedEventsStateAfterDeletion] = useState([]);
 const handleEventDeletion = (item,index)=>{
   setEventNameState("this event")
   setModelEventDeletionOpen(true);
@@ -102,7 +100,9 @@ async function EventToBeDeleted(eventToDeleteId){
       method: 'GET',
     });
      const message = "The event is deleted successfully"
-    notify(message)
+     toast.success(message, {
+      style: { backgroundColor: "green", color: "white" },
+    });
      // Update the state to remove the deleted item
      const json = await Updatedresponse.json(); // Extract the JSON data
      setAllEvents(json.data); // Set the actual data

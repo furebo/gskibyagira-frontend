@@ -1,5 +1,6 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, {useState,useEffect} from 'react';
-import { ToastContainer } from 'react-toastify';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FaTrash, FaPencilAlt} from 'react-icons/fa'
@@ -8,8 +9,6 @@ import { Space} from 'antd';
 import CreateStaffModel from '../../Compontents/ModelStaff';
 import UpdateStaffModel from '../../Compontents/ModelUpdateStaff';
 import StaffDeleteModel from '../../Compontents/DeleteModel';
-import { notify } from '../../Helpers/notify';
-
 
 function Table() {
   const[allStaffs,setAllStaffs] = useState([]);
@@ -31,19 +30,7 @@ const getAllStaff = async () =>{
             getAllStaff();
           }, []);
 
-//  let filteredData = allStaffs.filter((row)=>{
-//        return row.lastname.toLowerCase().includes(searchState.toLowerCase())
-        
-//      })
-
-// Calculate the number of pages
 const totalPages = Math.ceil(allStaffs.length / itemsPerPage);
-
-// Get the data for the current page
-// const currentData = allStaffs.slice(
-//   (currentPage - 1) * itemsPerPage,
-//   currentPage * itemsPerPage
-// );
 
 const handleClick = (pageNumber) => {
   setCurrentPage(pageNumber);
@@ -100,7 +87,9 @@ async function StaffToBeDeleted(staffToDeleteId){
   });
   if(response.ok){
     const message = "The staff is deleted successfully"
-    notify(message)
+    toast.success(message, {
+      style: { backgroundColor: "green", color: "white" },
+    });
     const Updatedresponse = await fetch('https://gskibyagira-backend.onrender.com/api/staffs/staffs', {
       method: 'GET',
     });
