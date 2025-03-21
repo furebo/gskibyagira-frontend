@@ -1,19 +1,18 @@
 import './index.css'
 import {useState } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Model from '../../Compontents/ModelBookBorrowing/model';
 import NestedSelect from '../../Compontents/nestedSelect';
-import { notify } from '../../Helpers/notify';
 
 function Admin(){
    const[modelOpen, setModelOpen] = useState(false);
    const[bookFormData,setBookFormData] = useState({
-      bookType:'',
-      bookLevel:'',
-      bookCode:'',
-      bookAuthor:'',
-      deliveryDate:''
+      booktype:'',
+      booklevel:'',
+      bookcode:'',
+      bookauthor:'',
+      deliverydate:''
    });
    const handleChange = (e)=>{
       const{name,value} = e.target;
@@ -40,22 +39,28 @@ function Admin(){
 
          if (response.ok) {
             const message = 'Book information saved successfully!';
-            notify(message);
+            toast.success(message, {
+               style: { backgroundColor: "green", color: "white" },
+             });
             // Clear the form after successful submission
             setBookFormData({
-               bookType: '',
-               bookLevel: '',
-               bookCode:'',
-               bookAuthor: '',
-               deliveryDate: ''
+               booktype: '',
+               booklevel: '',
+               bookcode:'',
+               bookauthor: '',
+               deliverydate: ''
             });
          } else {
             const message =`Error: ${result.message}`;
-            notify(message)
+            toast.info(message, {
+               style: { backgroundColor: "red", color: "white" },
+             });
          }
       } catch (error) {
          const message = 'Failed to save book information.';
-         notify(message)
+         toast.info(message, {
+            style: { backgroundColor: "red", color: "white" },
+          });
       }
    };
 
@@ -67,23 +72,23 @@ function Admin(){
                 <h3 className='bookInfo'>Enter Book Information in Form Bellow</h3>
                   <div>
                   <label>Delivery Date</label>
-                  <input type='date' name='deliveryDate' value={bookFormData.deliveryDate} onChange={handleChange} className='date' placeholder='Enter Year'/>
+                  <input type='date' name='deliverydate' value={bookFormData.deliverydate} onChange={handleChange} className='date' placeholder='Enter Year'/>
                   </div>
                   <div>
                   <label>Book Type</label>
-                  <input type='text' name='bookType' value={bookFormData.bookType} onChange={handleChange} className='input' placeholder='Enter Book Type'/>
+                  <input type='text' name='booktype' value={bookFormData.booktype} onChange={handleChange} className='input' placeholder='Enter Book Type'/>
                   </div>
                   <div>
                   <label>Book Code</label>
-                  <input type='text' name='bookCode' value={bookFormData.bookCode} onChange={handleChange} className='input' placeholder='Enter Book Code'/>
+                  <input type='text' name='bookcode' value={bookFormData.bookcode} onChange={handleChange} className='input' placeholder='Enter Book Code'/>
                   </div>
                   <div>
                   <label>Book Author</label>
-                  <input type='text' name='bookAuthor' value={bookFormData.bookAuthor} className='input' onChange={handleChange} placeholder='Enter Book Author'/>
+                  <input type='text' name='bookauthor' value={bookFormData.bookauthor} className='input' onChange={handleChange} placeholder='Enter Book Author'/>
                   </div>
                   <div>
                   <label>Book Level</label>
-                  <input type='text' name='bookLevel' value={bookFormData.bookLevel} onChange={handleChange} className='input' placeholder='Enter Book Level'/>
+                  <input type='text' name='booklevel' value={bookFormData.booklevel} onChange={handleChange} className='input' placeholder='Enter Book Level'/>
                   </div>
                   <button type='submit' onClick={handleSubmit} className='subBtn'>Save</button>
                </div>
