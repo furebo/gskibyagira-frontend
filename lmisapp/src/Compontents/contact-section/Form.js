@@ -37,7 +37,9 @@ function Form({ setRefresh }) {
 
       if (response.ok) {
         //notify("Message sent successfully!");
-        toast.success("Message is created successfully !");
+        toast.success("Message sent successfully!", {
+          style: { backgroundColor: "green", color: "white" },
+        });
         setTimeout(() => {
           setInputText({ firstName: "", lastName: "", telephone: "", email: "", message: "" });
           setRefresh((prev) => !prev);
