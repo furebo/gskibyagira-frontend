@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, {useState,useEffect} from 'react';
 import './index.css';
