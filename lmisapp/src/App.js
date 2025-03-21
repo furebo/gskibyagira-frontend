@@ -26,7 +26,17 @@ import ForgotPasswordModel from './Compontents/ModelForgetPassword';
 function App() {
   return (
     <div className="App">
-      <ToastContainer position="top-center" autoClose={3000} />
+      <ToastContainer 
+      position="top-center" autoClose={3000}
+      hideProgressBar={false} 
+      newestOnTop={false} 
+      closeOnClick 
+      rtl={false} 
+      pauseOnFocusLoss 
+      draggable 
+      pauseOnHover 
+      theme="colored" 
+      />
      <AuthContextProvider>
           <Routes>
                 <Route exact path="/" element = {<Homepage />} />
