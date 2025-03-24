@@ -14,6 +14,7 @@ function Messages() {
 
     // Fetch messages data
     const getMessages = async () => {
+        //https://gskibyagira-backend.onrender.com
         try {
             const response = await fetch('https://gskibyagira-backend.onrender.com/api/messages/messages', {
                 method: 'GET',
