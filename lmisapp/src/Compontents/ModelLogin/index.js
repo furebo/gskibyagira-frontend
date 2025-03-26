@@ -1,5 +1,6 @@
 import './index.css'
 import {useState,useRef} from 'react';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
 import { notify } from '../../Helpers/notify';
@@ -71,9 +72,6 @@ function Model({closeModel,onSubmit, defaultValue }) {
             if (data.token) {
                 // Save the token in localStorage
                 localStorage.setItem('token', data.token);
-
-                
-                console.log('Token stored in localStorage:', data.token);
                 const message = "You are logged in successfuly!"
                 notify(message);
                 navigate('/dashboard');
@@ -92,8 +90,37 @@ function Model({closeModel,onSubmit, defaultValue }) {
         setSignupModelOpen(true);
        // setIsMobile(false); // Close menu on click
       };
+
+      // Function to handle success google login
+      const handleGoogleSuccess = (response) => {
+        const credentialResponse = jwtDecode(response.credential); // Decode the token
+        console.log("Google User:", credentialResponse);
+
+        fetch('https://gskibyagira-backend.onrender.com/api/google-login', { // Replace with your backend endpoint
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: response.credential }),
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                notify("Google login successful!");
+                navigate('/dashboard');
+                closeModel();
+            }
+        })
+        .catch(error => console.error('Google login error:', error));
+    };
+
+    //Function to handle google login failer
+    const handleGoogleFailure = (error) => {
+        console.error("Google Login Failed:", error);
+        notify("Google login failed.");
+    };
+
     return (
-        <>
+        <GoogleOAuthProvider clientId="952983179610-j65f12ajmemu7jdeoiu8c287gkes9il6.apps.googleusercontent.com">
         <div className='login_model_container'>
             <div className='login_model'>
                 <div className='close'>
@@ -123,7 +150,11 @@ function Model({closeModel,onSubmit, defaultValue }) {
                     </div>
                     {errors && <div className='error'>{`Please include: ${errors}`}</div>}
                     <button onClick={handleSubmit} className="login_btn" type="submit">Submit</button>
-                    <button className="google-login">
+                    
+                    <button className="google-login" 
+                    onSuccess={handleGoogleSuccess} 
+                    onError={handleGoogleFailure}
+                     >
                         <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" />
                         Login with Google
                     </button>
@@ -138,7 +169,7 @@ function Model({closeModel,onSubmit, defaultValue }) {
         </div>
          {signupModelOpen && <SignupModel closeModel={() => setSignupModelOpen(false)} />}
          {forgotPasswordModelOpen && <ForgotPasswordModel forgetPasswordcloseModel={() => setForgotPasswordModelOpen(false)}/>}
-         </>
+         </ GoogleOAuthProvider>
     );
 }
 
