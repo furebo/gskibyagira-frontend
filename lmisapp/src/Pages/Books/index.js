@@ -95,11 +95,11 @@ function Books() {
     if (bookToEdit) {
       // Set the form fields with the current book data
       form.setFieldsValue({
-        bookType: bookToEdit.bookType,
-        bookLevel: bookToEdit.bookLevel,
-        bookCode: bookToEdit.bookCode,
-        bookAuthor: bookToEdit.bookAuthor,
-        deliveryDate: bookToEdit.deliveryDate,
+        booktype: bookToEdit.booktype,
+        booklevel: bookToEdit.booklevel,
+        bookcode: bookToEdit.bookcode,
+        bookauthor: bookToEdit.bookauthor,
+        deliverydate: bookToEdit.deliverydate,
       });
       setEditingBook(bookToEdit);
       setIsModalVisible(true); // Show modal
@@ -152,11 +152,11 @@ function Books() {
         <Table className="book_table"
           loading={loading}
           columns={[
-            { title: "Book Type", dataIndex: "bookType" },
-            { title: "Book Level", dataIndex: "bookLevel" },
-            { title: "Book Code", dataIndex: "bookCode" },
-            { title: "Book Author", dataIndex: "bookAuthor" },
-            { title: "Delivery Date", dataIndex: "deliveryDate" },
+            { title: "Book Type", dataIndex: "booktype" },
+            { title: "Book Level", dataIndex: "booklevel" },
+            { title: "Book Code", dataIndex: "bookcode" },
+            { title: "Book Author", dataIndex: "bookauthor" },
+            { title: "Delivery Date", dataIndex: "deliverydate" },
             {
               title: "Actions",
               render: (text, record) => (

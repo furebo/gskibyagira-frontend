@@ -40,23 +40,25 @@ function SignupModel({ closeModel, defaultValue }) {
 
         setLoading(true);
         try {
-            // https://gskibyagira-backend.onrender.com
+            
             const response = await fetch('https://gskibyagira-backend.onrender.com/api/users/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(signupFormState)
             });
-            const message = response.message;
+            
+            const data = await response.json(); // Convert response to JSON
+            
             if (response.ok) {
-                toast.success(message); // Call this after successful signup
+                notify(data.message);
                 setTimeout(() => {
                     closeModel(); // Close modal after 2 seconds
                 }, 8000);
             } else {
-                toast.info(message);
+                notify(data.message);
             }
         } catch (error) {
-            toast.info(error.message);
+            notify(error.message);
         } finally {
             setLoading(false);
         }
