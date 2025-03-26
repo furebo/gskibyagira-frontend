@@ -97,13 +97,13 @@ function Dashboard(){
                     <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
                     </>
                    )}
-                    {/* If a user is an other user*/}
-                    {(userRole === 'Teacher' || userRole === 'Other' || " ") && (
+                   
+                    {/*(userRole === 'Teacher' || userRole === 'Other' || " ") && (
                       <>
                       <Menu.Item icon={<HomeOutlined/>} key="dashboard">Dashboard</Menu.Item>
                       <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
                       </>
-                    )}
+                    ) */}
                 </Menu>
              </div>
              <div className="PageContent">
