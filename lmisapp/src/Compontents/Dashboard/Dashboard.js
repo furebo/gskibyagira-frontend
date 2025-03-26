@@ -1,4 +1,5 @@
 import AppHeader from './AppHeader';
+import {useNavigate} from 'react-router-dom';
 import './Dashboard.css';
 import AppFooter from './AppFooter';
 import Books from '../../Pages/Books';
@@ -15,6 +16,7 @@ import {jwtDecode} from 'jwt-decode';
 import {HomeOutlined,MessageOutlined,CalendarOutlined,UserOutlined,BookOutlined,MenuOutlined} from '@ant-design/icons';
 
 function Dashboard(){
+  const navigate = useNavigate();
     const [current, setCurrent] = useState('dashboard');
     const [menuOpen, setMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +34,12 @@ function Dashboard(){
     },[])
      
     const handleClick = (e) => {
-      setCurrent(e.key);
-      setMenuOpen(false); // Close menu on item click
+      if (e.key === "logout") {
+        handleLogout(); // Call logout function when clicked
+    } else {
+        setCurrent(e.key);
+        setMenuOpen(false);
+    }
     };
 
     const toggleMenu = () => {
@@ -64,6 +70,11 @@ function Dashboard(){
       }
     
     };
+
+    const handleLogout = () => {
+      localStorage.removeItem('token'); // Remove token
+      navigate('/login'); // Redirect to login page
+  };
 
     return(
     <div className='dashboard'>
@@ -97,13 +108,6 @@ function Dashboard(){
                     <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
                     </>
                    )}
-                   
-                    {/*(userRole === 'Teacher' || userRole === 'Other' || " ") && (
-                      <>
-                      <Menu.Item icon={<HomeOutlined/>} key="dashboard">Dashboard</Menu.Item>
-                      <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
-                      </>
-                    ) */}
                 </Menu>
              </div>
              <div className="PageContent">
