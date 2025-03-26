@@ -46,7 +46,6 @@ function Model({closeModel,onSubmit, defaultValue }) {
         if (!validateForm()) {
             return;
         }
-
         // Send login details to the backend
         //https://gskibyagira-backend.onrender.com
         fetch('https://gskibyagira-backend.onrender.com/api/login', {
