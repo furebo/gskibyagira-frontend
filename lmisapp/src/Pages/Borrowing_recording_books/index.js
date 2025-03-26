@@ -72,7 +72,7 @@ function Admin(){
                 <h3 className='bookInfo'>Enter Book Information in Form Bellow</h3>
                   <div>
                   <label>Delivery Date</label>
-                  <input type='date' name='deliverydate' value={bookFormData.deliverydate} onChange={handleChange} className='date' placeholder='Enter Year'/>
+                  <input type='date' name='deliverydate' value={bookFormData.deliverydate.toLocaleString()} onChange={handleChange} className='date' placeholder='Enter Year'/>
                   </div>
                   <div>
                   <label>Book Type</label>
