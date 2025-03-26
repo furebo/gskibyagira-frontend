@@ -187,19 +187,19 @@ function Books() {
         ]}
       >
         <Form form={form} layout="vertical">
-          <Form.Item name="bookType" label="Book Type" rules={[{ required: true, message: 'Please input the book type!' }]}>
+          <Form.Item name="booktype" label="Book Type" rules={[{ required: true, message: 'Please input the book type!' }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="bookLevel" label="Book Level" rules={[{ required: true, message: 'Please input the book level!' }]}>
+          <Form.Item name="booklevel" label="Book Level" rules={[{ required: true, message: 'Please input the book level!' }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="bookCode" label="Book Code" rules={[{ required: true, message: 'Please input the book code!' }]}>
+          <Form.Item name="bookcode" label="Book Code" rules={[{ required: true, message: 'Please input the book code!' }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="bookAuthor" label="Book Author" rules={[{ required: true, message: 'Please input the book author!' }]}>
+          <Form.Item name="bookauthor" label="Book Author" rules={[{ required: true, message: 'Please input the book author!' }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="deliveryDate" label="Delivery Date" rules={[{ required: true, message: 'Please input the delivery date!' }]}>
+          <Form.Item name="deliverydate" label="Delivery Date" rules={[{ required: true, message: 'Please input the delivery date!' }]}>
             <Input type="date" />
           </Form.Item>
         </Form>
