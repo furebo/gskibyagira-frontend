@@ -73,7 +73,7 @@ function Dashboard(){
 
     const handleLogout = () => {
       localStorage.removeItem('token'); // Remove token
-      navigate('/'); // Redirect to login page
+      navigate('/', { replace: true }); // Redirect and replace history
   };
 
     return(
