@@ -23,8 +23,7 @@ function Dashboard(){
     const [userRole, setUserRole] = useState("");
 
     useEffect(()=>{
-          // Get the token from localStorage (or sessionStorage)
-          
+          // Get the token from localStorage (or sessionStorage) 
     const token = localStorage.getItem('token');
     if (token) {
       // Decode the token to get user information
@@ -105,6 +104,13 @@ function Dashboard(){
                     <Menu.Item icon={<CalendarOutlined/>} key="booksborrowed">Books Borrowed</Menu.Item>
                     <Menu.Item icon={<MessageOutlined/>} key="message">Messages</Menu.Item>
                     <Menu.Item icon={<CalendarOutlined/>} key="reports">Reports</Menu.Item>
+                    <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
+                    </>
+                   )}
+                   {/**if user is logged in via google */}
+                   {userRole==='other' && (
+                    <>
+                    <Menu.Item icon={<HomeOutlined/>} key="dashboard">Dashboard</Menu.Item>
                     <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
                     </>
                    )}

@@ -4,8 +4,7 @@ import { useSliderData } from "../../slider-data";
 import "./Slider.css";
 
 const Slider = () => {
-   // Call the custom hook to get the sliderData array
-   const sliderData = useSliderData();
+  const sliderData = useSliderData();
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideLength = sliderData.length;
@@ -14,14 +13,14 @@ const Slider = () => {
   let slideInterval;
   let intervalTime = 10000;
 
+  const defaultImage = "https://res.cloudinary.com/dazayujls/image/upload/v1740143396/lmisapp/ndumanyarwanda1.jpg"; 
+
   const nextSlide = () => {
     setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
-    //console.log("next");
   };
 
   const prevSlide = () => {
     setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
-    //console.log("prev");
   };
 
   function auto() {
@@ -40,33 +39,38 @@ const Slider = () => {
   }, [currentSlide]);
 
   return (
-    <>
-  
     <div className="slider">
-      {slideLength > 0 ? sliderData.map((slide, index) => {
-        return (
+      {slideLength > 0 ? (
+        sliderData.map((slide, index) => (
           <div
             className={index === currentSlide ? "slide current" : "slide"}
             key={index}
           >
             {index === currentSlide && (
               <div>
-                <img src={slide.image_url} alt="slide" className="image" />
+                <img
+                  src={slide.image_url || defaultImage}
+                  alt="slide"
+                  className="image"
+                  onError={(e) => (e.target.src = defaultImage)} // Handle broken images
+                />
                 <div className="content">
-                  <div>
-                  <h2>{slide.heading}</h2>
-                  <p>{slide.description}</p>
+                  <h2>{slide.heading || "Default Heading"}</h2>
+                  <p>{slide.description || "Default Description"}</p>
                   <hr />
-                  {/* <button className="--btn --btn-primary">Ku birambuye kanda hano</button> */}
-                  </div>
                 </div>
               </div>
             )}
           </div>
-        );
-      }):-1}
+        ))
+      ) : (
+        // Display default slide when no data is available
+        <div className="slide current">
+          <img src={defaultImage} alt="default-slide" className="image" />
+          
+        </div>
+      )}
     </div>
-    </>
   );
 };
 

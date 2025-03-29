@@ -1,3 +1,15 @@
+.google_btn_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Targeting the Google button (may require additional CSS tweaks) */
+.google_btn_container iframe {
+  border-radius: 5px;
+  width: 100%;
+}
+
 .login_model_container{
     position: fixed;
     width: 100%;
