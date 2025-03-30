@@ -1,36 +1,119 @@
-
-.tablest {
-    display: grid;
-    width: 100%;
-    border-collapse: collapse; /* Remove space between cells */
-    grid-template-columns: repeat(6, 1fr); /* Adjust the number of columns */
-  }
-  
-   .tablest tbody {
-    display: contents; /* Allow grid children to become part of the parent grid */
-    /* color: white; */
-  }
-  
-.tablest thead{
-    display: contents;
+/* Container Styling */
+.table_container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
 }
-  
-  .tablest tr {
-    display: contents; /* Each row will fill the grid's columns */
+
+.addStaff {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.staffCreation {
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.staffCreation .addicon {
+  margin-right: 5px;
+}
+
+/* Table Styling */
+.tablest {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tablest th, .tablest td {
+  padding: 10px;
+  text-align: left;
+}
+
+.tablest th {
+  background-color: #f8f9fa;
+}
+
+.imageurl {
+  word-break: break-word;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.books_actions {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-btn, .edit-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+.edit-btn:hover {
+  color: #007bff;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-item.isactive button {
+  background-color: #007bff;
+  color: white;
+}
+
+.page-link {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.page-link:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .tablest th:nth-child(4),
+  .tablest td:nth-child(4),
+  .tablest th:nth-child(5),
+  .tablest td:nth-child(5) {
+    display: none;
   }
-  
-  .tablest th, .tablest td {
-    padding: 10px;
-    border: 1px solid #dee2e6;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
+  .staffCreation {
+    font-size: 12px;
+    padding: 6px 10px;
   }
-  
-  .tablest th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    color: black;
+
+  .delete-btn, .edit-btn {
+    font-size: 1rem;
   }
-  
+}

@@ -111,8 +111,8 @@ const staffEditedSubmission = async () =>{
 
   return (
     <>
-    <div className='addevent'>
-      <div className='eventcreation' onClick={()=>handleStaffCreation()}>
+    <div className='addStaff'>
+      <div className='staffCreation' onClick={()=>handleStaffCreation()}>
       <AddIcon className='addicon'/>
       Add Staff
       </div>
