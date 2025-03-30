@@ -38,6 +38,7 @@ function Dashboard(){
     } else {
         setCurrent(e.key);
         setMenuOpen(false);
+        setIsOpen(false); // Close the sidebar when an item is clicked
     }
     };
 
