@@ -28,7 +28,7 @@
 }
 .PageContent{
   padding-left: 12px;
-  width: 100%;
+  width: 100vh;
 }
 .SideMenu {
   width: 200px;    
@@ -43,7 +43,7 @@
 .nav{width: auto;}
 .dashboard{
   width: 100vw;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
   .hamburger-icon{
       display: block;

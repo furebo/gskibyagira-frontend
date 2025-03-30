@@ -1,5 +1,4 @@
 import AppHeader from './AppHeader';
-import {useNavigate} from 'react-router-dom';
 import './Dashboard.css';
 import AppFooter from './AppFooter';
 import Books from '../../Pages/Books';
@@ -16,14 +15,14 @@ import {jwtDecode} from 'jwt-decode';
 import {HomeOutlined,MessageOutlined,CalendarOutlined,UserOutlined,BookOutlined,MenuOutlined} from '@ant-design/icons';
 
 function Dashboard(){
-  const navigate = useNavigate();
     const [current, setCurrent] = useState('dashboard');
     const [menuOpen, setMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [userRole, setUserRole] = useState("");
 
     useEffect(()=>{
-          // Get the token from localStorage (or sessionStorage) 
+          // Get the token from localStorage (or sessionStorage)
+          
     const token = localStorage.getItem('token');
     if (token) {
       // Decode the token to get user information
@@ -33,13 +32,8 @@ function Dashboard(){
     },[])
      
     const handleClick = (e) => {
-      if (e.key === "logout") {
-        handleLogout(); // Call logout function when clicked
-    } else {
-        setCurrent(e.key);
-        setMenuOpen(false);
-        setIsOpen(false); // Close the sidebar when an item is clicked
-    }
+      setCurrent(e.key);
+      setMenuOpen(false); // Close menu on item click
     };
 
     const toggleMenu = () => {
@@ -70,11 +64,6 @@ function Dashboard(){
       }
     
     };
-
-    const handleLogout = () => {
-      localStorage.removeItem('token'); // Remove token
-      navigate('/', { replace: true }); // Redirect and replace history
-  };
 
     return(
     <div className='dashboard'>
@@ -108,13 +97,13 @@ function Dashboard(){
                     <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
                     </>
                    )}
-                   {/**if user is logged in via google */}
-                   {userRole==='other' && (
-                    <>
-                    <Menu.Item icon={<HomeOutlined/>} key="dashboard">Dashboard</Menu.Item>
-                    <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
-                    </>
-                   )}
+                    {/* If a user is an other user*/}
+                    {(userRole === 'Teacher' || userRole === 'Other' || " ") && (
+                      <>
+                      <Menu.Item icon={<HomeOutlined/>} key="dashboard">Dashboard</Menu.Item>
+                      <Menu.Item icon={<UserOutlined/>} key="logout">Logout</Menu.Item>
+                      </>
+                    )}
                 </Menu>
              </div>
              <div className="PageContent">
@@ -128,4 +117,3 @@ function Dashboard(){
     )        
 }
 export default Dashboard
-
