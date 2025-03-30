@@ -28,10 +28,11 @@
 }
 .PageContent{
   padding-left: 12px;
-  width: 100vh;
+  width: 100%;
+  overflow-x: auto;
 }
 .SideMenu {
-  width: 200px;   
+  width: 200px;    
 }
 
 .hamburger-icon{
@@ -43,7 +44,7 @@
 .nav{width: auto;}
 .dashboard{
   width: 100vw;
-  overflow-x: hidden;
+  overflow-x: hidden; 
 }
   .hamburger-icon{
       display: block;
@@ -63,6 +64,8 @@
 
   .PageContent {
       padding: 20px;
+      width: 100%;
+      overflow-x: auto;
     }
  
     .overlay {
