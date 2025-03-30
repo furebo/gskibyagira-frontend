@@ -29,6 +29,7 @@
 .PageContent{
   padding-left: 12px;
   width: 100%;
+  overflow-x: auto;
 }
 .SideMenu {
   width: 200px;    
