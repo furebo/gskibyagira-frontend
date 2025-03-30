@@ -1,6 +1,6 @@
 import AppHeader from './AppHeader';
 import {useNavigate} from 'react-router-dom';
-import './Dashboard.css';
+import './dashboard.module.css';
 import AppFooter from './AppFooter';
 import Books from '../../Pages/Books';
 import Users from '../../Pages/Users';
