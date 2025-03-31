@@ -34,6 +34,17 @@
 .SideMenu {
   width: 200px;    
 }
+.SideMenuopen {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: auto;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
 
 .hamburger-icon{
   display: none;
@@ -41,35 +52,37 @@
 
 /* Hide the side menu and show the hamburger icon on small screens */
 @media (max-width: 1185px) {
-.nav{width: auto;}
-.dashboard{
-  width: 100vw;
-  overflow-x: hidden; 
+  .hamburger-icon {
+    display: block;  /* Make it visible */
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    z-index: 1001; /* Ensure it's above other elements */
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
 }
-  .hamburger-icon{
-      display: block;
-    }
-  .SideMenu{
-    width: 200px;
+  /* Default hidden menu for small screens */
+  .SideMenu {
+    width: 0px;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    height: auto;
+    background-color: #fff;
     overflow: hidden;
-    transition: width 0.3s ease-in-out;
-    display: none;
+    transition: width 0.2s ease-in-out;
+    z-index: 1050;
   }
+  /* Show menu when isOpen is true */
   .SideMenuopen {
-      width: 200px;
-      display: block;
-    }
-    .SideMenu Menu.item{
-      display: none;
-    }
+    width: 200px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  }
 
-  .PageContent {
-      padding: 20px;
-      width: 100%;
-      overflow-x: auto;
-    }
- 
-    .overlay {
+  /* Ensure the overlay appears when the menu is open */
+  .overlay {
       display: block;
       position: fixed;
       top: 0;
@@ -79,19 +92,13 @@
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 999;
   }
-  }
 
-  .SideMenuopen {
+  /* When menu is open, show the overlay */
+   .SideMenu +.overlay {
       display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: auto;
-      background-color: #fff;
-      z-index: 1000;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    }
-    .SideMenu{
-      transition: width 0.3s ease-in-out;
-    }
+  } 
+
+}
+
+
+  
