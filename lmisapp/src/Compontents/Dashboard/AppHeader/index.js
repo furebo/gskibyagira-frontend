@@ -2,9 +2,11 @@ import { Space, Typography, Badge } from "antd";
 import { MailOutlined, BellFilled } from "@ant-design/icons";
 import './index.css';
 import { useEffect, useState } from "react";
+import { useNavigate} from 'react-router-dom';
 
 function AppHeader({ humbMenu }) {
     const[messages, setMessages] = useState([]);
+    let messages_count = messages.length
   // Fetch messages from the backend
     useEffect(() => {
       const fetchMessages = async () => {
@@ -26,6 +28,12 @@ function AppHeader({ humbMenu }) {
       fetchMessages();
     }, []);
 
+    let navigate = useNavigate();
+
+    const handleClick = () =>{
+        navigate('/');
+    }
+
     return (
         <div className="AppHeader">
             {humbMenu}  {/* This will render the hamburger button */}
@@ -37,10 +45,10 @@ function AppHeader({ humbMenu }) {
             </Typography.Title>
             </marquee>
             <Space>
-                <Badge count={20} dot>
+                <Badge count={messages.length} dot className="notification" onClick={handleClick}>
                     <MailOutlined style={{ fontSize: 24, color: "white" }} />
                 </Badge>
-                <Badge count={messages.lenght}>
+                <Badge count={messages_count} className="notification" onClick={handleClick}>
                     <BellFilled style={{ fontSize: 24, color: "white" }} />
                 </Badge>
             </Space>
