@@ -35,9 +35,9 @@ function Homepage (){
               <div id="values">
               <Values className="intro-section" />
               </div>
-              <section className='contactsect' id="contact-section">
+              <div className='contactsect' id="contact-section">
               <ContactSection className="contact-section"/>
-              </section>
+              </div>
               <DisclaimerSection/>
               <FooterSection />
              </div>
