@@ -7,19 +7,20 @@ import { jwtDecode } from 'jwt-decode';
 import { notify } from '../../Helpers/notify';
 import SignupModel from "../ModelSignup";
 import ForgotPasswordModel from '../ModelForgetPassword';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 function Model({ closeModel, onSubmit, defaultValue }) {
     const [signupModelOpen, setSignupModelOpen] = useState(false);
     const [forgotPasswordModelOpen, setForgotPasswordModelOpen] = useState(false);
     const navigate = useNavigate();
-    
     const [LoginFormState, setLoginFormState] = useState(defaultValue || {
         Email: '',
         Password: '',
         Role: '',
     });
-
     const [errors, setErrors] = useState("");
+    const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
     const handleChange = (e) => {
         setLoginFormState({
@@ -27,7 +28,9 @@ function Model({ closeModel, onSubmit, defaultValue }) {
             [e.target.name]: e.target.value,
         });
     };
-
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!LoginFormState.Email || !LoginFormState.Password ) {
@@ -86,7 +89,6 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         console.error("Google Login Failed:", error);
         notify("Google login failed.");
     };
-
     return (
         <GoogleOAuthProvider clientId="223545888715-9em22gouqkrdsamedaiqr14qj4ma0lo1.apps.googleusercontent.com">
             <div className='login_model_container'>
@@ -100,9 +102,19 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                             <label htmlFor="email">Enter Email</label>
                             <input name='Email' type="email" value={LoginFormState.Email} onChange={handleChange} />
                         </div>
-                        <div className="login_form_group">
-                            <label htmlFor="password">Enter Password</label>
-                            <input name='Password' type="password" value={LoginFormState.Password} onChange={handleChange} />
+                        <div className="login_form_group password-input">
+                        <label htmlFor="password">Enter Password</label>
+                        <div className="password-container">
+                            <input 
+                                name='Password' 
+                                type={showPassword ? "text" : "password"} 
+                                value={LoginFormState.Password} 
+                                onChange={handleChange} 
+                            />
+                            <IconButton onClick={togglePasswordVisibility} className="password-toggle">
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                        </div>
                         </div>
                         <div className="login_form_group">
                             <label htmlFor="role">Choose your role</label>

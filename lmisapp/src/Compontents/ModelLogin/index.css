@@ -121,3 +121,27 @@
   .sugnup_button:hover{
      cursor: pointer;
   }
+  .password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    flex: 1;
+    padding-right: 20px;
+    padding: 0.3rem;
+    width:100%
+}
+
+.password-toggle {
+    position: absolute;
+    
+    cursor: pointer;
+}
+.login_form_group .password-input
+.login_form_group select {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
