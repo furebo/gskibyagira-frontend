@@ -25,7 +25,7 @@ function Admin(){
    // Handle form submission 
    const handleSubmit = async (e) => {
       e.preventDefault();  // Prevent the default form submission behavior
-      
+      setIsLoading(true);
       try {
 
          const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/books', {
@@ -93,7 +93,7 @@ function Admin(){
                   <label>Book Level</label>
                   <input type='text' name='booklevel' value={bookFormData.booklevel} onChange={handleChange} className='input' placeholder='Enter Book Level'/>
                   </div>
-                  <button type='submit' disabled={isLoading} onClick={handleSubmit} className='subBtn'>{isLoading? "submitting" : "Save"}</button>
+                  <button type='submit' disabled={isLoading} onClick={handleSubmit} className='subBtn'>{isLoading? "submitting..." : "Save"}</button>
                </div>
             </div> 
             {modelOpen && <Model closeModel = {()=>setModelOpen(false)} />}
