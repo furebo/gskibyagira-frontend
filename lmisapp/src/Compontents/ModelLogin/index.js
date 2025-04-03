@@ -130,7 +130,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                             </select>
                         </div>
                         {errors && <div className='error'>{errors}</div>}
-                        <button disabled={loading} onClick={handleSubmit} className="login_btn" type="submit">{loding? "Loading ..." : "Sumbit"}</button>
+                        <button disabled={loading} onClick={handleSubmit} className="login_btn" type="submit">{loading? "Loading ..." : "Sumbit"}</button>
                         
                         {/* Google Login Button */}
                         <div className="google_btn_container">
