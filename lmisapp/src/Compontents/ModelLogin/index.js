@@ -21,7 +21,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
     });
     const [errors, setErrors] = useState("");
     const [showPassword, setShowPassword] = useState(false); // State for password visibility
-
+    const [loading, setIsLoading] = useState(false);
     const handleChange = (e) => {
         setLoginFormState({
             ...LoginFormState,
@@ -31,13 +31,14 @@ function Model({ closeModel, onSubmit, defaultValue }) {
     const togglePasswordVisibility = () => {
         setShowPassword((prev) => !prev);
     };
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!LoginFormState.Email || !LoginFormState.Password ) {
             setErrors("All fields are required.");
             return;
         }
-
+        setIsLoading(true);
         fetch('https://gskibyagira-backend.onrender.com/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -58,9 +59,12 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                 throw new Error('Token not found');
             }
         })
-        .catch(error => {
+        .catch((error) =>{
             setErrors('Invalid login credentials');
             console.error('Error:', error);
+        })
+        .finally(() =>{
+            setIsLoading(false);
         });
     };
 
@@ -126,7 +130,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                             </select>
                         </div>
                         {errors && <div className='error'>{errors}</div>}
-                        <button onClick={handleSubmit} className="login_btn" type="submit">Submit</button>
+                        <button disabled={loading} onClick={handleSubmit} className="login_btn" type="submit">{loding? "Loading ..." : "Sumbit"}</button>
                         
                         {/* Google Login Button */}
                         <div className="google_btn_container">
