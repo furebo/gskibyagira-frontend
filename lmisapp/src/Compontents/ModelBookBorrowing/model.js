@@ -116,7 +116,7 @@ function Model({closeModel,onSubmit,defaultValue}){
         
                     {errors && <div className='error'>{`Please include: ${errors}`}</div>}
 
-                    <button className="books_btn" type="sumbit">Sumbit</button>
+                    <button className="books_btn" type="sumbit">Save</button>
                   </form>
              </div>
              < ToastContainer position="top-center" />

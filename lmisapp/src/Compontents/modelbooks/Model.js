@@ -5,10 +5,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import { notify } from '../../Helpers/notify';
 
 function Model({closeModel,defaultValue}){
+    const [loading, setLoading] = useState(false);
     const[formState,setFormState] = useState(defaultValue || {
         Book_Type:'',
         Book_Level:'',
-        Book_Number:'',
+        Book_Number:'', 
         Student_Name:'',
         Student_Class:'',
         Borrowing_Date:'',
@@ -53,13 +54,12 @@ function Model({closeModel,defaultValue}){
         if(!validateForm()) {
             return
         }
+        setLoading(true);
         //let send data to the database
         // https://gskibyagira-backend.onrender.com
         try {
             const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
                 method: 'POST',
-                // mode: 'cors', // Ensure cross-origin requests are allowed
-                // credentials: 'include', // Include cookies if needed
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -86,6 +86,8 @@ function Model({closeModel,defaultValue}){
         } catch (error) {
             console.error("Error saving data:", error);
             // Handle the error appropriately (e.g., show an error message)
+        }finally {
+            setLoading(false); // Re-enable button after request finishes
         }
     }
     return (
@@ -144,7 +146,7 @@ function Model({closeModel,defaultValue}){
         
                     {errors && <div className='error'>{`Please include: ${errors}`}</div>}
 
-                    <button onClick={handleSubmit} className="books_btn" type="sumbit">Sumbit</button>
+                    <button disabled={loading} onClick={handleSubmit} className="books_btn" type="sumbit">{loading ? "Sumbitting..." : "Sumbit"}</button>
                   </form>
                   
              </div>
