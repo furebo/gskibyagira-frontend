@@ -3,6 +3,8 @@ import { useState } from "react";
 import { notify } from '../../Helpers/notify';
 import CloseIcon from '@mui/icons-material/Close';
 import { ToastContainer, toast } from 'react-toastify';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 function SignupModel({ closeModel, defaultValue }) {
     const [loading, setLoading] = useState(false);
@@ -15,13 +17,22 @@ function SignupModel({ closeModel, defaultValue }) {
     });
 
     const [errors, setErrors] = useState("");
+    const [showPassword, setShowPassword] = useState(false); // State for password visibility
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for password visibility
 
     function handleChange(e) {
         setSignupFormState({
             ...signupFormState,
             [e.target.name]: e.target.value
         });
-    }
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword((prev) => !prev);
+    };
 
     const validateForm = () => {
         const { firstName, lastName, email, password, confirmPassword } = signupFormState;
@@ -109,11 +120,21 @@ function SignupModel({ closeModel, defaultValue }) {
                         </div>
                         <div className='signup-form-group'>
                             <label htmlFor='Password'>Password</label>
-                            <input name='password' type='password' value={signupFormState.password} onChange={handleChange} />
+                            <div className="password-toogle">
+                            <input name='password' type={showPassword ? "text" : "password"}  value={signupFormState.password} onChange={handleChange} />
+                             <IconButton onClick={togglePasswordVisibility} className="password-toggle">
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton> 
+                            </div>
                         </div>
                         <div className='signup-form-group'>
                             <label htmlFor='Confirm_Password'>Confirm Password</label>
-                            <input name='confirmPassword' type='password' value={signupFormState.confirmPassword} onChange={handleChange} />
+                            <div className='password-toogle'>
+                            <input name='confirmPassword' type={showConfirmPassword ? "text" : "password"} value={signupFormState.confirmPassword} onChange={handleChange} />
+                            <IconButton onClick={toggleConfirmPasswordVisibility} className="icon-button">
+                                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                            </div>
                         </div>
                         {errors && <div className='error'>{`Error: ${errors}`}</div>}
                         <button onClick={handleSubmit} className="signup_btn" type='submit' disabled={loading}>
