@@ -7,6 +7,7 @@ import NestedSelect from '../../Compontents/nestedSelect';
 
 function Admin(){
    const[modelOpen, setModelOpen] = useState(false);
+   const[isLoading, setIsLoading] = useState(false);
    const[bookFormData,setBookFormData] = useState({
       booktype:'',
       booklevel:'',
@@ -61,6 +62,8 @@ function Admin(){
          toast.info(message, {
             style: { backgroundColor: "red", color: "white" },
           });
+      } finally{
+         setIsLoading(false)
       }
    };
 
@@ -90,7 +93,7 @@ function Admin(){
                   <label>Book Level</label>
                   <input type='text' name='booklevel' value={bookFormData.booklevel} onChange={handleChange} className='input' placeholder='Enter Book Level'/>
                   </div>
-                  <button type='submit' onClick={handleSubmit} className='subBtn'>Save</button>
+                  <button type='submit' disabled={isLoading} onClick={handleSubmit} className='subBtn'>{isLoading? "submitting" : "Save"}</button>
                </div>
             </div> 
             {modelOpen && <Model closeModel = {()=>setModelOpen(false)} />}
