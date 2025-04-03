@@ -69,7 +69,7 @@ function Admin(){
             <div className='container'>
                <NestedSelect />
                <div className='right-panel'>
-                <h3 className='bookInfo'>Enter Book Information in Form Bellow</h3>
+                <h3 className='bookInfo'>Enter Book Information in Form Below</h3>
                   <div>
                   <label>Delivery Date</label>
                   <input type='date' name='deliverydate' value={bookFormData.deliverydate.toLocaleString()} onChange={handleChange} className='date' placeholder='Enter Year'/>
