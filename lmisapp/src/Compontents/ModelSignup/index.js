@@ -2,7 +2,7 @@ import './index.css';
 import { useState } from "react";
 import { notify } from '../../Helpers/notify';
 import CloseIcon from '@mui/icons-material/Close';
-import {ToastContainer,toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 function SignupModel({ closeModel, defaultValue }) {
     const [loading, setLoading] = useState(false);
@@ -10,8 +10,10 @@ function SignupModel({ closeModel, defaultValue }) {
         firstName: '',
         lastName: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: '' // Add confirm password field
     });
+
     const [errors, setErrors] = useState("");
 
     function handleChange(e) {
@@ -20,18 +22,26 @@ function SignupModel({ closeModel, defaultValue }) {
             [e.target.name]: e.target.value
         });
     }
+
     const validateForm = () => {
-        if (signupFormState.firstName && signupFormState.lastName && signupFormState.email && signupFormState.password) {
-            setErrors("");
-            return true;
-        } else {
-            let arrOfEmptyFields = [];
+        const { firstName, lastName, email, password, confirmPassword } = signupFormState;
+        
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+            let emptyFields = [];
             for (const [key, value] of Object.entries(signupFormState)) {
-                if (!value) arrOfEmptyFields.push(key);
+                if (!value) emptyFields.push(key);
             }
-            setErrors(arrOfEmptyFields.join(", "));
+            setErrors(emptyFields.join(", "));
             return false;
         }
+
+        if (password !== confirmPassword) {
+            setErrors("Passwords do not match");
+            return false;
+        }
+
+        setErrors("");
+        return true;
     };
 
     async function handleSubmit(e) {
@@ -40,19 +50,23 @@ function SignupModel({ closeModel, defaultValue }) {
 
         setLoading(true);
         try {
-            
             const response = await fetch('https://gskibyagira-backend.onrender.com/api/users/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(signupFormState)
+                body: JSON.stringify({
+                    firstName: signupFormState.firstName,
+                    lastName: signupFormState.lastName,
+                    email: signupFormState.email,
+                    password: signupFormState.password,
+                }) // Do not send confirmPassword to the server
             });
-            
-            const data = await response.json(); // Convert response to JSON
-            
+
+            const data = await response.json();
+
             if (response.ok) {
                 notify(data.message);
                 setTimeout(() => {
-                    closeModel(); // Close modal after 2 seconds
+                    closeModel();
                 }, 8000);
             } else {
                 notify(data.message);
@@ -66,44 +80,48 @@ function SignupModel({ closeModel, defaultValue }) {
 
     return (
         <>
-        <ToastContainer/>
-        <div 
-            className='signup-model-container' 
-            onClick={(e) => {
-                if (e.target.classList.contains('signup-model-container')) {
-                    if (typeof closeModel === "function") closeModel();
-                }
-            }}
-        >
-            <div className='signup-model'>
-                <div className='close'>
-                    <CloseIcon className='closeIcon' onClick={() => { if (typeof closeModel === "function") closeModel(); }} />
+            <ToastContainer />
+            <div 
+                className='signup-model-container' 
+                onClick={(e) => {
+                    if (e.target.classList.contains('signup-model-container')) {
+                        if (typeof closeModel === "function") closeModel();
+                    }
+                }}
+            >
+                <div className='signup-model'>
+                    <div className='close'>
+                        <CloseIcon className='closeIcon' onClick={() => { if (typeof closeModel === "function") closeModel(); }} />
+                    </div>
+                    <form>
+                        <h2>Signup</h2>
+                        <div className='signup-form-group'>
+                            <label htmlFor='First_Name'>First Name</label>
+                            <input name='firstName' type="text" value={signupFormState.firstName} onChange={handleChange} />
+                        </div>
+                        <div className='signup-form-group'>
+                            <label htmlFor='Second_Name'>Last Name</label>
+                            <input name='lastName' type="text" value={signupFormState.lastName} onChange={handleChange} />
+                        </div>
+                        <div className='signup-form-group'>
+                            <label htmlFor='Email'>Email</label>
+                            <input name='email' type="text" value={signupFormState.email} onChange={handleChange} />
+                        </div>
+                        <div className='signup-form-group'>
+                            <label htmlFor='Password'>Password</label>
+                            <input name='password' type='password' value={signupFormState.password} onChange={handleChange} />
+                        </div>
+                        <div className='signup-form-group'>
+                            <label htmlFor='Confirm_Password'>Confirm Password</label>
+                            <input name='confirmPassword' type='password' value={signupFormState.confirmPassword} onChange={handleChange} />
+                        </div>
+                        {errors && <div className='error'>{`Error: ${errors}`}</div>}
+                        <button onClick={handleSubmit} className="signup_btn" type='submit' disabled={loading}>
+                            {loading ? "Saving..." : "Save"}
+                        </button>
+                    </form>
                 </div>
-                <form>
-                    <h2>Signup</h2>
-                    <div className='signup-form-group'>
-                        <label htmlFor='First_Name'>First Name</label>
-                        <input name='firstName' type="text" value={signupFormState.firstName} onChange={handleChange} />
-                    </div>
-                    <div className='signup-form-group'>
-                        <label htmlFor='Second_Name'>Last Name</label>
-                        <input name='lastName' type="text" value={signupFormState.lastName} onChange={handleChange} />
-                    </div>
-                    <div className='signup-form-group'>
-                        <label htmlFor='Email'>Email</label>
-                        <input name='email' type="text" value={signupFormState.email} onChange={handleChange} />
-                    </div>
-                    <div className='signup-form-group'>
-                        <label htmlFor='Password'>Password</label>
-                        <input name='password' type='password' value={signupFormState.password} onChange={handleChange} />
-                    </div>
-                    {errors && <div className='error'>{`Please include: ${errors}`}</div>}
-                    <button onClick={handleSubmit} className="signup_btn" type='submit' disabled={loading}>
-                        {loading ? "Saving..." : "Save"}
-                    </button>
-                </form>
             </div>
-        </div>
         </>
     );
 }
