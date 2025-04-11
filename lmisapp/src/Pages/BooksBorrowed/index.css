@@ -10,6 +10,22 @@
   overflow: hidden;
   padding: 5px 10px;
 }
+.search_accademic_year{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.select-accademic-year{
+  display: flex;
+  flex-direction: column;
+}
+.select-accademic-year select{
+  border: 1px solid blue;
+  padding: 10px 10px;
+  display: flex;
+  border-radius: 5px;
+}
 
 .search-container input {
   width: 100%;
