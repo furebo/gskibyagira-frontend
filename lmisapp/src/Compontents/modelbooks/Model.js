@@ -58,7 +58,7 @@ function Model({closeModel,defaultValue}){
         //let send data to the database
         // https://gskibyagira-backend.onrender.com
         try {
-            const response = await fetch('http://localhost:5000/api/books/borrowbook', {
+            const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

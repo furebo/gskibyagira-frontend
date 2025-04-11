@@ -28,7 +28,7 @@ function Table() {
   const itemsPerPage = 8;
 
   async function getBorrowedBooks() {
-    const response = await fetch('http://localhost:5000/api/books/borrowbook', {
+    const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
       method: 'GET',
     });
     const json = await response.json();
@@ -122,7 +122,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
 
   // 2. Send PUT request to backend to update the status
   try {
-    const response = await fetch(`http://localhost:5000/api/books/borrowbook/${bookId}`, {
+    const response = await fetch(`https://gskibyagira-backend.onrender.com/api/books/borrowbook/${bookId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
