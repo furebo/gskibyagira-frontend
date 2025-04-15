@@ -133,7 +133,45 @@ function Model({closeModel,defaultValue}){
                     </div>
                     <div className="books_form_group">
                         <label htmlFor="studentclass">Student Class</label>
-                        <input name='Student_Class' type="text" value={formState.Student_Class} onChange={handleChange}/>
+                        <select name='Student_Class' type="text" value={formState.Student_Class} onChange={handleChange}>
+                            <option>N1</option>
+                            <option>N2</option>
+                            <option>N3</option>
+                            <option>P1A</option>
+                            <option>P1B</option>
+                            <option>P1C</option>
+                            <option>P1D</option>
+                            <option>P2A</option>
+                            <option>P2B</option>
+                            <option>P2C</option>
+                            <option>P3A</option>
+                            <option>P3B</option>
+                            <option>P3C</option>
+                            <option>P4A</option>
+                            <option>P4B</option>
+                            <option>P4C</option>
+                            <option>P5A</option>
+                            <option>P5B</option>
+                            <option>P6A</option>
+                            <option>P6B</option>
+                            <option>S1A</option>
+                            <option>S1B</option>
+                            <option>S1C</option>
+                            <option>S1D</option>
+                            <option>S2A</option>
+                            <option>S2B</option>
+                            <option>S2C</option>
+                            <option>S3A</option>
+                            <option>S3B</option>
+                            <option>S4LFK</option>
+                            <option>S4MCB</option>
+                            <option>S5LFK</option>
+                            <option>S5MCB</option>
+                            <option>S6LFK</option> 
+                            <option>S6MCB</option> 
+                            <option>Class Teacher</option>
+                            <option>Other</option>
+                        </select>
                     </div>
                     <div className="books_form_group">
                         <label htmlFor="borowingdate">Borrowing Date</label>
