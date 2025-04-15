@@ -28,7 +28,7 @@ function Table() {
   const itemsPerPage = 8;
 
   async function getBorrowedBooks() {
-    const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
+    const response = await fetch('http://localhost:5000/api/books/borrowbook', {
       method: 'GET',
     });
     const json = await response.json();
@@ -42,12 +42,16 @@ function Table() {
   // Function to filter data based on selected academic year
   function filterByAcademicYear(data) {
     const [startYear, endYear] = selectedYear.split(' - ').map(year => parseInt(year));
+  
+    const academicYearStart = new Date(`${startYear}-09-01`); // September 1st, start year
+    const academicYearEnd = new Date(`${endYear}-07-31T23:59:59`); // July 31st, end year (end of day)
+  
     return data.filter(item => {
       const borrowDate = new Date(item.Borrowing_Date);
-      const borrowYear = borrowDate.getFullYear();
-      return borrowYear === startYear || borrowYear === endYear;
+      return borrowDate >= academicYearStart && borrowDate <= academicYearEnd;
     });
   }
+  
 
   let filteredData = responseData.filter((row) =>
     row.Student_Name.toLowerCase().includes(searchState.toLowerCase())
@@ -205,6 +209,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
           </div>
         </div>
       </div>
+      <hr></hr>
       <div className='container mt-5 table_container'>
         <Space direction='vertical' className='Space'>
           <table className='table table-striped table-bordered'>
@@ -214,7 +219,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
                 <th>Book Type</th>
                 <th>Book Number</th>
                 <th>Book Level</th>
-                <th>Stud Name</th>
+                <th>Borrower Name</th>
                 <th>Class</th>
                 <th>Date</th>
                 <th>Status</th>
