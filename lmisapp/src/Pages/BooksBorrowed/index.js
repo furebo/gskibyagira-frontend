@@ -31,7 +31,7 @@ function Table() {
   async function getBorrowedBooks() {
     setLoading(true); // Start loading
     try {
-      const response = await fetch('http://localhost:5000/api/books/borrowbook', {
+      const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
         method: 'GET',
       });
       const json = await response.json();
@@ -135,7 +135,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
 
   // 2. Send PUT request to backend to update the status
   try {
-    const response = await fetch(`http://localhost:5000/api/books/borrowbook/${bookId}`, {
+    const response = await fetch(`https://gskibyagira-backend.onrender.com/api/books/borrowbook/${bookId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -171,12 +171,12 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
 
 
   async function bookToSubmit(itemToBeDeletedId) {
-    const response = await fetch(`http://localhost:5000/api/books/borrowbook/${itemToBeDeletedId}`, {
+    const response = await fetch(`https://gskibyagira-backend.onrender.com/api/books/borrowbook/${itemToBeDeletedId}`, {
       method: 'DELETE',
     });
     if (response.ok) {
       const message = "The book is returned back successfully by " + studentNameState;
-      const Updatedresponse = await fetch('http://localhost:5000/api/books/borrowbook', {
+      const Updatedresponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
         method: 'GET',
       });
       toast.success(message, { style: { backgroundColor: "green", color: "white" } });
@@ -187,7 +187,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
   }
 
   const bookEditedSubmission = async () => {
-    let updatedResponse = await fetch('http://localhost:5000/api/books/borrowbook', {
+    let updatedResponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
       method: 'GET',
     });
     let json = await updatedResponse.json();
