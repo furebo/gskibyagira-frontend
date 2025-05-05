@@ -1,0 +1,156 @@
+
+    .content_reports {
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+      
+      .report_type h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+      
+      .section_and_display {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+      
+      /* Selections area */
+      .selection {
+        flex: 1;
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      
+      .selection h2 {
+        margin-bottom: 20px;
+      }
+      
+      .report_all {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .report_selection, .class_selection, .year_selection{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        }
+      
+      .report_selection h3, .class_selection h3, .year_selection h3 {
+        margin-bottom: 5px;
+        font-size: 1rem;
+      }
+        select {
+        padding: 8px;
+        font-size: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      .periodic_report{
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        background-color: #f4f4f4;
+        padding-top: 10px;
+        padding-left: 10px;
+      }
+      
+      /* Display area */
+      .export-btn {
+        margin: 10px 0;
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .display {
+        flex: 2;
+        background-color: #f1f1f1; /* light silver */
+        border-radius: 8px;
+        padding: 30px;
+        margin: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #555;
+        font-size: 1.2rem;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+      }
+      
+      .cloud-icon {
+        font-size: 60px;
+        color: #888;
+        margin-bottom: 15px;
+        animation: pulse 2s infinite;
+      }
+      
+      /* .cloud-icon {
+        font-size: 60px;
+        color: #888;
+        margin-bottom: 15px;
+      } */
+      .generate-btn {
+        margin-top: 10px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        background-color: #0b3b58; /* green */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      .generate-btn:hover {
+        background-color: #34689b;
+      }
+      
+      .generate-btn:active {
+        transform: scale(0.97);
+      }
+      
+      
+      /* Responsive layout */
+      @media (max-width: 768px) {
+        .section_and_display {
+          flex-direction: column;
+        }
+      
+        .report_type h1 {
+          font-size: 1.5rem;
+        }
+      
+        .selection h2, .report_selection h3, .class_selection h3 {
+          font-size: 1rem;
+        }
+      
+        select {
+          font-size: 0.95rem;
+        }
+        .generate-btn {
+          width: 100%;
+        }
+      }
+      

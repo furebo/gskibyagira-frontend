@@ -27,7 +27,7 @@ function Model({closeModel,defaultValue}){
    
     //let validate the form's inputs fields 
     const validateForm = ()=>{
-        if(formState.Book_Type && formState.Book_Level && formState.Book_Number && formState.Student_Class && formState.Student_Name && formState.Borrowing_Date){
+        if(formState.Book_Type && formState.Book_Level && formState.Book_Number && formState.Student_Class && formState.Student_Name && formState.Borrowing_Date && formState.Return_Date){
             //if all fields are filled we set errors to be empty
             setErrors("");
             return true
@@ -70,7 +70,8 @@ function Model({closeModel,defaultValue}){
                     Book_Number: formState.Book_Number,
                     Student_Name: formState.Student_Name,
                     Student_Class:formState.Student_Class, 
-                    Borrowing_Date: formState.Borrowing_Date
+                    Borrowing_Date: formState.Borrowing_Date,
+                    Return_Date:formState.Return_Date
                 })
             });
             
@@ -90,6 +91,14 @@ function Model({closeModel,defaultValue}){
             setLoading(false); // Re-enable button after request finishes
         }
     }
+     //Function to format the date
+     function formatDateForInput(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
     return (
         <div className='books_model_container' onClick={(e)=>{
             if(e.target.className==='books_model_container'){
@@ -175,11 +184,11 @@ function Model({closeModel,defaultValue}){
                     </div>
                     <div className="books_form_group">
                         <label htmlFor="borowingdate">Borrowing Date</label>
-                        <input name='Borrowing_Date' type="date" value={formState.Borrowing_Date} onChange={handleChange} />
+                        <input name='Borrowing_Date' type="date" value={formatDateForInput(formState.Borrowing_Date)} onChange={handleChange} />
                     </div>
                     <div className="books_form_group">
                         <label htmlFor="returndate">Return Date</label>
-                        <input name='return_Date' type="date" value={formState.Return_Date} onChange={handleChange} />
+                        <input name='Return_Date' type="date" value={formatDateForInput(formState.Return_Date)} onChange={handleChange} />
                     </div>
         
                     {errors && <div className='error'>{`Please include: ${errors}`}</div>}

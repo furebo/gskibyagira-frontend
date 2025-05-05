@@ -77,7 +77,8 @@ function AdminDashboard(){
        },[])
     return(
         <Space size={20} direction="vertical">
-        <Typography.Title level={4}>Dashboard</Typography.Title>
+        <Typography.Title level={2}>Dashboard</Typography.Title>
+        <hr></hr>
         <Space direction="horizontal">
         <div className="dashboardCard">
             <div className="dashboardCard_innerdiv">

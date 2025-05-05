@@ -11,7 +11,10 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
         Book_Number:'',
         Student_Name:'',
         Student_Class:'',
-        Borrowing_Date:''
+        Borrowing_Date:'',
+        Return_Date:'',
+        Status:''
+
     })
 
     function handleChange(e){
@@ -25,7 +28,7 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
    
     //let validate the form's inputs fields 
     const validateForm = ()=>{
-        if(formState.Book_Type && formState.Book_Level && formState.Book_Number && formState.Student_Class && formState.Student_Name && formState.Borrowing_Date){
+        if(formState.Book_Type && formState.Book_Level && formState.Book_Number && formState.Student_Class && formState.Student_Name && formState.Borrowing_Date && formState.Return_Date){
             //if all fields are filled we set errors to be empty
             setErrors("");
             return true
@@ -61,7 +64,7 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
                 },
                 body: JSON.stringify(formState)
             });
-
+              console.log(response);
             if (response.ok) {
                 let updatedResponse = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook',{
                     method:'GET'
@@ -75,10 +78,21 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
             throw new Error('Failed to update data');
            
         } catch (error) {
+            console.log("This is the error updating the book: ",error)
             console.error("Error updating data:", error);
             // Handle the error appropriately (e.g., show an error message)
         }
     }
+
+    //Function to format the date
+    function formatDateForInput(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+      
 
     return (
         <div className='books_model_container' onClick={(e)=>{
@@ -110,7 +124,6 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
                             <option>S4</option>
                             <option>S5</option>
                             <option>S6</option>
-
                         </select>
                     </div>
                     <div className="books_form_group">
@@ -127,7 +140,11 @@ function ModelUpdateBook({closeModel, newData ,itemId, defaultValue}){
                     </div>
                     <div className="books_form_group">
                         <label htmlFor="borowingdate">Borrowing Date</label>
-                        <input name='Borrowing_Date' type="text" value={formState.Borrowing_Date} onChange={handleChange} />
+                        <input name='Borrowing_Date' type="date" value={formatDateForInput(formState.Borrowing_Date)} onChange={handleChange} />
+                    </div>
+                    <div className="books_form_group">
+                        <label htmlFor="returndate">Submission Date</label>
+                        <input name='Return_Date' type="date" value={formatDateForInput(formState.Return_Date)} onChange={handleChange} />
                     </div>
         
                     {errors && <div className='error'>{`Please include: ${errors}`}</div>}
