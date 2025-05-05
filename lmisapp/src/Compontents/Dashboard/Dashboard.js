@@ -10,6 +10,7 @@ import BookBorrowed from '../../Pages/BooksBorrowed';
 import BorrowingRecordingBooks from '../../Pages/Borrowing_recording_books';
 import Event from '../../Pages/Events';
 import Staff from '../../Pages/Staff';
+import Reports from '../../Pages/Reports';
 import { Menu, Button } from 'antd';
 import { useState, useEffect, useMemo } from 'react';
 import { jwtDecode } from 'jwt-decode';
@@ -76,6 +77,8 @@ function Dashboard() {
         return <Event />;
       case 'staff':
         return <Staff />;
+      case 'report':
+        return <Reports />
       default:
         return <AdminDashboard />;
     }
@@ -98,7 +101,7 @@ function Dashboard() {
         { key: "borrowing_recording", label: "Books Records", icon: <BookOutlined /> },
         { key: "booksborrowed", label: "Books Borrowed", icon: <CalendarOutlined /> },
         { key: "staff", label: "Staff", icon: <BookOutlined /> },
-        { key: "reports", label: "Reports", icon: <CalendarOutlined /> },
+        { key: "report", label: "Reports", icon: <CalendarOutlined /> },
       ];
     } else if (userRole === "staff") {
       return [

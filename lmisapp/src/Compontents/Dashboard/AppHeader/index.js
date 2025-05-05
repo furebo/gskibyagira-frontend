@@ -41,7 +41,7 @@ function AppHeader({ humbMenu }) {
             <Typography.Title 
                 className="typographeader" 
                 style={{ marginTop: 20, color: 'white', fontFamily: 'sans-serif', fontSize: '2rem' }}>
-                  Welcome To BMIS GS Kibyagira - Buruhukiro
+                  Welcome To Books Management Information System (BMIS) GS Kibyagira - Buruhukiro
             </Typography.Title>
             </marquee>
             <Space>

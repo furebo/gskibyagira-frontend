@@ -15,7 +15,7 @@ function Table() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchState, setSearchState] = useState('');
   const [responseData, setResponseData] = useState([]);
-  const [bookToEditIndex, setBookToEditIndex] = useState(null);
+  const [bookToEditData, setBookToEditData] = useState(null);
   const [bookToEditId, setBookToEditId] = useState("");
   const [itemBookCheckingId, setItemBookCheckingId] = useState('');
   const [ModelUpdateBookOpen, setModelUpdateBookOpen] = useState(false);
@@ -101,8 +101,8 @@ const handleCheckboxChange = (bookId, studentName) => {
   setIsCurrentlyChecked(!!selectedBooks[bookId]); // save current status
 };
   
-  const handleBookEdition = (item, index) => {
-    setBookToEditIndex(index);
+  const handleBookEdition = (item) => {
+    setBookToEditData(item);
     setBookToEditId(item.id);
     setModelUpdateBookOpen(true);
   };
@@ -185,17 +185,27 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
     setResponseData(json.data);
   }
 
+   //Function to format the date
+   function formatDateForInput(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   return (
     <div className='borrowedbook_container'>
       <div className='searchbar'>
         <div className='search_accademic_year'>
+          <h3>Books Borrowed</h3>
           <div className='search-container'>
             <FaSearch className='search-icon' />
             <input 
               type='text' 
               value={searchState} 
               onChange={handleFilter} 
-              placeholder="Search..." 
+              placeholder="Search by name..." 
             />
           </div>
           <div className='select-accademic-year'>
@@ -221,14 +231,15 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
                 <th>Book Level</th>
                 <th>Borrower Name</th>
                 <th>Class</th>
-                <th>Date</th>
+                <th>Borrow Date</th>
+                <th>submission Date</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {currentData.map((item, index) => (
-                <tr key={item.Id}>
+              {currentData.length > 0 ? currentData.map((item, index) => (
+                <tr key={item.Id}>              
                   <td>
                   <Checkbox
                              checked={
@@ -244,6 +255,9 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
                   <td>{item.Student_Name}</td>
                   <td>{item.Student_Class}</td>
                   <td>{item.Borrowing_Date}</td>
+                  <td style={{ color: new Date(item.Return_Date) < new Date() && item.Status !== "Submitted" ? 'red' : 'black' }}>{item.Return_Date}
+</td>
+
                   <td>{item.Status || 'Not Submitted'}</td>
                   <td>
                     <span className='books_actions'>
@@ -252,11 +266,12 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
                     </span>
                   </td>
                 </tr>
-              ))}
+              )): ''}
             </tbody>
           </table>
-          <div>
-            <ul className='pagination'>
+          <div className={currentData.length > 0 ? 'show-data' : "no-data"}>No data found</div>
+          <div >
+            <ul className={currentData.length > 0 ? 'pagination' : 'no-pagination'} >
               <button onClick={handlePreviousPage} disabled={currentPage === 1}>
                 &lt; Prev
               </button>
@@ -278,11 +293,11 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
           className='bookEditionModel'
           closeModel={() => {
             setModelUpdateBookOpen(false);
-            setBookToEditIndex(null);
+            setBookToEditData(null);
             bookEditedSubmission();
           }}
           itemId={bookToEditId}
-          defaultValue={bookToEditIndex !== null && responseData[bookToEditIndex]}
+          defaultValue={bookToEditData}
         />
       )}
       {modelBookDeletionOpen && (
