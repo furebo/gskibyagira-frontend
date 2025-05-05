@@ -17,7 +17,7 @@ function Table() {
   }, []);
 
   async function AllBorrowedBooks() {
-    const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook');
+    const response = await fetch('http://localhost:5000/api/books/borrowbook');
     const json = await response.json();
     setBorrowedBooks(json.data || []);
   }
@@ -72,6 +72,20 @@ const exportToExcel = () => {
   const dataBlob = new Blob([excelBuffer], { type: 'application/octet-stream' });
   saveAs(dataBlob, `Unsubmitted_Books_Report${selectedClass}_${selectedYear}.xlsx`);
 };
+// Working on pagination of the table inside the div of className 'display'
+const [currentPage, setCurrentPage] = useState(1);
+const rowsPerPage = 5;
+
+const indexOfLastRow = currentPage * rowsPerPage;
+const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+const currentBooks = filteredBooks.slice(indexOfFirstRow, indexOfLastRow);
+
+const totalPages = Math.ceil(filteredBooks.length / rowsPerPage);
+
+const handlePageChange = (pageNumber) => {
+  setCurrentPage(pageNumber);
+};
+
 
   return (
     <div className='content_reports'>
@@ -175,18 +189,19 @@ const exportToExcel = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredBooks.map((book, idx) => (
-                    <tr key={idx}>
-                      <td>{book.Book_Type}</td>
-                      <td>{book.Book_Number}</td>
-                      <td>{book.Student_Name}</td>
-                      <td>{book.Student_Class}</td>
-                      <td>{book.Borrowing_Date}</td>
-                      <td style={{ color: new Date(book.Return_Date) < new Date() ? 'red' : 'black' }}>
-                        {book.Return_Date}
-                      </td>
-                    </tr>
-                  ))}
+                {currentBooks.map((book, idx) => (
+                      <tr key={idx}>
+                          <td>{book.Book_Type}</td>
+                          <td>{book.Book_Number}</td>
+                          <td>{book.Student_Name}</td>
+                          <td>{book.Student_Class}</td>
+                          <td>{book.Borrowing_Date}</td>
+                          <td style={{ color: new Date(book.Return_Date) < new Date() ? 'red' : 'black' }}>
+                               {book.Return_Date}
+                          </td>
+                      </tr>
+                    ))}
+
                 </tbody>
               </table>
             ) : (
@@ -201,6 +216,18 @@ const exportToExcel = () => {
               <p>Your generated report will appear here.</p>
             </>
           )}
+          <div className="paginationn">
+                 {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                      key={i + 1}
+                      onClick={() => handlePageChange(i + 1)}
+                      className={currentPage === i + 1 ? 'active-page' : ''}
+                  >
+                        {i + 1}
+                 </button>
+  ))}
+</div>
+
         </div>
       </div>
     </div>

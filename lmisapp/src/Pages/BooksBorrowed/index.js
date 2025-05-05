@@ -24,16 +24,25 @@ function Table() {
   
   const [bookStatusMap, setBookStatusMap] = useState({}); // state to track the book status
   const [selectedBooks, setSelectedBooks] = useState({});// state to control checkbox checked status
+  const [loading, setLoading] = useState(true); // state to control the loading od fetched data
 
-  const itemsPerPage = 8;
+  const itemsPerPage = 10;
 
   async function getBorrowedBooks() {
-    const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
-      method: 'GET',
-    });
-    const json = await response.json();
-    setResponseData(json.data); // Set the actual data
+    setLoading(true); // Start loading
+    try {
+      const response = await fetch('https://gskibyagira-backend.onrender.com/api/books/borrowbook', {
+        method: 'GET',
+      });
+      const json = await response.json();
+      setResponseData(json.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false); // End loading
+    }
   }
+  
 
   useEffect(() => {
     getBorrowedBooks();
@@ -185,15 +194,6 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
     setResponseData(json.data);
   }
 
-   //Function to format the date
-   function formatDateForInput(dateString) {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
   return (
     <div className='borrowedbook_container'>
       <div className='searchbar'>
@@ -220,9 +220,9 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
         </div>
       </div>
       <hr></hr>
-      <div className='container mt-5 table_container'>
-        <Space direction='vertical' className='Space'>
-          <table className='table table-striped table-bordered'>
+      <div className='container mt-2 table_container' style={{border:'1px solid blue'}}>
+        <Space direction='vertical' className='Space' >
+          <table className='table table-striped table-bordered table-sm' >
             <thead>
               <tr>
                 <th>Submitted</th>
@@ -241,7 +241,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
               {currentData.length > 0 ? currentData.map((item, index) => (
                 <tr key={item.Id}>              
                   <td>
-                  <Checkbox
+                  <Checkbox style={{padding:'0.3rem'}}
                              checked={
                                        selectedBooks.hasOwnProperty(item.id) ? selectedBooks[item.id] // if we already updated it
                                        : item.Status === 'Submitted' // otherwise, use backend value
@@ -269,10 +269,19 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
               )): ''}
             </tbody>
           </table>
-          <div className={currentData.length > 0 ? 'show-data' : "no-data"}>No data found</div>
-          <div >
+          <div className='show-data'>
+  {loading ? (
+    <div className="spinner-border text-primary" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </div>
+  ) : currentData.length === 0 ? (
+    <div>No data found</div>
+  ) : null}
+</div>
+ 
+          <div>
             <ul className={currentData.length > 0 ? 'pagination' : 'no-pagination'} >
-              <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+              <button style={{padding:'3px 3px'}} onClick={handlePreviousPage} disabled={currentPage === 1}>
                 &lt; Prev
               </button>
               {[...Array(totalPages)].map((_, index) => (
@@ -280,7 +289,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
                   <button className='page-link'>{index + 1}</button>
                 </li>
               ))}
-              <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+              <button style={{padding:'3px 3px'}} onClick={handleNextPage} disabled={currentPage === totalPages}>
                 Next &gt;
               </button>
             </ul>
