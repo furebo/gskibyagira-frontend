@@ -255,8 +255,7 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
                   <td>{item.Student_Name}</td>
                   <td>{item.Student_Class}</td>
                   <td>{item.Borrowing_Date}</td>
-                  <td style={{ color: new Date(item.Return_Date) < new Date() && item.Status !== "Submitted" ? 'red' : 'black' }}>{item.Return_Date}
-</td>
+                  <td style={{ color: new Date(item.Return_Date) < new Date() && item.Status !== "Submitted" ? 'red' : 'black' }}>{item.Return_Date}</td>
 
                   <td>{item.Status || 'Not Submitted'}</td>
                   <td>
