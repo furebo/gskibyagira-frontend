@@ -31,12 +31,24 @@ function Table() {
     setShowTable(true);
     setChoosenClass(`, Class ${selectedClass}`)
   };
-// Function to export the table to excel 
+// Function to export the table to excel with custom header at the top of the table
 const exportToExcel = () => {
   if (filteredBooks.length === 0) return;
 
-  const header = [
-    ['Borrower Name', 'Class','Book Title', 'Book Code', 'Borrow Date', 'Return Date (Overdue)'],
+  // Custom heading rows (each array is one row)
+  const locationHeader = [
+    ['Southern Province'],
+    ['Nyamagabe District'],
+    ['Buruhukiro Sector'],
+    ['GS Kibyagira'],
+    [''], // Empty row for spacing
+    [`Unsubmitted Books Report${choosenClass} - Academic Year: ${selectedYear}`],
+    [''], // Another empty row before table header
+  ];
+
+  // Table header
+  const tableHeader = [
+    ['Borrower Name', 'Class', 'Book Title', 'Book Code', 'Borrow Date', 'Return Date (Overdue)'],
   ];
 
   const rows = filteredBooks.map(book => [
@@ -48,14 +60,15 @@ const exportToExcel = () => {
     new Date(book.Return_Date),
   ]);
 
-  const worksheet = XLSX.utils.aoa_to_sheet([...header, ...rows]);
+  const worksheet = XLSX.utils.aoa_to_sheet([...locationHeader, ...tableHeader, ...rows]);
 
   // Format "Borrow Date" and "Return Date" columns as date
   const dateFormat = 'yyyy-mm-dd';
+  const headerOffset = locationHeader.length + 1; // +1 for the tableHeader row
 
-  for (let i = 1; i <= filteredBooks.length; i++) {
-    const borrowDateCell = worksheet[`E${i + 1}`];
-    const returnDateCell = worksheet[`F${i + 1}`];
+  for (let i = 0; i < filteredBooks.length; i++) {
+    const borrowDateCell = worksheet[`E${i + headerOffset + 1}`]; // +1 for 1-based Excel index
+    const returnDateCell = worksheet[`F${i + headerOffset + 1}`];
     if (borrowDateCell) borrowDateCell.z = dateFormat;
     if (returnDateCell) returnDateCell.z = dateFormat;
   }
@@ -66,12 +79,13 @@ const exportToExcel = () => {
   const excelBuffer = XLSX.write(workbook, {
     bookType: 'xlsx',
     type: 'array',
-    cellDates: true, // Important: ensures Excel treats them as dates
+    cellDates: true,
   });
 
   const dataBlob = new Blob([excelBuffer], { type: 'application/octet-stream' });
   saveAs(dataBlob, `Unsubmitted_Books_Report${selectedClass}_${selectedYear}.xlsx`);
 };
+
 // Working on pagination of the table inside the div of className 'display'
 const [currentPage, setCurrentPage] = useState(1);
 const rowsPerPage = 5;
