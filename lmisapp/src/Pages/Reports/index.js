@@ -19,7 +19,7 @@ function Table() {
   const [choosenTitlePrimary, setChoosenTitlePrimary] = useState("");
   const [choosenTitleSecondary, setChoosenTitleSecondary] = useState("");
   const [periodicReportGeneratedExport, setPeriodicReportGenerated] = useState(false);
-  const [primarySecondaryReportExport, setPrimarySecondaryReportExport] = useState(false);
+  const [primarySecondaryReportExport, setPrimarySecondaryReportExport] = useState(true);
 
   useEffect(() => {
     AllBorrowedBooks();
@@ -296,7 +296,6 @@ const exportWeeklyReportsToExcel = () => {
                  <button className= {periodicReportGeneratedExport ? 'hide_unsubmitted_title' : 'export-btn'} onClick={exportToExcel}>Export to Excel</button>
             )}
           
-
           {showTable ? (
             filteredBooks.length > 0 ? (
               <table>
