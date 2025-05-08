@@ -21,8 +21,6 @@ function Table() {
   const [ModelUpdateBookOpen, setModelUpdateBookOpen] = useState(false);
   const [itemToBeDeletedId, setItemToBeDeletedId] = useState(0);
   const [selectedYear, setSelectedYear] = useState('2024 - 2025'); // state to track selected academic year
-  
-  const [bookStatusMap, setBookStatusMap] = useState({}); // state to track the book status
   const [selectedBooks, setSelectedBooks] = useState({});// state to control checkbox checked status
   const [loading, setLoading] = useState(true); // state to control the loading od fetched data
 
@@ -269,14 +267,12 @@ const handleCheckboxConfirmed = async (bookId, wasChecked) => {
             </tbody>
           </table>
           <div className='show-data'>
-  {loading ? (
-    <div className="spinner-border text-primary" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-  ) : currentData.length === 0 ? (
-    <div>No data found</div>
-  ) : null}
-</div>
+          {loading ? (
+                 <div className="spinner-border text-primary" role="status">
+                     <span className="visually-hidden">Loading...</span>
+                 </div>
+             ) : currentData.length === 0 ? (<div>No data found</div>) : null}
+           </div>
  
           <div>
             <ul className={currentData.length > 0 ? 'pagination' : 'no-pagination'} >

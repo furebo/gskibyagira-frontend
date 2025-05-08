@@ -111,7 +111,33 @@ function Model({closeModel,defaultValue}){
                   <form>
                     <div className="books_form_group">
                         <label htmlFor="booktype">Book Type</label>
-                        <input name='Book_Type' type="text" value={formState.Book_Type} onChange={handleChange}/>
+                        {/* <input name='Book_Type' type="text" value={formState.Book_Type} onChange={handleChange}/> */}
+                        <select name='Book_Type' type="text" value={formState.Book_Type} onChange={handleChange}>
+                            <option>Mathematics</option>
+                            <option>Physics</option>
+                            <option>Kinyarwanda</option>
+                            <option>English</option>
+                            <option>Francais</option>
+                            <option>Kiswahili</option>
+                            <option>Literature in English</option>
+                            <option>General Study</option>
+                            <option>Biology</option>
+                            <option>Chemistry</option>
+                            <option>Geography</option>
+                            <option>History</option>
+                            <option>Interpreneurship</option>
+                            <option>Novel</option>
+                            <option>ICT</option>
+                            <option>SET</option>
+                            <option>Social and Religion Studies</option>
+                            <option>Creative Arts</option>
+                            <option>Physical Edication</option>
+                            <option>Curiculum</option>
+                            <option>Dictionary</option>
+                            <option>Inkuru</option>
+                            <option>Short Story</option>
+                            <option>Other</option>
+                        </select>
                     </div>
                     <div className="books_form_group">
                         <label htmlFor="booklevel">Book Level</label>

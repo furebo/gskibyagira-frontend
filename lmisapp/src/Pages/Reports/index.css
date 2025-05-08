@@ -1,4 +1,21 @@
-
+.bordered-table, .bordered-table th, .bordered-table td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 6px;
+  text-align: center;
+}
+.hide_unsubmitted_title{
+  display: none;
+}
+.hide_periodic_title{
+  display: none;
+}
+.hide_export_button{
+  display: none;
+}
+.hide_unSubmitted_title{
+  display: none;
+}
     .content_reports {
         padding: 20px;
         font-family: Arial, sans-serif;
@@ -60,6 +77,16 @@
       
       /* Display area */
       .export-btn {
+        display: block;
+        margin: 10px 0;
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .export-periodic-report-btn{
+        display: block;
         margin: 10px 0;
         padding: 8px 12px;
         background-color: #4CAF50;
@@ -106,7 +133,7 @@
         animation: pulse 2s infinite;
       }
       
-      .generate-btn {
+      .generate-btn,  .periodic-report-generate-btn{
         margin-top: 10px;
         padding: 12px 24px;
         font-size: 1rem;
@@ -118,11 +145,11 @@
         transition: background-color 0.3s ease;
       }
       
-      .generate-btn:hover {
+      .generate-btn:hover, .periodic-report-generate-btn:hover {
         background-color: #34689b;
       }
       
-      .generate-btn:active {
+      .generate-btn:active, .periodic-report-generate-btn:active {
         transform: scale(0.97);
       }
       /*
@@ -169,6 +196,9 @@
         }
         .generate-btn {
           width: 100%;
+        }
+        .periodic-report-generate-btn{
+          width:100%;
         }
       }
       
