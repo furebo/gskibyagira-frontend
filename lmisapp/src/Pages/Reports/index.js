@@ -10,7 +10,6 @@ function Table() {
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [showTable, setShowTable] = useState(false);
   const [choosenClass,setChoosenClass] = useState("");
-  //state for showing periodic report type
   const [selectedPeriodicType, setSelectedPeriodicType] = useState("Weekly Report");
   const [showPeriodicReportTable, setShowPeriodicReportTable] = useState(false);
   const [unSubmittedTitle, setUnSubmittedTitle]= useState(false);
@@ -31,7 +30,8 @@ function Table() {
     setBorrowedBooks(json.data || []);
   }
  
-//function to generate unborrowed books
+// function to generate unborrowed books
+
   const handleGenerate = () => {
     const filtered = borrowedBooks.filter(book =>
       (selectedClass === 'All' || book.Student_Class === selectedClass) && (new Date(book.Borrowing_Date).getFullYear() === Number(selectedYear.split(" - ")[1])) && (book.Status.trim() === 'Not Submitted')
