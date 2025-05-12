@@ -120,16 +120,16 @@ function SignupModel({ closeModel, defaultValue }) {
                         </div>
                         <div className='signup-form-group'>
                             <label htmlFor='Password'>Password</label>
-                            <div className="password-toogle">
+                            <div className="password-toggle-wrapper">
                             <input name='password' type={showPassword ? "text" : "password"}  value={signupFormState.password} onChange={handleChange} />
-                             <IconButton onClick={togglePasswordVisibility} className="password-toggle">
+                             <IconButton onClick={togglePasswordVisibility} className="icon-button">
                                 {showPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton> 
                             </div>
                         </div>
                         <div className='signup-form-group'>
                             <label htmlFor='Confirm_Password'>Confirm Password</label>
-                            <div className='password-toogle'>
+                            <div className="password-toggle-wrapper">
                             <input name='confirmPassword' type={showConfirmPassword ? "text" : "password"} value={signupFormState.confirmPassword} onChange={handleChange} />
                             <IconButton onClick={toggleConfirmPasswordVisibility} className="icon-button">
                                 {showConfirmPassword ? <VisibilityOff /> : <Visibility />}

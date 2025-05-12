@@ -25,20 +25,23 @@ body {
   font-weight: bold;
   text-decoration: none;
   color: white;
+  margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 /* === NAVIGATION LINKS === */
 .links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 50px;
+  
 }
 
 .alink {
   cursor: pointer;
   text-decoration: none;
   color: white;
-  font-size: 1rem;
+  font-size: 1.5rem;
   transition: color 0.3s ease-in-out;
 }
 
@@ -57,11 +60,10 @@ body {
 }
 
 /* === MEDIA QUERIES: SHOW HAMBURGER ON SMALL SCREENS === */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1336px) {
   .mobile {
       display: block; /* Show hamburger icon */
   }
-
   .links {
       position: absolute;
       top: 60px;
@@ -94,5 +96,7 @@ body {
       padding: 10px 0;
   }
 }
+
+
 
 

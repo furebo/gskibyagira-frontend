@@ -1,16 +1,32 @@
 import './index.css';
+import { ToastContainer } from "react-toastify";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import { notify } from '../../Helpers/notify';
+//import { notify } from '../../Helpers/notify';
 import SignupModel from "../ModelSignup";
 import ForgotPasswordModel from '../ModelForgetPassword';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
 function Model({ closeModel, onSubmit, defaultValue }) {
+    
+ const notify = (message) =>{ toast.success(message,
+        {
+            style: { 
+                background: 'green',
+                color:'white',
+                width:'500px',
+                marginRight:'100px',
+                marginTop:'50px',
+            
+             }
+        })   
+    }
     const [signupModelOpen, setSignupModelOpen] = useState(false);
     const [forgotPasswordModelOpen, setForgotPasswordModelOpen] = useState(false);
     const navigate = useNavigate();
@@ -22,6 +38,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
     const [errors, setErrors] = useState("");
     const [showPassword, setShowPassword] = useState(false); // State for password visibility
     const [loading, setIsLoading] = useState(false);
+    const [resendLoading, setIsResendLoading] = useState(false);
     const handleChange = (e) => {
         setLoginFormState({
             ...LoginFormState,
@@ -48,7 +65,14 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                 role: LoginFormState.Role,
             }),
         })
-        .then(response => response.ok ? response.json() : Promise.reject('Login failed'))
+        .then(async (response) => {
+            const data = await response.json();
+            if (!response.ok) {
+                // Show error from backend if available
+                throw new Error(data.message || 'Login failed');
+              }
+            return data;
+        })
         .then(data => {
             if (data.token) {
                 localStorage.setItem('token', data.token);
@@ -60,8 +84,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
             }
         })
         .catch((error) =>{
-            setErrors('Invalid login credentials');
-            console.error('Error:', error);
+            setErrors(error.message);
         })
         .finally(() =>{
             setIsLoading(false);
@@ -93,8 +116,47 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         console.error("Google Login Failed:", error);
         notify("Google login failed.");
     };
+
+    //function to handle the resent of email verification
+        
+    const handleResendVerification = () => {
+        setIsResendLoading(true);
+      
+        fetch('https://gskibyagira-backend.onrender.com/api/users/resend-verification', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: LoginFormState.Email })
+        })
+          .then(res => res.json().then(data => {
+            if (res.ok) {
+              notify(data.message );
+            } else {
+              notify(data.message || 'Failed to resend verification email.');
+            }
+          }))
+          .catch(() => {
+            notify('Something went wrong. Please try again.');
+          })
+          .finally(() => {
+            setIsResendLoading(false);
+            setErrors("");
+            setIsResendLoading(false);
+          });
+      };
+       
     return (
         <GoogleOAuthProvider clientId="223545888715-9em22gouqkrdsamedaiqr14qj4ma0lo1.apps.googleusercontent.com">
+              <ToastContainer 
+      position="top-center" autoClose={5000}
+      hideProgressBar={false} 
+      newestOnTop={false} 
+      closeOnClick 
+      rtl={false} 
+      pauseOnFocusLoss 
+      draggable 
+      pauseOnHover 
+      theme="colored" 
+      />
             <div className='login_model_container'>
                 <div className='login_model'>
                     <div className='close'>
@@ -108,29 +170,26 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                         </div>
                         <div className="login_form_group password-input">
                         <label htmlFor="password">Enter Password</label>
-                        <div className="password-container">
+                        <div className="password-toggle-wrapper">
                             <input 
                                 name='Password' 
                                 type={showPassword ? "text" : "password"} 
                                 value={LoginFormState.Password} 
                                 onChange={handleChange} 
                             />
-                            <IconButton onClick={togglePasswordVisibility} className="password-toggle">
+                            <IconButton onClick={togglePasswordVisibility} className="icon-button">
                                 {showPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
                         </div>
                         </div>
-                        <div className="login_form_group">
-                            <label htmlFor="role">Choose your role</label>
-                            <select name='Role' value={LoginFormState.Role} onChange={handleChange}>
-                                <option>Teacher</option>
-                                <option>Staff</option>
-                                <option>Student</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
                         {errors && <div className='error'>{errors}</div>}
-                        <button disabled={loading} onClick={handleSubmit} className="login_btn" type="submit">{loading? "Loading ..." : "Sumbit"}</button>
+                        <div className={errors === 'Please verify your email before logging in.' ? 'ResendVerificationEmail' : 'hide-verification-button'}>
+                              {errors === 'Please verify your email before logging in.' && (
+                               <button type="submit" disabled={resendLoading} className="resend-verification-btn" onClick={handleResendVerification}> {resendLoading? "Loading ..." : "Resend Verification Email ?"}</button>
+                            )}
+
+                        </div>
+                        <button disabled={loading} onClick={handleSubmit} className={errors === 'Please verify your email before logging in.' ? 'hide-verification-button' : 'login_btn'} type="submit">{loading? "Loading ..." : "Sumbit"}</button>
                         
                         {/* Google Login Button */}
                         <div className="google_btn_container">
@@ -142,8 +201,6 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                                redirectUri="https://gskibyagira-backend.onrender.com/api/auth/google-login"  // Update this to match Google Console
                            />
                         </div>
-
-
                         <div className="login-links">
                             <h4 className='sugnup_button' onClick={() => setForgotPasswordModelOpen(true)}>Forgot Password?</h4>
                             <h2 className='sugnup_button' onClick={() => setSignupModelOpen(true)}>Signup</h2>

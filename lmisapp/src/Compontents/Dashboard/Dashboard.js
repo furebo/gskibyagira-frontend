@@ -129,7 +129,7 @@ function Dashboard() {
         <div className={`SideMenu ${isOpen ? "SideMenuopen" : ''}`}>
           <Menu  onClick={handleClick} selectedKeys={[current]}>
             {getMenuItems().map(item => (
-              <Menu.Item key={item.key} icon={item.icon}>{item.label}</Menu.Item>
+              <Menu.Item style={{fontSize:'15px'}} key={item.key} icon={item.icon}>{item.label}</Menu.Item>
             ))}
           </Menu>
         </div>

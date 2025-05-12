@@ -20,7 +20,7 @@
 
 .signup-model {
   border-radius: 5px;
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: rgb(254, 254, 254);
   width: 25em;
 }
@@ -99,15 +99,23 @@
 }
 
 /* Password toggle button */
-.toggle-password {
+.password-toggle-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* Make room for icon */
+}
+
+.password-toggle-wrapper .icon-button {
   position: absolute;
   right: 10px;
-  cursor: pointer;
-  color: #666;
-  background: transparent;
-  border: none;
-  outline: none;
-}
-.password-toogle{
-  display: flex;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  color: #555;
+  z-index: 1;
 }
