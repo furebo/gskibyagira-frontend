@@ -291,11 +291,10 @@ const exportWeeklyReportsToExcel = () => {
             <i className={unSubmittedTitle ? 'hide_unSubmitted_title' :'fas fa-cloud-upload-alt cloud-icon'}></i>
           )}
           
-          <h2 className={unSubmittedTitle ? 'hide_unSubmitted_title' :''}>Unsubmitted Books Reports{choosenClass}</h2>
+          <h2 className={unSubmittedTitle ? 'hide_unSubmitted_title' :''}>Accademic Year {selectedYear} Unsubmitted Books Reports{choosenClass}</h2>
           {filteredBooks.length > 0 && (
                  <button className= {periodicReportGeneratedExport ? 'hide_unsubmitted_title' : 'export-btn'} onClick={exportToExcel}>Export to Excel</button>
             )}
-          
           {showTable ? (
             filteredBooks.length > 0 ? (
               <table>
@@ -328,7 +327,7 @@ const exportWeeklyReportsToExcel = () => {
             ) : (
               <>
               <i className="fas fa-cloud-upload-alt cloud-icon"></i>
-              <p> There are no unborrowed books found for selected criteria.</p>
+              <p> There are no unsubmitted books found for selected criteria.</p>
               </>
             )
           ) : (
@@ -337,6 +336,7 @@ const exportWeeklyReportsToExcel = () => {
               <p className={unSubmittedTitle ? 'hide_unSubmitted_title' :''} >Your generated report will appear here.</p>
             </>
           )}
+          
   <button className={primarySecondaryReportExport ? 'hide_export_button' : 'export-periodic-report-btn'}  onClick={exportWeeklyReportsToExcel}>
            Export To Excel Weekly Reports (Primary & Secondary)
   </button>
@@ -409,12 +409,12 @@ const exportWeeklyReportsToExcel = () => {
   </div>
 )}
 
-          <div className="paginationn">
+          <div className={unSubmittedTitle ? 'hide-paginat' : 'paginationn'}>
                  {Array.from({ length: totalPages }, (_, i) => (
                 <button
                       key={i + 1}
                       onClick={() => handlePageChange(i + 1)}
-                      className={currentPage === i + 1 ? 'active-page' : ''}
+                       className={currentPage === i + 1 ? 'active-page' : ''}
                   >
                         {i + 1}
                  </button>

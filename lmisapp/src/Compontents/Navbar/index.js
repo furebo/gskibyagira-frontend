@@ -31,7 +31,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="nav">
+      <nav className="nav" style={{paddingRight:'50px'}}>
         <Link to="/" className="sitetitle" onClick={() => scrollToSection("kibyagira")}>GS KIBYAGIRA</Link>
         {/* Close menu when a menu item is clicked */}
         <ul className={`links ${isMobile ? "mobile" : ""}`} onClick={() => setIsMobile(false)}>
@@ -39,11 +39,11 @@ export default function Navbar() {
           <li className="alink" onClick={() => scrollToSection("mission")}>Mission & Vision</li>
           <li className="alink" onClick={() => scrollToSection("aboutus")}>About Us</li>
           <li className="alink" onClick={() => scrollToSection("contact-section")}>Contact Us</li>
-          <li className="alink" onClick={handleLoginModel}>BMIS</li>
+          <li className="alink" onClick={handleLoginModel}>Library(BMIS)</li>
           <li className="alink" onClick={handleSignupModel}>Signup</li>
         </ul>
         <button onClick={() => setIsMobile(!isMobile)} className="mobile">
-          {isMobile ? <CloseIcon /> : <DehazeIcon className="dehazeicon" />}
+          {isMobile ? <CloseIcon style={{fontSize:'40px',  marginLeft:'30px', marginBottom:'30px'}}/> : <DehazeIcon className="dehazeicon" style={{fontSize:'60px'}} />}
         </button>
       </nav>
       <ToastContainer position="top-center" />

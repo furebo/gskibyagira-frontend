@@ -24,6 +24,7 @@
       .report_type h1 {
         font-size: 2rem;
         margin-bottom: 20px;
+       
       }
       
       .section_and_display {
@@ -100,7 +101,7 @@
         background-color: #f1f1f1; /* light silver */
         border-radius: 8px;
         padding: 30px;
-        margin: 20px;
+        margin-left: 10px; 
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -110,6 +111,11 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         color: #555;
         font-size: 1.2rem;
+        overflow-x: auto;
+      
+      }
+      .display table{
+        margin: auto;
       }
       @keyframes pulse {
         0% {
@@ -175,8 +181,10 @@
         color: white;
         font-weight: bold;
       }
-      
-      
+      .hide_paginat{
+        display: none;
+      }
+          
       /* Responsive layout */
       @media (max-width: 768px) {
         .section_and_display {
@@ -184,11 +192,19 @@
         }
       
         .report_type h1 {
-          font-size: 1.5rem;
+          text-align: center;
+          font-size: 1.6rem;
         }
       
         .selection h2, .report_selection h3, .class_selection h3 {
           font-size: 1rem;
+        }
+        .selection h2{
+          font-size: 1.6rem;
+          text-align: center;
+        }
+        .periodic_report{
+          text-align: center;
         }
       
         select {
@@ -201,4 +217,22 @@
           width:100%;
         }
       }
+        
+      /* Medium screen adjustment */
+ @media (max-width: 992px) {
+  .report_type h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .section_and_display {
+    flex-direction: column;
+    height: 100%;
+  }
+  .report_type h1 {
+    font-size: 2rem;
+  }
+} 
+
       

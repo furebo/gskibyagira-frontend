@@ -1,162 +1,45 @@
-*{
-  padding: 0;
-  margin: 0;
-}
 .slider {
-    width: 100%;
-    height: 90vh;
-    position: relative;
-    overflow: hidden;
-    top: 0px;
-    bottom: 10px;
-    z-index: -1;
-  } 
-  .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transform: translateX(-50%);
-    transition: all 0.5s ease;
-  }
-  
-  @media screen and (min-width: 600px) {
-    .slide img {
-      width: 100%;
-      height: 100%;
-    }
-   
-  }
-  
-  .slide img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .current {
-    opacity: 1;
-    transform: translateX(0);
-    background-color: rgb(136, 136, 248);
-  }
-  
-  .content {
-    position: absolute;
-    top: 23rem;
-    opacity: 0;
-    width: 50%;
-    color: #fff;
-    padding: 3rem;
-    background: rgba(0, 0, 0, 0.3);
-    animation: slide-up 1s ease 0.5s;
-    animation-delay: 1s;
-    animation-fill-mode: forwards;
-    visibility: hidden;
-  }
-  
-  @keyframes slide-up {
-    0% {
-      visibility: visible;
-      top: 23rem;
-    }
-    100% {
-      visibility: visible;
-      top: 17rem;
-    }
-  }
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin-top: 80px;
+}
 
-  @keyframes slide-up2 {
-    0% {
-      visibility: visible;
-      top: 23rem;
-    }
-    100% {
-      visibility: visible;
-      top: 37rem;
-    }
-  }
-  
-  @media screen and (max-width: 600px) {
-    .content {
-      width: 100%;
-      display:flex ;
-      justify-content: center;
-      align-items: center;
-       
-    }
-    @keyframes slide-up2 {
-      0% {
-        visibility: visible;
-        top: 15rem;
-      }
-      100% {
-        visibility: visible;
-        top: 18rem;
-      }
-    }
- 
-  }
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
 
-  @media screen and (max-width: 1000px) {
-    .content {
-      color: #fff;
-      padding: 3rem;
-      background: rgba(0, 0, 0, 0.3);
-      animation: slide-up2 1s ease 0.5s;
-      animation-delay: 1s;
-      animation-fill-mode: forwards;
-      width:100%;
-      height:100%;
-      font-size: 25px;
-      
-    }
- 
-  }
-  
-  .content > * {
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-  
-  .current .content {
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.5s ease;
-  }
-  
-  .arrow {
-    border: 2px solid white;
-    background-color: transparent;
-    color: #fff;
-    cursor: pointer;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 999;
-  }
-  .arrow:hover {
-    background-color: #fff;
-    color: #777;
-  }
-  
-  .next {
-    top: 35%;
-    right: 1.5rem;
-  }
-  .prev {
-    top: 35%;
-    left: 1.5rem;
-  }
-  
-  hr {
-    height: 2px;
-    background: white;
-    width: 50%;
-  }
-  @media only screen and (min-width:1024px){
-    .slider{
-      height: 600px;
-    }
+.slide.current {
+  display: block;
+  animation: fade 1s ease-in-out;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 800px; /* adjust as needed */
+  object-fit: cover;  /* makes image cover the container without distortion */
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.content {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 6px;
+  max-width: 90%;
+}
+
+@keyframes fade {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
 }

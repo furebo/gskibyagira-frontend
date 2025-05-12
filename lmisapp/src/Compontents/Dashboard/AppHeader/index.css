@@ -1,8 +1,9 @@
 .AppHeader{
     background-color:rgb(4, 29, 68);
-    padding-right: 40px;   
+    padding-right: 40px;  
+   
 }
-.notification:hover{
+notification:hover{
   cursor: pointer;
 }
 @media (max-width:780px) {

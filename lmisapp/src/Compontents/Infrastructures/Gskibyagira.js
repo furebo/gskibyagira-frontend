@@ -8,7 +8,7 @@ function GsKibyagira(){
         <article className="img-info">
             <h2>GS Kibyagira</h2>
             <p>
-                GS Kibyagira ni ishuri ribanza riri mu Murenge wa Buruhukiro, 
+                GS Kibyagira ni urwunge rw'amashuli ruherereye mu Murenge wa Buruhukiro, 
                 Akarere ka Nyamagabe, mu Ntara y'Amajyepfo y'u Rwanda. 
                 Umurenge wa Buruhukiro uhana imbibi n'Imirenge ya Gatare, Musebeya, na Uwinkingi. 
                 Ubukungu bw'uyu Murenge bushingiye cyane ku buhinzi bw'ibihingwa nk'icyayi, ibirayi,
