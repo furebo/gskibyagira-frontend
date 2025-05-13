@@ -28,18 +28,31 @@
   border-radius: 8px;
 }
 
-.content {
-  position: absolute;
-  bottom: 5%;
-  left: 5%;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-  border-radius: 6px;
-  max-width: 90%;
+@keyframes slideInFromBottomRight {
+  0% {
+    transform: translate(100%, 100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 50%);
+    opacity: 1;
+  }
 }
 
-@keyframes fade {
+.content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(0, 50%);
+  animation: slideInFromBottomRight 2s ease-in-out forwards;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 1rem;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+/* @keyframes fade {
   from { opacity: 0.5; }
   to { opacity: 1; }
-}
+} */
