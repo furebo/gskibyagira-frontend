@@ -21,12 +21,19 @@ body {
 
 /* === SITE TITLE (GS KIBYAGIRA) === */
 .sitetitle {
+  background-color: aliceblue;
+  position: absolute;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: white;
-  margin-left: 30px;
-  margin-bottom: 30px;
+  color:black;
+  left: 40px;
+  padding-left: 30px ;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 90px;
+  
 }
 
 /* === NAVIGATION LINKS === */
@@ -58,6 +65,20 @@ body {
   font-size: 2rem;
   color: white;
 }
+.book-icon {
+  position: absolute;
+  font-size: 90px;
+  color:blue;
+  /* margin-left: auto; */
+  top: 35%;
+  left: 240px;
+  
+}
+.logo_place{
+  display: flex;
+  align-items: center;
+}
+
 
 /* === MEDIA QUERIES: SHOW HAMBURGER ON SMALL SCREENS === */
 @media screen and (max-width: 1336px) {
@@ -96,7 +117,18 @@ body {
       padding: 10px 0;
   }
 }
-
+@media screen and (max-width:375px) {
+  .sitetitle{
+    left: 20px;
+  }
+  .book-icon{
+    left: 220px;
+  }
+  .links.mobile{
+    position: absolute;
+    right: 0;
+  }
+}
 
 
 

@@ -1,4 +1,5 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import Model from "../ModelLogin";
 import SignupModel from "../ModelSignup";
 import "./styles/index.css";
@@ -32,7 +33,11 @@ export default function Navbar() {
   return (
     <>
       <nav className="nav" style={{paddingRight:'50px'}}>
+        <div className="logo_place">
         <Link to="/" className="sitetitle" onClick={() => scrollToSection("kibyagira")}>GS KIBYAGIRA</Link>
+        <MenuBookIcon className="book-icon" />
+        </div>
+        
         {/* Close menu when a menu item is clicked */}
         <ul className={`links ${isMobile ? "mobile" : ""}`} onClick={() => setIsMobile(false)}>
         <li className="alink" onClick={() => scrollToSection("values")}>Values</li>
