@@ -66,4 +66,21 @@
     background: gray;
     cursor: not-allowed;
   }
+  .reactions {
+    margin-top: 10px;
+  }
+  
+  .reactions button {
+    margin-right: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 4px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .reactions button:hover {
+    background-color: #ddd;
+  }
   
