@@ -87,7 +87,7 @@ body {
   }
   .links {
       position: absolute;
-      top: 60px;
+      top: 90px; 
       left: 0;
       width: 100%;
       background-color: rgba(0, 0, 0, 0.9);
@@ -127,6 +127,12 @@ body {
   .links.mobile{
     position: absolute;
     right: 0;
+    
+  }
+}
+@media screen and (max-width:768px){
+  .links{
+    top:90px
   }
 }
 
