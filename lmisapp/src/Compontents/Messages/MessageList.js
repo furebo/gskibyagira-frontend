@@ -9,7 +9,7 @@ function MessagesList({ refresh }) {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/messages/messages");
+        const response = await fetch("https://gskibyagira-backend.onrender.com/api/messages/messages");
         const result = await response.json();
         if (response.ok) {
           setMessages(result.data.reverse());
@@ -24,7 +24,7 @@ function MessagesList({ refresh }) {
   }, [refresh]);
 
   const handleLike = async (id) => {
-    const res = await fetch(`http://localhost:5000/api/messages/messages/${id}/like`, {
+    const res = await fetch(`https://gskibyagira-backend.onrender.com/api/messages/messages/${id}/like`, {
       method: 'PUT'
     });
     if (res.ok) {
@@ -33,7 +33,7 @@ function MessagesList({ refresh }) {
   };
 
   const handleDislike = async (id) => {
-    const res = await fetch(`http://localhost:5000/api/messages/messages/${id}/dislike`, {
+    const res = await fetch(`https://gskibyagira-backend.onrender.com/api/messages/messages/${id}/dislike`, {
       method: 'PUT'
     });
     if (res.ok) {
