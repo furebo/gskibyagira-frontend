@@ -25,7 +25,7 @@ function Form({ setRefresh }) {
     setIsSubmitting(true); // Disable button while processing
     //https://gskibyagira-backend.onrender.com
     try {
-      const response = await fetch("http://localhost:5000/api/messages/messages", {
+      const response = await fetch("https://gskibyagira-backend.onrender.com/api/messages/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
