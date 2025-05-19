@@ -5,7 +5,6 @@ import { Icon } from "@iconify/react";
 import sendCircle from "@iconify/icons-mdi/send-circle";
 import styles from "./form.module.css";
 
-
 function Form({ setRefresh }) {
   const [inputText, setInputText] = useState({
     firstName: "",
