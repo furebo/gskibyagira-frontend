@@ -5,15 +5,16 @@ function MessagesList({ refresh }) {
   const [messages, setMessages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const messagesPerPage = 5;
-
+  
   useEffect(() => {
+    
     const fetchMessages = async () => {
       try {
         const response = await fetch("https://gskibyagira-backend.onrender.com/api/messages/messages");
         const result = await response.json();
         if (response.ok) {
           setMessages(result.data.reverse());
-        } else {
+                  } else {
           console.error("Failed to fetch messages:", result.error);
         }
       } catch (error) {
@@ -24,9 +25,11 @@ function MessagesList({ refresh }) {
   }, [refresh]);
 
   const handleLike = async (id) => {
-    const res = await fetch(`https://gskibyagira-backend.onrender.com/api/messages/messages/${id}/like`, {
-      method: 'PUT'
+    console.log(id)
+    const res = await fetch(`https://gskibyagira-backend.onrender.com/messages/messages/${id}/like`, {
+      method: 'PATCH'
     });
+  console.log(res)
     if (res.ok) {
       setMessages(prev => prev.map(msg => msg.id === id ? { ...msg, likes: (msg.likes || 0) + 1 } : msg));
     }
@@ -62,8 +65,8 @@ function MessagesList({ refresh }) {
                   <strong>{msg.firstName} {msg.lastName}:</strong> {msg.message}
                   <span className={styles.timestamp}>{new Date(msg.createdAt).toLocaleString()}</span>
                   <div className={styles.reactions}>
-                    <button onClick={() => handleLike(msg.id)}>👍 {msg.likes || 0}</button>
-                    <button onClick={() => handleDislike(msg.id)}>👎 {msg.dislikes || 0}</button>
+                    <button onClick={() => handleLike(msg.id)}>👍 {msg.likes ?? 0 }</button>
+                    <button onClick={() => handleDislike(msg.id)}>👎 {msg.dislikes ?? 0}</button>
                   </div>
                 </div>
               </li>
