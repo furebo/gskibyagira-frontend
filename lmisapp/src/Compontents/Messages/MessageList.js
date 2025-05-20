@@ -26,7 +26,7 @@ function MessagesList({ refresh }) {
 
   const handleLike = async (id) => {
     console.log(id)
-    const res = await fetch(`https://gskibyagira-backend.onrender.com/messages/messages/${id}/like`, {
+    const res = await fetch(`https://gskibyagira-backend.onrender.com/api/messages/messages/${id}/like`, {
       method: 'PATCH'
     });
   console.log(res)
