@@ -83,4 +83,133 @@
   .reactions button:hover {
     background-color: #ddd;
   }
+  /* Comment input and button layout */
+.commentsSection {
+  margin-top: 1rem;
+  padding-left: 3rem;
+}
+/* .commentsSectionDisplay{
+  display: block;
+} */
+
+.commentsSection input {
+  width: 70%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  font-size: 0.95rem;
+}
+
+.commentsSection button {
+  padding: 8px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.commentsSection button:hover {
+  background-color: #125aa0;
+}
+
+/* Comment list styling */
+.commentItem {
+  margin-bottom: 0.5rem;
+  background-color: #f4f6f8;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #333;
+}
+.message-display{
+  display: flex;
+  flex-direction: column;
+}
+.img-message{
+  display: flex;
+}
+.commentToggleBtn {
+  background: transparent;
+  border: none;
+  color: #1976d2;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+.CommentResponse{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+}
+.commentItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.commentAvatar {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.commentBubble {
+  background: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+.commentResponseBtn{
+  padding-top: 0px;
+}
+
+
+@media (max-width: 600px) {
+  .commentsSection {
+    padding: 8px;
+  }
+  .commentBtn{
+    width:80px;
+  }
+  .commentToggleBtn{
+    width:100px;
+    margin-left: 5px;
+  
+  }
+  .commentItem {
+    font-size: 13px;
+  }
+
+  .commentsSection input {
+    font-size: 13px;
+  }
+
+  .commentsSection button {
+    width: 100%; /* full-width button on mobile */
+    font-size: 13px;
+  }
+  .CommentResponse{
+    display: flex;
+    flex-direction: column;
+  }
+  .commentInputs{
+    width: 40px;
+    margin-bottom: 10px;
+  }
+}
+
+
   
