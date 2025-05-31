@@ -37,7 +37,6 @@ export default function Navbar() {
         <Link to="/" className="sitetitle" onClick={() => scrollToSection("kibyagira")}>GS KIBYAGIRA</Link>
         <MenuBookIcon className="book-icon" />
         </div>
-        
         {/* Close menu when a menu item is clicked */}
         <ul className={`links ${isMobile ? "mobile" : ""}`} onClick={() => setIsMobile(false)}>
         <li className="alink" onClick={() => scrollToSection("values")}>Values</li>
