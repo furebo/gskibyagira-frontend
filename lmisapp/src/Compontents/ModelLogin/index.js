@@ -56,7 +56,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
             return;
         }
         setIsLoading(true);
-        fetch('https://gskibyagira-backend.onrender.com/api/login', {
+        fetch('http://gskibyagira-backend.onrender.com/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
