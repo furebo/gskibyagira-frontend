@@ -1,19 +1,7 @@
-import AppHeader from './AppHeader';
-import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
-import AppFooter from './AppFooter';
-import Books from '../../Pages/Books';
-import Users from '../../Pages/Users';
-import Messages from '../../Pages/Messages';
-import AdminDashboard from '../../Pages/Dashboard';
-import BookBorrowed from '../../Pages/BooksBorrowed';
-import BorrowingRecordingBooks from '../../Pages/Borrowing_recording_books';
-import Event from '../../Pages/Events';
-import Staff from '../../Pages/Staff';
-import Reports from '../../Pages/Reports';
-import { Menu, Button } from 'antd';
 import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { Menu, Button } from 'antd';
 import {
   HomeOutlined,
   MessageOutlined,
@@ -21,28 +9,85 @@ import {
   UserOutlined,
   BookOutlined,
   MenuOutlined,
-  CloseOutlined
+  CloseOutlined,
 } from '@ant-design/icons';
+
+import AppHeader from './AppHeader';
+import AppFooter from './AppFooter';
+import './Dashboard.css';
+
+import AdminDashboard from '../../Pages/Dashboard';
+import Books from '../../Pages/Books';
+import Users from '../../Pages/Users';
+import Messages from '../../Pages/Messages';
+import BookBorrowed from '../../Pages/BooksBorrowed';
+import BorrowingRecordingBooks from '../../Pages/Borrowing_recording_books';
+import Event from '../../Pages/Events';
+import Staff from '../../Pages/Staff';
+import Reports from '../../Pages/Reports';
 
 function Dashboard() {
   const navigate = useNavigate();
   const [current, setCurrent] = useState('dashboard');
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
-  //const [isOpen, setIsOpen] = useState(false);
+  const [userRole, setUserRole] = useState(null); // Initially null to show loading
+  const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = jwtDecode(token);
-      setUserRole(decodedToken.role);
+      try {
+        const decoded = jwtDecode(token);
+        setUserRole(decoded.role);
+      } catch (err) {
+        console.error('Invalid token:', err);
+        navigate('/', { replace: true });
+      }
+    } else {
+      navigate('/', { replace: true });
     }
-  }, []);
+  }, [navigate]);
 
-  const handleClick = (e) => {
-    if (e.key === "logout") {
-      handleLogout();
+  useEffect(() => {
+    if (userRole) {
+      const items = generateMenuItems(userRole);
+      setMenuItems(items);
+      setCurrent(items[0].key); // Default to the first item
+    }
+  }, [userRole]);
+
+  const generateMenuItems = (role) => {
+    const baseItems = [
+      { key: 'dashboard', label: 'Dashboard', icon: <HomeOutlined /> },
+      { key: 'logout', label: 'Logout', icon: <UserOutlined /> },
+    ];
+
+    const adminItems = [
+      { key: 'user', label: 'Users', icon: <UserOutlined /> },
+      { key: 'message', label: 'Messages', icon: <MessageOutlined /> },
+      { key: 'book', label: 'Books', icon: <BookOutlined /> },
+      { key: 'event', label: 'Events', icon: <CalendarOutlined /> },
+      { key: 'borrowing_recording', label: 'Books Records', icon: <BookOutlined /> },
+      { key: 'booksborrowed', label: 'Books Borrowed', icon: <CalendarOutlined /> },
+      { key: 'staff', label: 'Staff', icon: <BookOutlined /> },
+      { key: 'report', label: 'Reports', icon: <CalendarOutlined /> },
+    ];
+
+    const staffItems = [
+      { key: 'book', label: 'Books', icon: <BookOutlined /> },
+      { key: 'borrowing_recording', label: 'Books Records', icon: <BookOutlined /> },
+      { key: 'booksborrowed', label: 'Books Borrowed', icon: <CalendarOutlined /> },
+      { key: 'message', label: 'Messages', icon: <MessageOutlined /> },
+      { key: 'report', label: 'Reports', icon: <CalendarOutlined /> },
+    ];
+
+    return role === 'Admin' ? [...baseItems, ...adminItems] : [...baseItems, ...staffItems];
+  };
+
+  const handleMenuClick = (e) => {
+    if (e.key === 'logout') {
+      localStorage.removeItem('token');
+      navigate('/', { replace: true });
     } else {
       setCurrent(e.key);
       setIsOpen(false);
@@ -51,14 +96,6 @@ function Dashboard() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/', { replace: true });
-    window.history.pushState(null, null, window.location.href);
-    window.onpopstate = () => navigate("/", { replace: true });
-  };
-
-  // Memoized content rendering
   const RenderContent = useMemo(() => {
     switch (current) {
       case 'dashboard':
@@ -78,58 +115,36 @@ function Dashboard() {
       case 'staff':
         return <Staff />;
       case 'report':
-        return <Reports />
+        return <Reports />;
       default:
         return <AdminDashboard />;
     }
   }, [current]);
 
-  // Function to generate menu items based on user role
-  const getMenuItems = () => {
-    const commonItems = [
-      { key: "dashboard", label: "Dashboard", icon: <HomeOutlined /> },
-      { key: "logout", label: "Logout", icon: <UserOutlined /> },
-    ];
-
-    if (userRole === "Admin") {
-      return [
-        ...commonItems,
-        { key: "user", label: "Users", icon: <UserOutlined /> },
-        { key: "message", label: "Messages", icon: <MessageOutlined /> },
-        { key: "book", label: "Books", icon: <BookOutlined /> },
-        { key: "event", label: "Events", icon: <CalendarOutlined /> },
-        { key: "borrowing_recording", label: "Books Records", icon: <BookOutlined /> },
-        { key: "booksborrowed", label: "Books Borrowed", icon: <CalendarOutlined /> },
-        { key: "staff", label: "Staff", icon: <BookOutlined /> },
-        { key: "report", label: "Reports", icon: <CalendarOutlined /> },
-      ];
-    } else if (userRole === "staff") {
-      return [
-        ...commonItems,
-        { key: "book", label: "Books", icon: <BookOutlined /> },
-        { key: "borrowing_recording", label: "Books Records", icon: <BookOutlined /> },
-        { key: "booksborrowed", label: "Books Borrowed", icon: <CalendarOutlined /> },
-        { key: "message", label: "Messages", icon: <MessageOutlined /> },
-        { key: "reports", label: "Reports", icon: <CalendarOutlined /> },
-      ];
-    }
-    return commonItems;
-  };
+  // Loading UI while user role is being fetched
+  if (!userRole) return <div className="loading">Loading dashboard...</div>;
 
   return (
-    <div className='dashboard'>
-      <AppHeader humbMenu={
-         <Button
-         className="hamburger-icon"
-         icon={isOpen ? <CloseOutlined /> : <MenuOutlined />} // Toggle between hamburger and close icon
-         onClick={toggleMenu}
-       />} 
+    <div className="dashboard">
+      <AppHeader
+        humbMenu={
+          <Button
+            className="hamburger-icon"
+            icon={isOpen ? <CloseOutlined /> : <MenuOutlined />}
+            onClick={toggleMenu}
+          />
+        }
       />
-      <div className='SideMenuAndPageContent'>
-        <div className={`SideMenu ${isOpen ? "SideMenuopen" : ''}`}>
-          <Menu  onClick={handleClick} selectedKeys={[current]}>
-            {getMenuItems().map(item => (
-              <Menu.Item style={{fontSize:'15px'}} key={item.key} icon={item.icon}>{item.label}</Menu.Item>
+      <div className="SideMenuAndPageContent">
+        <div className={`SideMenu ${isOpen ? 'SideMenuopen' : ''}`}>
+          <Menu mode='inline' onClick={handleMenuClick} selectedKeys={[current]}>
+            {menuItems.map((item) => (
+              <div className='icon_label'>
+              <Menu.Item key={item.key} icon={item.icon} style={{ fontSize: '15px' }}>
+              {item.label}
+              </Menu.Item>
+              
+              </div>
             ))}
           </Menu>
         </div>

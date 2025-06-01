@@ -32,7 +32,13 @@
   overflow-x: auto;
 }
 .SideMenu {
-  width: 200px;    
+  width: 200px;   
+}
+.icon_label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 .SideMenuopen {
   display: block;
@@ -42,6 +48,7 @@
   width: 200px;
   height: auto;
   background-color: #fff;
+  color: black;
   z-index: 1000;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
