@@ -81,7 +81,14 @@ function Dashboard() {
       { key: 'report', label: 'Reports', icon: <CalendarOutlined /> },
     ];
 
-    return role === 'Admin' ? [...baseItems, ...adminItems] : [...baseItems, ...staffItems];
+   
+  if (role === 'Admin') {
+    return [...baseItems, ...adminItems];
+  } else if (role === 'Staff') {
+    return [...baseItems, ...staffItems];
+  } else {
+    return baseItems;
+  }
   };
 
   const handleMenuClick = (e) => {
@@ -139,12 +146,9 @@ function Dashboard() {
         <div className={`SideMenu ${isOpen ? 'SideMenuopen' : ''}`}>
           <Menu mode='inline' onClick={handleMenuClick} selectedKeys={[current]}>
             {menuItems.map((item) => (
-              <div className='icon_label'>
-              <Menu.Item key={item.key} icon={item.icon} style={{ fontSize: '15px' }}>
+              <Menu.Item className="icon_label" key={item.key} icon={item.icon} style={{ fontSize: '15px' }}>
               {item.label}
               </Menu.Item>
-              
-              </div>
             ))}
           </Menu>
         </div>
