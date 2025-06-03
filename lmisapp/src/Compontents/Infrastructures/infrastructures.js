@@ -5,17 +5,17 @@ function Infrastr(){
          <img className="img-me" src="https://lh3.googleusercontent.com/p/AF1QipOoogB1KnptiuFDcQi7jQss0-MymcKx0XwvyBKt=s680-w680-h510" />   
         <article className="img-info">
             <h2>Smart Classroom</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type 
-            specimen book. It has survived not only five centuries, but also the leap into
-             electronic typesetting, remaining essentially unchanged.</p>
+            <p>Murwego rwo guteza imbere uburezi bushingiye kwikoranabuhanga, Urwanda rwashyizeho
+                gahunda yitwa Smart Classrooms kuva muri 2016. Iyi gahunda igamije guhindura uburyo
+                bw'imyigishirize ishingiye kubitabo gusa ishyira imbere ikoreshwa rya mudasobwa, internet, 
+                programes zifasha mu myigire nimyigishirize, nibikoresho byamashusho namajwi.
+            </p>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                 when an unknown printer took a galley of type and scrambled it to make a type 
-                 specimen book. It has survived not only five centuries, 
-                but also the leap into electronic typesetting, remaining essentially unchanged.
+                Ku kigo cya GS Kibyagira naho ubu hari smart classrooms igizwe n'ibyumba 2 bikaba byifashishwa mu:
+                <ul>
+                    <li>Guteza imbere ubumenyi bwikoranabuhanga, abanyeshuli bigishwa gukoresha mudasobwa, gukora ubushakashatsi kuri internet no gukoresha program zifasha mu myigire</li>
+                    <li>Kunoza imyigishirize abarimu bifashisha ikoranabuhanga na program zifasha mugutegura amasomo...</li>
+                </ul>
             </p>
         </article>
          

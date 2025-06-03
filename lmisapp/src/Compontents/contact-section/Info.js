@@ -16,8 +16,8 @@ const contactDetails = [
     value: 'Southern Province, Nyamagabe, Buruhukiro.',
     icon: locationIcon,
   },
-  { value: '+250784450008', icon: phoneIcon },
-  { value: 'furebo@example.com', icon: emailIcon },
+  { value: '+250783323950', icon: phoneIcon },
+  { value: 'gskibyagira@gmail.com', icon: emailIcon }
 ]
 
 const renderContactDetails = () =>
