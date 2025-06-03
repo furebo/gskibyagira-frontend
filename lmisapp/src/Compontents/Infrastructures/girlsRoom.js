@@ -6,17 +6,24 @@ function GirlsRoom(){
          <img className="img-me" src="https://lh3.googleusercontent.com/p/AF1QipPEAquf9QiYLSpxs3ZUofG0WXaj4Jr6mxRbTVo0=s680-w680-h510" />    
         <article className="img-info">
             <h2>Icyumba Cyumukobwa</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type 
-            specimen book. It has survived not only five centuries, but also the leap into
-             electronic typesetting, remaining essentially unchanged.</p>
+            <p>Icyumba cy'umukobwa ni gahunda yashyizweho mu Rwanda hagamijwe gufasha abana babakobwa 
+                kwiga neza no kudacikanwa namasomo cyane cyane mu bihe by'imihango.Icyi cyumba gitanga 
+                umutekano, isuku nubufasha bwihariye ku mukobwa uri mu mihango cyangwa uhuye nihindagurika 
+                ry'umubiri we.
+            </p>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                 when an unknown printer took a galley of type and scrambled it to make a type 
-                 specimen book. It has survived not only five centuries, 
-                but also the leap into electronic typesetting, remaining essentially unchanged.
+                Ku kigo cyamashuli cya GS Kibyagira Giherereye mu murenge wa Buruhukiro, naho hari 
+                icyumba cyumukobwa gifasha abana bakobwa biga kuri kino Kigo :
+                <ul>
+                    <li>Kutagira ipfunwe no gusiba amasomo bityo bagakomeza kwiga ntankomyi.
+                        Abana bakobwa kandi bavugako iki cyumba cyabafashije kwigirira ikizere no kutagira 
+                        isoni mubandi banyeshuli igihe bari mu mihango.
+                    </li>
+                    <li>Kongera imitsindire kuko imitsindire yabana babakobwa yarazamutse kurusha mbere iki cyumba kitarahagera.</li>
+                    <li>Guhabwa ubufasha nubujyanama babifashijwemo nabalimu babihuguriwe babaha ibikoresho byisuku
+                        ninama kubuzima bw'imyororokere.
+                    </li>
+                </ul>
             </p>
         </article>
         
