@@ -3,6 +3,13 @@ import styles from "./messagesList.module.css";
 function MessagesList({ refresh }) {
   const [messages, setMessages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  //state for tracking the interaction of the user and the message
+  const [interactedMessages, setInteractedMessages] = useState(() => {
+    // Load from localStorage to persist across page reloads
+    const saved = localStorage.getItem('interactedMessages');
+    return saved ? JSON.parse(saved) : {};
+  });
+  
   //states to manage the comments
   const [comments, setComments] = useState({});
   const [newComments, setNewComments] = useState({});
@@ -45,22 +52,40 @@ function MessagesList({ refresh }) {
   }, [refresh]);
 
   const handleLike = async (id) => {
-    console.log(id)
+    if (interactedMessages[id]) return; // Already liked or disliked
+  
     const res = await fetch(`https://gskibyagira-backend.onrender.com/api/messages/messages/${id}/like`, {
-      method: 'PATCH'
+      method: 'PATCH',
     });
-  console.log(res)
+  
     if (res.ok) {
-      setMessages(prev => prev.map(msg => msg.id === id ? { ...msg, likes: (msg.likes || 0) + 1 } : msg));
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === id ? { ...msg, likes: (msg.likes || 0) + 1 } : msg
+        )
+      );
+      const updated = { ...interactedMessages, [id]: true };
+      setInteractedMessages(updated);
+      localStorage.setItem('interactedMessages', JSON.stringify(updated));
     }
   };
 
   const handleDislike = async (id) => {
+    if (interactedMessages[id]) return;
+  
     const res = await fetch(`https://gskibyagira-backend.onrender.com/api/messages/messages/${id}/dislike`, {
-      method: 'PUT'
+      method: 'PUT',
     });
+  
     if (res.ok) {
-      setMessages(prev => prev.map(msg => msg.id === id ? { ...msg, dislikes: (msg.dislikes || 0) + 1 } : msg));
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === id ? { ...msg, dislikes: (msg.dislikes || 0) + 1 } : msg
+        )
+      );
+      const updated = { ...interactedMessages, [id]: true };
+      setInteractedMessages(updated);
+      localStorage.setItem('interactedMessages', JSON.stringify(updated));
     }
   };
 
@@ -113,8 +138,8 @@ function MessagesList({ refresh }) {
                   <strong>{msg.firstName} {msg.lastName}:</strong> {msg.message}
                   <span className={styles.timestamp}>{new Date(msg.createdAt).toLocaleString()}</span>
                   <div className={styles.reactions}>
-                    <button onClick={() => handleLike(msg.id)}>👍 {msg.likes ?? 0 }</button> 
-                    <button onClick={() => handleDislike(msg.id)}>👎 {msg.dislikes ?? 0}</button>
+                    <button disabled={!!interactedMessages[msg.id]} onClick={() => handleLike(msg.id)}>👍 {msg.likes ?? 0 }</button> 
+                    <button disabled={!!interactedMessages[msg.id]} onClick={() => handleDislike(msg.id)}>👎 {msg.dislikes ?? 0}</button>
                     <button onClick={() => handleMsgReply(msg.id)} className={styles.commentToggleBtn}>
                            {commentVisible[msg.id] ? '▲' : '▼'} Respond
                     </button>
