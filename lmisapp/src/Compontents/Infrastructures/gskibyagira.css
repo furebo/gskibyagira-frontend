@@ -4,6 +4,7 @@
 }
 .wrapper{
     width:100%;
+
 }
 .img-banner{
     display:none;
@@ -21,7 +22,7 @@
 .img-info p{
     padding: 0px 30px 20px;
     font-family: arial;
-    font-size: 16px;
+    font-size: 20px;
     color:#111;
     line-height: 24px;
 }

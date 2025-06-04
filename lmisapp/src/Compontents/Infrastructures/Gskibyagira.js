@@ -10,12 +10,10 @@ function GsKibyagira(){
             <p>
                 GS Kibyagira ni urwunge rw'amashuli ruherereye mu Murenge wa Buruhukiro, 
                 Akarere ka Nyamagabe, mu Ntara y'Amajyepfo y'u Rwanda. 
-                Umurenge wa Buruhukiro uhana imbibi n'Imirenge ya Gatare, Musebeya, na Uwinkingi. 
-                Ubukungu bw'uyu Murenge bushingiye cyane ku buhinzi bw'ibihingwa nk'icyayi, ibirayi,
-                amashaza, ibishyimbo, n'ingano, ndetse n'ubworozi bw'inka, ihene, n'ingurube. 
-                Nubwo amakuru arambuye ku ishingwa rya GS Kibyagira atabonetse mu nkomoko zizewe, 
-                birasanzwe ko amashuri nk'aya ashingwa mu rwego rwo guteza imbere uburezi bw'ibanze
-                mu bice by'icyaro mu Rwanda, hagamijwe kongerera ubumenyi abana bo mu bice nk'ibi..
+                Iri ni ishuli kandi ry'itorero Anglican ryo mu Rwanda (E.A.R) Dioseze ya Kigeme, Paruwasi ya Kibyagira, rikaba rifashwa na leta kubwamasezerano.
+                Iri shuli ritanga uburezi ku byiciro 3 aribyo: Amashuli y'inshuke Nusery 2 na Nusery 3;
+                amashuli abanza kuva mu mwaka wa mbere kugeza mumwaka wa 6; hamwe namashuli yisumbuye icyiciro cya mbere O' Level,
+                ndetse nicyiciro cya 2 A' Level mu mashamiya: MATHS CHEMISRY AND BIOLOGY(MCB) hamwe nishami ry'UBUVANGANZO IGIFARANSA NIKINYARWANDA(LFK)
             </p>
             
         </article>
