@@ -52,6 +52,14 @@
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+ .content{
+  position: absolute;
+  right: 0;
+ }
+
+}
+
 /* @keyframes fade {
   from { opacity: 0.5; }
   to { opacity: 1; }
