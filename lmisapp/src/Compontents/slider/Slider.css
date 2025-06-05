@@ -55,7 +55,7 @@
 @media (max-width: 400px) {
  .content{
   position: absolute;
-  right: 20;
+  right: 0;
   bottom: 0;
   top:40%
  }
