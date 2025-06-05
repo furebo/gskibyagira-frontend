@@ -12,7 +12,6 @@ import Books from './Compontents/AllBooks/Books';
 import MessageBox from './Compontents/Messagebox/Messagebox';
 import AuthContextProvider from './Contexts/AuthContext';
 import ProtectedRoutes from './Helpers/ProtectedRoutes';
-
 import Levels from './Compontents/Levels/Levels';
 import MapComponent from './Compontents/MapComponent/Map';
 import Dashboard from './Compontents/Dashboard/Dashboard';
@@ -59,7 +58,8 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/inventory" element={<Inventory/>}/>  
                 <Route path="/table" element={<Table />}/> 
-                <Route path="/nested" element={<NestedSelect />}/>    
+                <Route path="/nested" element={<NestedSelect />}/>  
+               
           </Routes>
       </AuthContextProvider>
     </div>
