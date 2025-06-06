@@ -39,14 +39,15 @@
   }
 } */
 
+/* Animation for fade in from bottom */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translate(-50%, 30%);
+    transform: translateY(30px);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateY(0);
   }
 }
 
@@ -73,10 +74,10 @@
   background: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 1rem;
-  width: 90%;
   max-width: 600px;
   border-radius: 10px;
   text-align: center;
+  width: 90%;
 }
 
 
@@ -97,11 +98,14 @@
 
 } */
 
+/* 🔽 Mobile layout: show content *below* image */
 @media (max-width: 768px) {
   .content {
-    bottom: 5%;
-    padding: 0.75rem;
-    font-size: 14px;
+    position: static;
+    transform: none;
+    margin-top: 1rem;
+    width: 95%;
+    animation: fadeInUp 1s ease-in-out forwards;
   }
 
   .content h2 {
@@ -110,6 +114,19 @@
 
   .content p {
     font-size: 14px;
+  }
+
+  .slide.current > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
   }
 }
 
