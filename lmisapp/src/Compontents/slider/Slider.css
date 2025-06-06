@@ -26,18 +26,6 @@
   margin: 0 auto;
   border-radius: 8px;
 }
-
-/* @keyframes slideInFromBottomRight {
-  0% {
-    transform: translate(100%, 100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0, 50%);
-    opacity: 1;
-  }
-} */
-
 /* Animation for fade in from bottom */
 @keyframes fadeInUp {
   0% {
@@ -49,21 +37,6 @@
     transform: translateY(0);
   }
 }
-
-
-/* .content {
-  position: absolute;
-  right: 50%;
-  bottom: 50%;
-  transform: translate(0, 50%);
-  animation: slideInFromBottomRight 2s ease-in-out forwards;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 1rem;
-  max-width: 600px;
-  border-radius: 10px;
-} */
-
 .content {
   position: absolute;
   bottom: 10%;
@@ -78,24 +51,6 @@
   text-align: center;
   width: 90%;
 }
-
-/* @media (max-width: 375px) {
- .content{
-  position: absolute;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  top:40%
- }
- .content h2{
-  font-size:20px;
- }
- .content p{
-  font-size: 16px;
- }
-
-} */
-
 /*Mobile layout: show content *below* image */
 @media (max-width: 768px) {
   .content {
