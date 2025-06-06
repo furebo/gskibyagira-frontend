@@ -6,7 +6,6 @@
   overflow: hidden;
   margin-top: 70px;
 }
-
 .slide {
   display: none;
   width: 100%;
@@ -68,7 +67,7 @@
 .content {
   position: absolute;
   bottom: 10%;
-  left: 50%;
+  left: 30%;
   transform: translateX(-50%);
   animation: fadeInUp 1.2s ease-in-out forwards;
   background: rgba(0, 0, 0, 0.5);
@@ -79,7 +78,6 @@
   text-align: center;
   width: 90%;
 }
-
 
 /* @media (max-width: 375px) {
  .content{
@@ -98,7 +96,7 @@
 
 } */
 
-/* 🔽 Mobile layout: show content *below* image */
+/*Mobile layout: show content *below* image */
 @media (max-width: 768px) {
   .content {
     position: static;
