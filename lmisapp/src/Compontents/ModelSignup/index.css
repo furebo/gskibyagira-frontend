@@ -124,7 +124,7 @@ form h2 {
   text-align: center;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 720px) {
   .signup-model {
     padding: 1rem;
   }
