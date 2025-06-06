@@ -140,9 +140,15 @@ form h2 {
   .signup-form-group input {
     font-size: 0.9rem;
   }
+  .error{
+    font-size: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 
   .signup_btn {
     font-size: 0.9rem;
+    margin-top: 8px;
   }
   form h2 {
     margin-bottom: 0.2rem;
