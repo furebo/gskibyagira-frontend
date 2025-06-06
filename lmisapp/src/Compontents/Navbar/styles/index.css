@@ -134,6 +134,13 @@ body {
   .links{
     top:90px
   }
+  .nav{
+    padding: 10px 20px;
+  }
+  .sitetitle{
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
 
 
