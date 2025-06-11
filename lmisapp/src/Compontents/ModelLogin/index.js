@@ -7,7 +7,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-//import { notify } from '../../Helpers/notify';
 import SignupModel from "../ModelSignup";
 import ForgotPasswordModel from '../ModelForgetPassword';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -95,7 +94,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         const credentialResponse = jwtDecode(response.credential); // Decode the token
         console.log("Google User:", credentialResponse);
 
-        fetch('https://gskibyagira-backend.onrender.com/api/auth/google-login', { // Replace with your backend endpoint
+        fetch('https://gskibyagira-backend.onrender.com/api/auth/google-login', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: response.credential }),
@@ -116,9 +115,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         console.error("Google Login Failed:", error);
         notify("Google login failed.");
     };
-
-    //function to handle the resent of email verification
-        
+    //function to handle the resent of email verification  
     const handleResendVerification = () => {
         setIsResendLoading(true);
       
@@ -162,6 +159,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
                     <div className='close'>
                         <CloseIcon className='closeIconlogin' onClick={closeModel} />
                     </div>
+                    <hr></hr>
                     <form>
                         <h2>Login</h2>
                         <div className="login_form_group">
