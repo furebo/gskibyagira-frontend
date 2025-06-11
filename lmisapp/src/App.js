@@ -58,8 +58,8 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/inventory" element={<Inventory/>}/>  
                 <Route path="/table" element={<Table />}/> 
-                <Route path="/nested" element={<NestedSelect />}/>  
-               
+                <Route path="/nested" element={<NestedSelect />}/> 
+                              
           </Routes>
       </AuthContextProvider>
     </div>

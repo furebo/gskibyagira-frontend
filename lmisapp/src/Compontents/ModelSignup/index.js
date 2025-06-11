@@ -3,7 +3,7 @@ import { useState } from "react";
 import { notify } from '../../Helpers/notify';
 import CloseIcon from '@mui/icons-material/Close';
 import { ToastContainer, toast } from 'react-toastify';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff, MailOutline } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
 function SignupModel({ closeModel, defaultValue }) {
@@ -58,7 +58,6 @@ function SignupModel({ closeModel, defaultValue }) {
     async function handleSubmit(e) {
         e.preventDefault();
         if (!validateForm()) return;
-
         setLoading(true);
         try {
             const response = await fetch('https://gskibyagira-backend.onrender.com/api/users/users', {
@@ -69,7 +68,7 @@ function SignupModel({ closeModel, defaultValue }) {
                     lastName: signupFormState.lastName,
                     email: signupFormState.email,
                     password: signupFormState.password,
-                }) // Do not send confirmPassword to the server
+                }) 
             });
 
             const data = await response.json();
@@ -104,6 +103,7 @@ function SignupModel({ closeModel, defaultValue }) {
                     <div className='close'>
                         <CloseIcon className='closeIcon' onClick={() => { if (typeof closeModel === "function") closeModel(); }} />
                     </div>
+                    <hr></hr>
                     <form>
                         <h2>Signup</h2>
                         <div className='signup-form-group'>
@@ -116,7 +116,12 @@ function SignupModel({ closeModel, defaultValue }) {
                         </div>
                         <div className='signup-form-group'>
                             <label htmlFor='Email'>Email</label>
+                            <div className='password-toggle-wrapper'>
                             <input name='email' type="text" value={signupFormState.email} onChange={handleChange} />
+                            <IconButton className="icon-button">
+                               <MailOutline />
+                            </IconButton> 
+                            </div>
                         </div>
                         <div className='signup-form-group'>
                             <label htmlFor='Password'>Password</label>

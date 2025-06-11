@@ -1,8 +1,10 @@
-//import './index.css';
+import './index.css';
 import { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { useParams, useNavigate } from 'react-router-dom';
 import { notify } from '../../Helpers/notify';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 function ResetPasswordModel({ closeModel }) {
     const { token } = useParams(); // Get token from URL
@@ -13,7 +15,17 @@ function ResetPasswordModel({ closeModel }) {
     });
 
     const [errors, setErrors] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassWord, setShowConfirmPassword] = useState(false);
+//functions to toggle password visibility
+const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev );
+}
+//function to toggle confirm password visibility
+const toggleConfirmPasswordVisibility = () =>{
+    setShowConfirmPassword((prev) => !prev);
+}
     function handleChange(e) {
         setFormState({
             ...formState,
@@ -36,7 +48,7 @@ function ResetPasswordModel({ closeModel }) {
     async function handleSubmit(e) {
         e.preventDefault();
         if (!validateForm()) return;
-
+        setIsLoading(true);
         try {
             const response = await fetch(`https://gskibyagira-backend.onrender.com/api/reset-password/${token}`, {
                 method: 'POST',
@@ -50,13 +62,14 @@ function ResetPasswordModel({ closeModel }) {
             });
 
             if (!response.ok) throw new Error('Failed to reset password');
-
+            
             notify("Password reset successfully!");
-           // closeModel();
-            navigate('/login'); // Redirect to login
+            navigate('/'); // Redirect to homepage
         } catch (error) {
             setErrors('Error resetting password');
             console.error('Error:', error);
+        } finally{
+            setIsLoading(false);
         }
     }
 
@@ -66,28 +79,39 @@ function ResetPasswordModel({ closeModel }) {
                 <div className='close'>
                     <CloseIcon className='closeIconlogin' onClick={()=>navigate('/')} />
                 </div>
+                <hr></hr>
                 <form>
-                    <h2>Reset Password</h2>
-                    <div className="login_form_group">
+                    <h2>GS Kibyagira BMIS Reset Password</h2>
+                    <div className="passwordreset_form_group">
                         <label htmlFor="newPassword">New Password</label>
+                        <div >
                         <input
-                            name='newPassword'
-                            type="password"
+                            name="newPassword"
+                            type={showPassword ? "text" : "password"}
                             value={formState.newPassword}
                             onChange={handleChange}
                         />
+                        <IconButton onClick={togglePasswordVisibility} className='iconbtn'>
+                            {showPassword ? <VisibilityOff  /> : <Visibility  />}
+                        </IconButton>
+                        </div>
                     </div>
-                    <div className="login_form_group">
+                    <div className="passwordreset_form_group">
                         <label htmlFor="confirmPassword">Confirm Password</label>
+                        <div>
                         <input
                             name='confirmPassword'
-                            type="password"
+                            type={showConfirmPassWord ? "text" : "password"}
                             value={formState.confirmPassword}
                             onChange={handleChange}
                         />
+                        <IconButton onClick={toggleConfirmPasswordVisibility} className='iconbtn'>
+                            {showConfirmPassWord ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                        </div>
                     </div>
                     {errors && <div className='error'>{errors}</div>}
-                    <button onClick={handleSubmit} className="login_btn" type="submit">Submit</button>
+                    <button disabled = {isLoading} onClick={handleSubmit} className="login_btn" type="submit">{isLoading ? 'Saving...' : 'Submit'}</button>
                 </form>
             </div>
         </div>

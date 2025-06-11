@@ -1,0 +1,19 @@
+.passwordreset_form_group div{
+    /* background-color: aqua;  */
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 10px; 
+}
+.passwordreset_form_group div input{
+    width: 100%;
+    padding: 5px 5px;
+    position:absolute;
+    padding-left: 40px;
+   
+}
+.iconbtn{    
+    z-index: 1;
+    top: 50%;
+    right: 0;
+}
