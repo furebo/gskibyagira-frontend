@@ -1,11 +1,11 @@
 .AppHeader{
-    background-color:rgb(4, 29, 68);
-    padding-right: 40px;  
-   
+  background-color: #333;
+  padding-right: 40px;
 }
 notification:hover{
   cursor: pointer;
 }
+
 @media (max-width:780px) {
     .typographeader{
         display: none;

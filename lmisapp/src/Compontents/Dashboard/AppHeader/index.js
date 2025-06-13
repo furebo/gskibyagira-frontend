@@ -3,6 +3,8 @@ import { MailOutlined, BellFilled } from "@ant-design/icons";
 import './index.css';
 import { useEffect, useState } from "react";
 import { useNavigate} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 function AppHeader({ humbMenu }) {
     const[messages, setMessages] = useState([]);
@@ -37,6 +39,9 @@ function AppHeader({ humbMenu }) {
     return (
         <div className="AppHeader">
             {humbMenu}  {/* This will render the hamburger button */}
+            <div className="logo_place">
+            <Link to="/" className="sitetitle" >GS KIBYAGIRA</Link>
+            </div>
             <marquee>
             <Typography.Title 
                 className="typographeader" 

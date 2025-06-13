@@ -27,7 +27,7 @@ body {
   font-weight: bold;
   text-decoration: none;
   color:black;
-  left: 40px;
+  left: 0px;
   padding-left: 30px ;
   padding-right: 40px;
   padding-top: 10px;
@@ -71,12 +71,13 @@ body {
   color:blue;
   /* margin-left: auto; */
   top: 35%;
-  left: 240px;
+  left: 200px;
   
 }
 .logo_place{
   display: flex;
   align-items: center;
+  z-index: 1;
 }
 
 
