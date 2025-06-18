@@ -23,7 +23,7 @@ function ForgotPasswordModel({ forgetPasswordcloseModel }) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email }),
             });
-
+             console.log(response);
             if (!response.ok) throw new Error('Failed to send reset email');
 
             notify("Password reset link sent! Check your email.");
