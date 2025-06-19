@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useParams, useNavigate } from 'react-router-dom';
 import { notify } from '../../Helpers/notify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { IconButton } from '@mui/material';
 
 function ResetPasswordModel({ closeModel }) {
@@ -115,6 +116,10 @@ const toggleConfirmPasswordVisibility = () =>{
                     </div>
                     {errors && <div className='error'>{errors}</div>}
                     <button disabled = {isLoading} onClick={handleSubmit} className="login_btn" type="submit">{isLoading ? 'Saving...' : 'Submit'}</button>
+                     <button type="button" className="back_btn" onClick={() => navigate('/')}>
+                        <ArrowBackIcon style={{ verticalAlign: 'middle', marginRight: '5px' }} />
+                         Back to Home
+                      </button>
                 </form>
             </div>
         </div>
