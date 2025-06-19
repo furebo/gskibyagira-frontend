@@ -65,16 +65,16 @@ const toggleConfirmPasswordVisibility = () =>{
             if (!response.ok) throw new Error('Failed to reset password');
             
             notify("Password reset successfully!");
-            //closeModel();
-            //navigate('/'); // Redirect to homepage
-        } catch (error) {
+            setFormState({
+                 newPassword: '',
+                 confirmPassword: '',
+            })
+            } catch (error) {
             setErrors('Error resetting password');
             console.error('Error:', error);
         } finally{
             setIsLoading(false);
-            closeModel();
-            navigate('/'); // Redirect to homepage
-        }
+         }
     }
 
     return (
