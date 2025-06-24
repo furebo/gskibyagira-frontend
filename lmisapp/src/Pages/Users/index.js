@@ -45,8 +45,8 @@ function Users() {
     if (user) {
       // Set the form fields with the current user data
       form.setFieldsValue({
-        firstname: user.firstName,
-        lastname: user.lastName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         role: user.role,
         email: user.email,
       });
