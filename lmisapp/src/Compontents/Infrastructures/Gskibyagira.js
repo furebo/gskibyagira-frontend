@@ -13,7 +13,7 @@ function GsKibyagira(){
                 Iri ni ishuli kandi ry'itorero Anglican ryo mu Rwanda (E.A.R) Dioseze ya Kigeme, Paruwasi ya Kibyagira, rikaba rifashwa na leta kubwamasezerano.
                 Iri shuli ritanga uburezi ku byiciro 3 aribyo: Amashuli y'inshuke Nusery 2 na Nusery 3;
                 amashuli abanza kuva mu mwaka wa mbere kugeza mumwaka wa 6; hamwe namashuli yisumbuye icyiciro cya mbere O' Level,
-                ndetse nicyiciro cya 2 A' Level mu mashamiya: MATHS CHEMISRY AND BIOLOGY(MCB) hamwe nishami ry'UBUVANGANZO IGIFARANSA NIKINYARWANDA(LFK)
+                ndetse nicyiciro cya 2 A' Level mu mashamiya: MATHEMATICS CHEMISTRY AND BIOLOGY(MCB) hamwe nishami ry'UBUVANGANZO IGIFARANSA NIKINYARWANDA(LFK)
             </p>
             
         </article>
