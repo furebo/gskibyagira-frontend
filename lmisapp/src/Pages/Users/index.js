@@ -13,6 +13,7 @@ function Users() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
   const [form] = Form.useForm();
+  const [updating, setUpdating] = useState(false);
 
   // Fetch users data
   const getUsers = async () => {
@@ -44,8 +45,8 @@ function Users() {
     if (user) {
       // Set the form fields with the current user data
       form.setFieldsValue({
-        firstname: user.firstname,
-        lastname: user.lastname,
+        firstname: user.firstName,
+        lastname: user.lastName,
         role: user.role,
         email: user.email,
       });
@@ -58,6 +59,7 @@ function Users() {
   // Handle modal form submission
   const handleUpdate = async () => {
     try {
+      setUpdating(true);
       const updatedUser = await form.validateFields(); // Validate and get form values
 
       // Send updated data to server
@@ -78,6 +80,7 @@ function Users() {
         setDataSource((prev) =>
           prev.map(user => (user.key === editingUser.key ? { ...user, ...updatedUser } : user))
         );
+        setUpdating(false);
         setIsModalVisible(false); // Close the modal
       }
     } catch (error) {
@@ -161,8 +164,8 @@ const handleDelete = (key) => {
           <Button key="cancel" onClick={handleCancel}>
             Cancel
           </Button>,
-          <Button key="submit" type="primary" onClick={handleUpdate}>
-            Save
+          <Button disabled={updating} key="submit" type="primary" onClick={handleUpdate}>
+            {updating ? "Updating..." : "Update"}
           </Button>
         ]}
       >
