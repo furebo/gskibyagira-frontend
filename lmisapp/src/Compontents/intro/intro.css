@@ -8,6 +8,9 @@
   border-radius: 8px; /* Rounded corners for a softer look */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow to elevate */
 }
+.intro-container p{
+  font-size: 1.3rem;
+}
 
 /* Heading (Our Mission, Our Vision) */
 .intro-h2 {
@@ -22,9 +25,10 @@
 /* Paragraph */
 .intro-p {
   font-family: 'Arial', sans-serif; /* Clean, readable font */
-  font-size: 1.1rem; /* Slightly larger text for readability */
+  font-size: 1.5rem; /* Slightly larger text for readability */
   line-height: 1.6; /* Increased line-height for better readability */
-  color: #555; /* Slightly lighter gray for text */
+ /* color: #555;  Slightly lighter gray for text */
+  color:blue;
   margin-top: 10px;
   padding-left: 10px; /* Padding for a little indentation */
   padding-right: 10px;

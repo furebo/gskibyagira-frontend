@@ -15,6 +15,9 @@ function Intro() {
           <p className="intro-p">
             To be an excellent school in basic knowledge and in all levels of education
           </p>
+          <p>
+           kuba ikigo cy'indashyikirwa mu bumenyi no mubumenyingiro mu byiciro byose by'uburezi.
+          </p>
         </div>
               <div className="intro-container">
           <h2 className="intro-h2">
@@ -22,6 +25,9 @@ function Intro() {
           </h2>
           <p className="intro-p">
             To be a school that provides caring learning environment for all students where Hygiene Discipline,ICT,Intellectual and spiritual values hold the key, to the success.
+          </p>
+          <p>
+            Ikigo cy'ishuli gitanga ubumenyi kubidukikije namahirwe ku banyeshuli bose aho Isuku , Ikoranabuhanga,ubuhanga n'indangagaciro za gikristu aribyo shingiro y'insinzi. 
           </p>
         </div>
       </div>
