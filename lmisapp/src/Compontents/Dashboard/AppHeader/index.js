@@ -56,7 +56,7 @@ function AppHeader({ humbMenu }) {
             </Typography.Title>
             </marquee>
             <Typography.Text  type="secondary" style={{color:"white",width:"340px",fontSize:"20px",paddingLeft:"15px",display:"flex", justifyContent:"space-between", paddingRight:"15px"}}>
-              <strong> {auth.user?.firstName || auth.user?.name || 'Logged in as Guest'}</strong>
+              <strong> {auth.user?.firstName +" " + auth.user?.lastName || auth.user?.name || 'Logged in as Guest'}</strong>
               {auth.user?.picture && (
                                        <img
                                        src={auth.user.picture || <UserOutlined />}
@@ -66,7 +66,8 @@ function AppHeader({ humbMenu }) {
                                                  height: 36,
                                                  borderRadius: '50%',
                                                  border: '2px solid white',
-                                                 objectFit: 'cover'
+                                                 objectFit: 'cover',
+                                                 color:'white'
                                               }}
                                         />
                                    )}
