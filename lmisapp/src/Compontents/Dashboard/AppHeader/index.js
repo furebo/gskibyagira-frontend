@@ -1,5 +1,6 @@
 import { Space, Typography, Badge } from "antd";
 import { MailOutlined, BellFilled } from "@ant-design/icons";
+import {UserOutlined} from '@ant-design/icons';
 import './index.css';
 import { useEffect, useState, useContext } from "react";
 import { useNavigate} from 'react-router-dom';
@@ -58,8 +59,7 @@ function AppHeader({ humbMenu }) {
               <strong> {auth.user?.firstName || auth.user?.name || 'Logged in as Guest'}</strong>
               {auth.user?.picture && (
                                        <img
-                                       src={auth.user.picture}
-                                       alt="Google profile"
+                                       src={auth.user.picture || <UserOutlined />}
                                        className="logged_in_user"
                                        style={{
                                                  width: 36,
