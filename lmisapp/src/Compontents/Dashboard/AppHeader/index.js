@@ -60,7 +60,14 @@ function AppHeader({ humbMenu }) {
 
               {auth.user?.picture && (
                                        <img
-                                       src={auth.user.picture || <UserOutlined />}
+                                       src={auth.user.picture || <UserOutlined  style={{
+                                                 width: 36,
+                                                 height: 36,
+                                                 borderRadius: '50%',
+                                                 border: '2px solid white',
+                                                 objectFit: 'cover',
+                                                 color:'white'
+                                              }}/>}
                                        className="logged_in_user"
                                        style={{
                                                  width: 36,
