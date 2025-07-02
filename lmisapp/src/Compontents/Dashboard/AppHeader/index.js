@@ -55,30 +55,35 @@ function AppHeader({ humbMenu }) {
                   Welcome To Books Management Information System (BMIS) GS Kibyagira - Buruhukiro
             </Typography.Title>
             </marquee>
-            <Typography.Text  type="secondary" style={{color:"white",width:"340px",fontSize:"20px",paddingLeft:"15px",display:"flex", justifyContent:"space-between", paddingRight:"15px", backgroundColor:"blue"}}>
+            <Typography.Text  type="secondary" style={{color:"white",width:"340px",fontSize:"20px",paddingLeft:"15px",display:"flex", justifyContent:"space-between", paddingRight:"15px"}}>
               <strong>{(auth.user?.firstName && auth.user?.lastName) ? `${auth.user.firstName} ${auth.user.lastName}`: auth.user?.name || 'Logged in as Guest'}</strong>
 
-              {auth.user?.picture && (
-                                       <img
-                                       src={auth.user.picture || <UserOutlined  style={{
-                                                 width: 36,
-                                                 height: 36,
-                                                 borderRadius: '50%',
-                                                 border: '2px solid white',
-                                                 objectFit: 'cover',
-                                                 color:'white'
-                                              }}/>}
-                                       className="logged_in_user"
-                                       style={{
-                                                 width: 36,
-                                                 height: 36,
-                                                 borderRadius: '50%',
-                                                 border: '2px solid white',
-                                                 objectFit: 'cover',
-                                                 color:'white'
-                                              }}
-                                        />
-                                   )}
+              {auth.user?.picture ? (
+  <img
+    src={auth.user.picture}
+    className="logged_in_user"
+    style={{
+      width: 36,
+      height: 36,
+      borderRadius: '50%',
+      border: '2px solid white',
+      objectFit: 'cover'
+    }}
+    alt="User"
+  />
+) : (
+  <UserOutlined
+    style={{
+      fontSize: 36,
+      color: 'white',
+      background: '#888',
+      borderRadius: '50%',
+      padding: 8,
+      border: '2px solid white'
+    }}
+  />
+)}
+
             </Typography.Text>
             {/* <Space>
                 <Badge count={messages.length} dot className="notification" onClick={handleClick}>
