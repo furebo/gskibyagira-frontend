@@ -55,7 +55,7 @@ function AppHeader({ humbMenu }) {
                   Welcome To Books Management Information System (BMIS) GS Kibyagira - Buruhukiro
             </Typography.Title>
             </marquee>
-            <Typography.Text  type="secondary" style={{color:"white",width:"340px",fontSize:"20px",paddingLeft:"15px",display:"flex", justifyContent:"space-between", paddingRight:"15px"}}>
+            <Typography.Text  type="secondary" style={{color:"white",width:"340px",fontSize:"20px",paddingLeft:"15px",display:"flex", justifyContent:"space-between", paddingRight:"15px", backgroundColor:"blue"}}>
               <strong>{(auth.user?.firstName && auth.user?.lastName) ? `${auth.user.firstName} ${auth.user.lastName}`: auth.user?.name || 'Logged in as Guest'}</strong>
 
               {auth.user?.picture && (
