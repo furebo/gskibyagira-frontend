@@ -5,6 +5,9 @@
 notification:hover{
   cursor: pointer;
 }
+.logged_in_user{
+  color: white;
+}
 
 @media (max-width:780px) {
     .typographeader{

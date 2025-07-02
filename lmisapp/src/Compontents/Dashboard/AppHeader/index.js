@@ -1,12 +1,16 @@
 import { Space, Typography, Badge } from "antd";
 import { MailOutlined, BellFilled } from "@ant-design/icons";
 import './index.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate} from 'react-router-dom';
 import { Link } from "react-router-dom";
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+
+//let import the context to get the user in order to use the user data to dashboard
+import {AuthContext} from '../../../Contexts/AuthContext';
+
 
 function AppHeader({ humbMenu }) {
+    const {auth} = useContext(AuthContext);
     const[messages, setMessages] = useState([]);
     let messages_count = messages.length
   // Fetch messages from the backend
@@ -19,6 +23,7 @@ function AppHeader({ humbMenu }) {
   
           if (response.ok) {
             setMessages(result.data.reverse()); // Reverse to show newest messages first
+           
           } else {
             console.error("Failed to fetch messages:", result.error);
           }
@@ -49,6 +54,23 @@ function AppHeader({ humbMenu }) {
                   Welcome To Books Management Information System (BMIS) GS Kibyagira - Buruhukiro
             </Typography.Title>
             </marquee>
+            <Typography.Text  type="secondary" style={{color:"white",width:"280px",fontSize:"20px",paddingLeft:"15px",display:"flex"}}>
+              Logged in as : <strong> {auth.user?.firstName || auth.user?.name || 'Guest'}</strong>
+              {auth.user?.picture && (
+                                       <img
+                                       src={auth.user.picture}
+                                       alt="Google profile"
+                                       className="logged_in_user"
+                                       style={{
+                                                 width: 36,
+                                                 height: 36,
+                                                 borderRadius: '50%',
+                                                 border: '2px solid white',
+                                                 objectFit: 'cover'
+                                              }}
+                                        />
+                                   )}
+            </Typography.Text>
             <Space>
                 <Badge count={messages.length} dot className="notification" onClick={handleClick}>
                     <MailOutlined style={{ fontSize: 24, color: "white" }} />
