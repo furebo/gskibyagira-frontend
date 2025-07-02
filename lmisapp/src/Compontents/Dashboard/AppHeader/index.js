@@ -54,8 +54,8 @@ function AppHeader({ humbMenu }) {
                   Welcome To Books Management Information System (BMIS) GS Kibyagira - Buruhukiro
             </Typography.Title>
             </marquee>
-            <Typography.Text  type="secondary" style={{color:"white",width:"280px",fontSize:"20px",paddingLeft:"15px",display:"flex"}}>
-              Logged in as : <strong> {auth.user?.firstName || auth.user?.name || 'Guest'}</strong>
+            <Typography.Text  type="secondary" style={{color:"white",width:"340px",fontSize:"20px",paddingLeft:"15px",display:"flex"}}>
+              <strong> {auth.user?.firstName || auth.user?.name || 'Guest'}</strong>
               {auth.user?.picture && (
                                        <img
                                        src={auth.user.picture}
@@ -71,14 +71,14 @@ function AppHeader({ humbMenu }) {
                                         />
                                    )}
             </Typography.Text>
-            <Space>
+            {/* <Space>
                 <Badge count={messages.length} dot className="notification" onClick={handleClick}>
                     <MailOutlined style={{ fontSize: 24, color: "white" }} />
                 </Badge>
                 <Badge count={messages_count} className="notification" onClick={handleClick}>
                     <BellFilled style={{ fontSize: 24, color: "white" }} />
                 </Badge>
-            </Space>
+            </Space> */}
         </div>
     );
 }
