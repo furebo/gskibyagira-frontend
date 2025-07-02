@@ -12,7 +12,12 @@ import ForgotPasswordModel from '../ModelForgetPassword';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
+import { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthContext';
+import { SET_AUTHENTICATION } from '../../Actions/types';
+
 function Model({ closeModel, onSubmit, defaultValue }) {
+    const { dispatch } = useContext(AuthContext);
     
  const notify = (message) =>{ toast.success(message,
         {
@@ -55,7 +60,8 @@ function Model({ closeModel, onSubmit, defaultValue }) {
             return;
         }
         setIsLoading(true);
-        fetch('https://gskibyagira-backend.onrender.com/api/login', {
+        //https://gskibyagira-backend.onrender.com/api/login
+        fetch('http://gskibyagira-backend.onrender.com/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -66,6 +72,7 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         })
         .then(async (response) => {
             const data = await response.json();
+             //const credentialResponse = jwtDecode(response.credential);
             if (!response.ok) {
                 // Show error from backend if available
                 throw new Error(data.message || 'Login failed');
@@ -75,6 +82,11 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         .then(data => {
             if (data.token) {
                 localStorage.setItem('token', data.token);
+                dispatch({
+                    type: SET_AUTHENTICATION,
+                    user: data.user,
+                    token: data.token
+                });
                 notify("You are logged in successfully!");
                 navigate('/dashboard');
                 closeModel();
@@ -102,6 +114,15 @@ function Model({ closeModel, onSubmit, defaultValue }) {
         .then(res => res.json())
         .then(data => {
             if (data.token) {
+                dispatch({
+                      type: SET_AUTHENTICATION,
+                      user: {
+                               name: credentialResponse.name,
+                               email: credentialResponse.email,
+                               picture: credentialResponse.picture
+                            },
+                      token: data.token
+                   });
                 localStorage.setItem('token', data.token);
                 notify("Google login successful!");
                 navigate('/dashboard');
