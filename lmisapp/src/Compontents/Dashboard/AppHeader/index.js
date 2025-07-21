@@ -44,7 +44,9 @@ function AppHeader({ humbMenu }) {
 
     return (
         <div className="AppHeader">
+            <div style={{backgroundColor:'green',display:'flex',justifyContent:'center',alignItems:'center'}}>
             {humbMenu}  {/* This will render the hamburger button */}
+            </div>
             <div className="logo_place">
             <Link to="/" className="sitetitle" >GS KIBYAGIRA</Link>
             </div>
