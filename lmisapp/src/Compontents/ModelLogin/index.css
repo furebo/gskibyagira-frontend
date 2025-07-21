@@ -27,6 +27,7 @@
     padding:2rem;
     background: linear-gradient(to right, #d9bcf8, #dde6f5);
     width: 25em;
+    margin-top: 80px;
 }
 .login_btn{
     display: block;
