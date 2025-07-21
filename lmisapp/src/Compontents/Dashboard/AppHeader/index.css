@@ -8,6 +8,10 @@ notification:hover{
 .logged_in_user{
   color: white;
 }
+.sitetitle{
+  background-color:blue;
+  color: white;
+}
 
 @media (max-width:780px) {
     .typographeader{
@@ -35,3 +39,12 @@ notification:hover{
         display: none;
     }
   }
+
+  @media (max-width: 700px) {
+ .sitetitle{
+  width: auto;
+  font-size: 15px;
+  padding: 10px 10px;
+  left: 40px;
+}
+}
